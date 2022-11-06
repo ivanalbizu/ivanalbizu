@@ -1,0 +1,39 @@
+.reveal img {
+  max-height: 100vh;
+}
+.reveal {
+  --r-block-margin: 0;
+}
+.speaker-controls-notes,
+.speaker-controls-notes .value {
+  font-size: 14px !important;
+}
+
+.speaker-controls-notes .value {
+  font-size: .6em;
+}
+
+figure {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+figcaption {
+  background-color: #222;
+  color: #fff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+  max-width: 100%;
+  font-size: 16px;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+}
+figure img:hover + figcaption,
+figure img + figcaption:hover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(-100%);
+}
