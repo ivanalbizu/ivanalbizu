@@ -224,7 +224,7 @@
             <pre>
               <code data-trim data-line-numbers="2">
                 .title-card {
-                  font-size: clamp(1rem, calc(3cqi + 1rem), 4rem);
+                  font-size: clamp(1rem, 3cqi + 1rem, 4rem);
                   line-height: 1.1;
                   margin-bottom: 1rem;
                 }
@@ -360,7 +360,7 @@
                 width="700"
                 alt="" />
               <figcaption>
-                Renderizado tradicional del navegador
+                Renderizado del navegador tradicional
                 <a
                   href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
                   target="_blank"
@@ -374,7 +374,7 @@
                 width="700"
                 alt="" />
               <figcaption>
-                Renderizado con CSS Houdini del navegador
+                Renderizado del navegador con CSS Houdini
                 <a
                   href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
                   target="_blank"
@@ -711,19 +711,164 @@
               src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
           </section>
         </section>
+        <section data-background-color="#541F14">
+          <section>
+            <p>@layer</p>
+            <ul>
+              <li>Definición</li>
+              <li>Estado actual</li>
+              <li>¿Para que sirven?</li>
+              <li>Importación / nested / non-layered</li>
+            </ul>
+          </section>
+          <section>
+            <p>@layer definición</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                @layer theme {rules};
+                @layer theme;
+                @layer theme, layout, utilities;
+                @layer {rules}
+              </code>
+            </pre>
+            <aside class="notes">
+              <ul>
+                <li>Crea una capa con nombre y estilos</li>
+                <li>Crea una capa con nombre</li>
+                <li>
+                  Crea varias capas con nombre con el orden en que sean
+                  nombradas
+                </li>
+                <li>
+                  Crea capa anónima sin nombre. No podremos hacer referencia a
+                  ella para añadir más estilos o reordenarla
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <p>Estado actual @layer - Caniuse</p>
+            <figure>
+              <img src="./public/layers/caniuse-layer.png" alt="" />
+              <figcaption>
+                <a href="https://caniuse.com/css-cascade-layers" target="_blank"
+                  >Caniuse @layer</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section>
+            <p>Capas @layer</p>
+            <ul>
+              <li>Más control sobre como se aplica la cascada</li>
+              <li>Evitar selectores complejos</li>
+              <li>Evitar técnicas <code>!important</code></li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Permite más control sobre como se aplica la cascada</li>
+                <li>
+                  Evitar selectores complejos para asegurarnos colisiones por
+                  especificidad
+                </li>
+                <li>
+                  Evitar uso de !important sobre todo en clases de utilidad.
+                  Ojo, esta maldita palabra sigue prevaleciendo, pero no sería
+                  necesaria si usamos la definición de cascada en el orden
+                  deseado
+                </li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <p>@layer - Orden de la cascada</p>
+            <ol>
+              <li>Browser styles</li>
+              <li>User Styles</li>
+              <li>
+                Author Styles
+                <ol>
+                  <li>@layer theme</li>
+                  <li>@layer layout</li>
+                  <li>@layer utilities</li>
+                  <li>Non-Layered Styles</li>
+                </ol>
+              </li>
+            </ol>
+            <form
+              action="https://codepen.io/pen/define"
+              method="POST"
+              target="_blank">
+              <input
+                id="data-especificidad-input"
+                type="hidden"
+                name="data"
+                value="" />
+              <input
+                class="input-icon-codepen"
+                type="image"
+                src="./public/icon-codepen.svg" />
+            </form>
+          </section>
+          <section>
+            <p>@layer importación</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                @charset "UTF-8";
+                @import url("bootstrap.css");
+                @import url("bootstrap.css") layer(framework);
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>@layer nested</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                @layer outer {
+                  @layer inner {
+                    .button {
+                      color: red;
+                    }
+                  }
+                }
+
+                @layer outer.inner {
+                  .another {
+                    color: green;
+                  }
+                }
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>@layer non-layered</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                @layer base {
+                  #button.super-specific {
+                    color: red;
+                  }
+                }
+                button {
+                  color: green;
+                }
+              </code>
+            </pre>
+          </section>
+        </section>
         <section data-background-color="#16213E">
           <section>
             https://codepen.io/ivan_albizu/pen/qBayPeR
             https://codepen.io/ivan_albizu/pen/eYVpgNx
           </section>
-          <div>
+          <section>
             https://codepen.io/ivan_albizu/pen/YzQWxKN
             https://codepen.io/ivan_albizu/pen/ExLLPvm
             https://codepen.io/ivan_albizu/pen/NWXVbyG
             https://ishadeed.com/article/container-queries-are-finally-here/
             https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
             https://ishoudinireadyyet.com/
-          </div>
+          </section>
         </section>
       </div>
     </div>
@@ -733,6 +878,7 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script src="plugin/zoom/zoom.js"></script>
+    <script src="dist/script.js"></script>
     <script>
       // More info about initialization & config:
       // - https://revealjs.com/initialization/

@@ -37,3 +37,10 @@ figure img + figcaption:hover {
   opacity: 1;
   transform: translateY(-100%);
 }
+
+.input-icon-codepen {
+  width: 160px;
+  margin-top: 2rem;
+  border: 1px solid #fff;
+  padding: 0.7rem 1rem;
+}
