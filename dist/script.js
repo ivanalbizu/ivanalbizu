@@ -34,7 +34,10 @@ const dataEspecificidad = {
 }`,
   css_pre_processor: 'scss',
 };
-const dataEspecificidadString = JSON.stringify(dataEspecificidad);
 
 const dataEspecificidadInput = document.getElementById('data-especificidad-input');
-dataEspecificidadInput.value = dataEspecificidadString;
+
+if (dataEspecificidadInput) {
+  const dataEspecificidadString = JSON.stringify(dataEspecificidad);
+  dataEspecificidadInput.value = dataEspecificidadString;
+}
