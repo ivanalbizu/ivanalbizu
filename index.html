@@ -1,99 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>CSS features</title>
-    <link rel="stylesheet" href="dist/reset.css" />
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/black.css" />
-    <link rel="stylesheet" href="dist/style.css" />
-    <!-- Theme used for syntax highlighted code -->
-    <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css" />
-  </head>
-  <body>
-    <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
-    <div class="reveal">
-      <div class="slides">
-        <section data-background-color="#E94560">
-          <p>Nuevas (y no tan nuevas) features CSS</p>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSS features</title>
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/black.css" />
+  <link rel="stylesheet" href="dist/style.css" />
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css" />
+</head>
+
+<body>
+  <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
+  <div class="reveal">
+    <div class="slides">
+      <section data-background-color="#E94560">
+        <p>Nuevas (y no tan nuevas) features CSS</p>
+        <ul>
+          <li>@container CSS</li>
+          <li>Capas @layer</li>
+          <li>CSS Houdini</li>
+          <li>Funciones CSS + pseudo clases</li>
+        </ul>
+      </section>
+      <section data-background-color="#0F3460">
+        <section>
+          <p>@container CSS</p>
           <ul>
-            <li>@container CSS</li>
-            <li>Capas @layer</li>
-            <li>CSS Houdini</li>
-            <li>Funciones CSS + pseudo clases</li>
+            <li>Estado actual</li>
+            <li>Definición de @container</li>
+            <li>Unidades propias de @container</li>
+            <li>@container style()</li>
+            <li>Nested @container</li>
           </ul>
         </section>
-        <section data-background-color="#0F3460">
-          <section>
-            <p>@container CSS</p>
-            <ul>
-              <li>Estado actual</li>
-              <li>Definición de @container</li>
-              <li>Unidades propias de @container</li>
-              <li>@container style()</li>
-              <li>Nested @container</li>
-            </ul>
-          </section>
-          <section>
-            <figure>
-              <img src="./public/containers/container-queries.png" alt="" />
-            </figure>
-            <aside class="notes">
-              Las @container queries se asemejan a las @media queries.<br />Las
-              @media queries hacen referencia al ancho de pantalla y las
-              @container queries hacen referencia al ancho de un elemento que
-              tengamos definido como contenedor.<br />
-              En este ejemplo se ven 6 contenedores que tienen mismo contenido
-              pero que tienen menos anchos unas que otras, usando los
-              contenedores cambios la distrubución de elementos, su visibilidad
-              y valores de espaciados y topografías
-            </aside>
-          </section>
-          <section>
-            <p>Estado actual @container size - Caniuse</p>
-            <figure>
-              <img
-                src="./public/containers/caniuse-container-query-size.png"
-                alt="" />
-              <figcaption>
-                <a
-                  href="https://caniuse.com/css-container-queries"
-                  target="_blank"
-                  >Caniuse Container queries size</a
-                >
-              </figcaption>
-            </figure>
-          </section>
-          <section>
-            <p>Estado actual @container units - Caniuse</p>
-            <figure>
-              <img
-                src="./public/containers/caniuse-container-query-units.png"
-                alt="" />
-              <figcaption>
-                <a
-                  href="https://caniuse.com/css-container-query-units"
-                  target="_blank"
-                  >Caniuse Container queries units</a
-                >
-              </figcaption>
-            </figure>
-          </section>
-          <section>
-            <p>Estado actual @container style</p>
-            <p>Sin datos en Caniuse</p>
-            <a
-              href="https://github.com/w3c/csswg-drafts/issues/7185"
-              target="_blank"
-              >Issues reported</a
-            >
-          </section>
-          <section>
-            <p>Estado actual - @supports</p>
-            <pre>
+        <section>
+          <figure>
+            <img src="./public/containers/container-queries.png" alt="" />
+          </figure>
+          <aside class="notes">
+            Las @container queries se asemejan a las @media queries.<br />Las
+            @media queries hacen referencia al ancho de pantalla y las
+            @container queries hacen referencia al ancho de un elemento que
+            tengamos definido como contenedor.<br />
+            En este ejemplo se ven 6 contenedores que tienen mismo contenido
+            pero que tienen menos anchos unas que otras, usando los
+            contenedores cambios la distrubución de elementos, su visibilidad
+            y valores de espaciados y topografías
+          </aside>
+        </section>
+        <section>
+          <p>Estado actual @container size - Caniuse</p>
+          <figure>
+            <img src="./public/containers/caniuse-container-query-size.png" alt="" />
+            <figcaption>
+              <a href="https://caniuse.com/css-container-queries" target="_blank">Caniuse Container queries size</a>
+            </figcaption>
+          </figure>
+        </section>
+        <section>
+          <p>Estado actual @container units - Caniuse</p>
+          <figure>
+            <img src="./public/containers/caniuse-container-query-units.png" alt="" />
+            <figcaption>
+              <a href="https://caniuse.com/css-container-query-units" target="_blank">Caniuse Container queries
+                units</a>
+            </figcaption>
+          </figure>
+        </section>
+        <section>
+          <p>Estado actual @container style</p>
+          <p>Sin datos en Caniuse</p>
+          <a href="https://github.com/w3c/csswg-drafts/issues/7185" target="_blank">Issues reported</a>
+        </section>
+        <section>
+          <p>Estado actual - @supports</p>
+          <pre>
               <code data-trim data-line-numbers="1,5">
                 @supports not (container: inline-size) {
                   .warning {
@@ -107,15 +92,15 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              Tenemos la posibilidad de detectar si el navegador no soporta
-              @container y en tal caso podemos escribir estilos para dar
-              alternativas o mostrar diálogos al usuario o lo que necesitemos
-            </aside>
-          </section>
-          <section>
-            <p>Definición de @container | HTML</p>
-            <pre>
+          <aside class="notes">
+            Tenemos la posibilidad de detectar si el navegador no soporta
+            @container y en tal caso podemos escribir estilos para dar
+            alternativas o mostrar diálogos al usuario o lo que necesitemos
+          </aside>
+        </section>
+        <section>
+          <p>Definición de @container | HTML</p>
+          <pre>
               <code data-trim data-line-numbers="1,6|2-5">
                 <footer class="card__footer" data-container="btn">
                   <div class="btn-groups">
@@ -125,16 +110,16 @@
                 </footer>
               </code>
             </pre>
-            <aside class="notes">
-              Recomiendo tener una caja sólo para definirlo como contenedor sin
-              muchos estilos, si acaso estilos estéticos (colores, bordes, ...)
-              pero nada da <code>flex</code> ni <code>grid</code> y aplicar
-              estilos a los hijos
-            </aside>
-          </section>
-          <section>
-            Definición de @container | CSS
-            <pre>
+          <aside class="notes">
+            Recomiendo tener una caja sólo para definirlo como contenedor sin
+            muchos estilos, si acaso estilos estéticos (colores, bordes, ...)
+            pero nada da <code>flex</code> ni <code>grid</code> y aplicar
+            estilos a los hijos
+          </aside>
+        </section>
+        <section>
+          Definición de @container | CSS
+          <pre>
               <code data-trim data-line-numbers="1-4|5-8|9-13|14-19">
                 [data-container="btn"] {
                   container-type: inline-size;// size | inline-size | normal
@@ -157,76 +142,71 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              <ol>
-                <li>
-                  Definición del elemento que será el contenedor
-                  <ul>
-                    <li>
-                      size: dimensiones <code>block</code> e
-                      <code>inline</code> eje. Aplica layout, style y size.
-                    </li>
-                    <li>
-                      inline-size: dimensiones <code>inline</code> eje. Aplica
-                      layout, style y inline-size.
-                    </li>
-                    <li>normal: no se trata como contenedor</li>
-                  </ul>
-                </li>
-                <li>
-                  Nombre del contenedor
-                  <ul>
-                    <li>Opcional si sólo se tiene un contenedor</li>
-                    <li>Siempre le doy nombre para evitar "cosas extrañas"</li>
-                  </ul>
-                </li>
-                .
-              </ol>
-              <hr />
-              <ol>
-                <li>Aplicamos estilos por defecto como a cualquier elemento</li>
-              </ol>
-              <hr />
-              <ol>
-                <li>
-                  Aplicamos estilos a cualquier elemento hijo del contenedor
-                </li>
-              </ol>
-              <hr />
-              <ol>
-                <li>Podemos usar operadores < ></li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <p>Unidades propias de @container</p>
-            <figure>
-              <img
-                src="./public/containers/cq-units.png"
-                alt="Container queries Units" />
-              <figcaption>
-                <a
-                  href="https://drafts.csswg.org/css-contain-3/#container-lengths"
-                  target="_blank"
-                  >More info</a
-                >
-              </figcaption>
-            </figure>
-            <aside class="notes">
-              Existen muchas opciones para unidades
-              <ul>
-                <li>cqw: % container width (vw)</li>
-                <li>cqh: % container height (vh)</li>
-                <li>cqi: % container inline size</li>
-                <li>cqb: % container block size</li>
-                <li>cqmin: menor de los valores cqi | cqb</li>
-                <li>cqmax: mayor de los valores cqi | cqb</li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <p>Unidades propias de @container</p>
-            <pre>
+          <aside class="notes">
+            <ol>
+              <li>
+                Definición del elemento que será el contenedor
+                <ul>
+                  <li>
+                    size: dimensiones <code>block</code> e
+                    <code>inline</code> eje. Aplica layout, style y size.
+                  </li>
+                  <li>
+                    inline-size: dimensiones <code>inline</code> eje. Aplica
+                    layout, style y inline-size.
+                  </li>
+                  <li>normal: no se trata como contenedor</li>
+                </ul>
+              </li>
+              <li>
+                Nombre del contenedor
+                <ul>
+                  <li>Opcional si sólo se tiene un contenedor</li>
+                  <li>Siempre le doy nombre para evitar "cosas extrañas"</li>
+                </ul>
+              </li>
+              .
+            </ol>
+            <hr />
+            <ol>
+              <li>Aplicamos estilos por defecto como a cualquier elemento</li>
+            </ol>
+            <hr />
+            <ol>
+              <li>
+                Aplicamos estilos a cualquier elemento hijo del contenedor
+              </li>
+            </ol>
+            <hr />
+            <ol>
+              <li>Podemos usar operadores <>
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p>Unidades propias de @container</p>
+          <figure>
+            <img src="./public/containers/cq-units.png" alt="Container queries Units" />
+            <figcaption>
+              <a href="https://drafts.csswg.org/css-contain-3/#container-lengths" target="_blank">More info</a>
+            </figcaption>
+          </figure>
+          <aside class="notes">
+            Existen muchas opciones para unidades
+            <ul>
+              <li>cqw: % container width (vw)</li>
+              <li>cqh: % container height (vh)</li>
+              <li>cqi: % container inline size</li>
+              <li>cqb: % container block size</li>
+              <li>cqmin: menor de los valores cqi | cqb</li>
+              <li>cqmax: mayor de los valores cqi | cqb</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <p>Unidades propias de @container</p>
+          <pre>
               <code data-trim data-line-numbers="2">
                 .title-card {
                   font-size: clamp(1rem, 3cqi + 1rem, 4rem);
@@ -235,14 +215,14 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              Ejemplo simple aplicado a tipografías.<br />Se puede aplicar a
-              cualquier atributo que que admita unidades
-            </aside>
-          </section>
-          <section>
-            <p>@container style()</p>
-            <pre>
+          <aside class="notes">
+            Ejemplo simple aplicado a tipografías.<br />Se puede aplicar a
+            cualquier atributo que que admita unidades
+          </aside>
+        </section>
+        <section>
+          <p>@container style()</p>
+          <pre>
               <code data-trim data-line-numbers="1,15|2-4,15|5-14|16-18">
                 @container style(--type: primary) {
                   .card {
@@ -264,38 +244,38 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              Opción bastante nueva y que puede sufrir modificaciones<br />
-              <ol>
-                <li>Requiere <code>style(atributo: valor)</code></li>
-                <li>
-                  Supuestamente aplica a cualquier atributo CSS, pero en mis
-                  pruebas sólo me ha funcionado con Custom Properties
-                </li>
-                <li>
-                  El atributo que se quiera "escuchar" debe "leerse" en el padre
-                  y si se cumple el valor entonces si podemos aplicar estilos a
-                  los hijos que nos interese
-                </li>
-              </ol>
-              <hr />
-              <ol>
-                <li>
-                  Podemos hacer nesting de contenedores al estilo
-                  <code>if if</code>
-                </li>
-              </ol>
-              <hr />
-              <ol>
-                <li>
-                  Podemos usar operadores <code>OR</code> y <code>AND</code>
-                </li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <p>@container size + style()</p>
-            <pre>
+          <aside class="notes">
+            Opción bastante nueva y que puede sufrir modificaciones<br />
+            <ol>
+              <li>Requiere <code>style(atributo: valor)</code></li>
+              <li>
+                Supuestamente aplica a cualquier atributo CSS, pero en mis
+                pruebas sólo me ha funcionado con Custom Properties
+              </li>
+              <li>
+                El atributo que se quiera "escuchar" debe "leerse" en el padre
+                y si se cumple el valor entonces si podemos aplicar estilos a
+                los hijos que nos interese
+              </li>
+            </ol>
+            <hr />
+            <ol>
+              <li>
+                Podemos hacer nesting de contenedores al estilo
+                <code>if if</code>
+              </li>
+            </ol>
+            <hr />
+            <ol>
+              <li>
+                Podemos usar operadores <code>OR</code> y <code>AND</code>
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p>@container size + style()</p>
+          <pre>
               <code data-trim data-line-numbers="1,6">
                 @container card (min-width: 600px) and style(--responsive: true) {
                   .card {
@@ -305,129 +285,107 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              Tenemos la posibilidad de combinar contenedores de tamaños y de
-              estilos
-            </aside>
-          </section>
-          <section>
-            <p>End</p>
-            <figure>
-              <img
-                onmouseenter="this.src='./public/containers/giphy-container.gif'"
-                onmouseleave="this.src='./public/containers/giphy-container.png'"
-                width="300"
-                src="./public/containers/giphy-container.png"
-                alt="" />
-            </figure>
-            <p>Un gran poder conlleva una gran responsabilidad</p>
-          </section>
+          <aside class="notes">
+            Tenemos la posibilidad de combinar contenedores de tamaños y de
+            estilos
+          </aside>
         </section>
-        <section data-background-color="#533483">
-          <section>
-            <p>CSS houdini</p>
-            <ul>
-              <li>
-                Grupo de APIs que da acceso directo a
-                <abbr title="modelo de objetos de CSS">CSSOM</abbr>
-              </li>
-              <li>Mediante <abbr title="módulos javascript">worklets</abbr></li>
-              <li>
-                Permite escribir código que el navegador puede analizar como CSS
-              </li>
-              <li>
-                Crear nuevas funcionalidades CSS sin esperar a que se
-                implementen de forma nativa en los navegadores
-              </li>
-            </ul>
-            <aside class="notes">Sin entrar en detalle</aside>
-          </section>
-          <section>
-            <p>Ampliar información de manera más técnica y con más ejemplos</p>
-            <a
-              href="https://www.youtube.com/watch?v=jk_rQZzyqLQ&t=440s"
-              target="_blank"
-              >Charla en youtube by Joan León</a
-            ><br />
-            <a
-              href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
-              target="_blank">
-              Presentación by Joan León
-            </a>
-            <aside class="notes">
-              Si quieres ampliar más información recomiendo ver estos recursos
-            </aside>
-          </section>
-          <section>
-            <figure>
-              <img
-                src="./public/css-houdini/CSS-Houdini-rendering-process-polyfilled.png"
-                width="700"
-                alt="" />
-              <figcaption>
-                Renderizado del navegador tradicional
-                <a
-                  href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
-                  target="_blank"
-                  >source</a
-                >
-              </figcaption>
-            </figure>
-            <figure>
-              <img
-                src="./public/css-houdini/CSS-Houdini-rendering-process.png"
-                width="700"
-                alt="" />
-              <figcaption>
-                Renderizado del navegador con CSS Houdini
-                <a
-                  href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
-                  target="_blank"
-                  >source</a
-                >
-              </figcaption>
-            </figure>
-            <aside class="notes">
-              <ol>
-                <li>Tradicional: proceso renderizado lineal</li>
-                <li>CSS Houdini: tenemos una API para cada uno de los pasos</li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <p>CSSOM</p>
-            <ul>
-              <li>document.styleSheets</li>
-              <li>CSSStyleSheetList</li>
-              <li>CSSStyleSheet</li>
-              <li>CSSRuleList</li>
-              <li>CSSStyleRule</li>
-              <li>CSSStyleDeclaration</li>
-            </ul>
-            <aside class="notes">Modelo de objetivos de CSSOM</aside>
-          </section>
-          <section>
-            <p>APIs definidas aunque no todas disponibles</p>
-            <ul>
-              <li><strong>CSS Properties and Values API</strong></li>
-              <li><strong>CSS Typed OM</strong></li>
-              <li><strong>CSS Painting API</strong></li>
-              <li>Worklets</li>
-              <li>CSS Layout API</li>
-              <li>CSS Parser API</li>
-            </ul>
-            <aside class="notes">Listado de API. No entramos en detalle</aside>
-          </section>
-          <section>
-            <p>CSS Painting API</p>
-            <aside class="notes">
-              Veremos un ejemplo de uso de la API de pintado
-            </aside>
-            <aside class="notes"></aside>
-          </section>
-          <section>
-            <p>CSS Painting API - registro</p>
-            <pre>
+        <section>
+          <p>End</p>
+          <figure>
+            <img onmouseenter="this.src='./public/containers/giphy-container.gif'"
+              onmouseleave="this.src='./public/containers/giphy-container.png'" width="300"
+              src="./public/containers/giphy-container.png" alt="" />
+          </figure>
+          <p>Un gran poder conlleva una gran responsabilidad</p>
+        </section>
+      </section>
+      <section data-background-color="#533483">
+        <section>
+          <p>CSS houdini</p>
+          <ul>
+            <li>
+              Grupo de APIs que da acceso directo a
+              <abbr title="modelo de objetos de CSS">CSSOM</abbr>
+            </li>
+            <li>Mediante <abbr title="módulos javascript">worklets</abbr></li>
+            <li>
+              Permite escribir código que el navegador puede analizar como CSS
+            </li>
+            <li>
+              Crear nuevas funcionalidades CSS sin esperar a que se
+              implementen de forma nativa en los navegadores
+            </li>
+          </ul>
+          <aside class="notes">Sin entrar en detalle</aside>
+        </section>
+        <section>
+          <p>Ampliar información de manera más técnica y con más ejemplos</p>
+          <a href="https://www.youtube.com/watch?v=jk_rQZzyqLQ&t=440s" target="_blank">Charla en youtube by Joan
+            León</a><br />
+          <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">
+            Presentación by Joan León
+          </a>
+          <aside class="notes">
+            Si quieres ampliar más información recomiendo ver estos recursos
+          </aside>
+        </section>
+        <section>
+          <figure>
+            <img src="./public/css-houdini/CSS-Houdini-rendering-process-polyfilled.png" width="700" alt="" />
+            <figcaption>
+              Renderizado del navegador tradicional
+              <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">source</a>
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="./public/css-houdini/CSS-Houdini-rendering-process.png" width="700" alt="" />
+            <figcaption>
+              Renderizado del navegador con CSS Houdini
+              <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">source</a>
+            </figcaption>
+          </figure>
+          <aside class="notes">
+            <ol>
+              <li>Tradicional: proceso renderizado lineal</li>
+              <li>CSS Houdini: tenemos una API para cada uno de los pasos</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p>CSSOM</p>
+          <ul>
+            <li>document.styleSheets</li>
+            <li>CSSStyleSheetList</li>
+            <li>CSSStyleSheet</li>
+            <li>CSSRuleList</li>
+            <li>CSSStyleRule</li>
+            <li>CSSStyleDeclaration</li>
+          </ul>
+          <aside class="notes">Modelo de objetivos de CSSOM</aside>
+        </section>
+        <section>
+          <p>APIs definidas aunque no todas disponibles</p>
+          <ul>
+            <li><strong>CSS Properties and Values API</strong></li>
+            <li><strong>CSS Typed OM</strong></li>
+            <li><strong>CSS Painting API</strong></li>
+            <li>Worklets</li>
+            <li>CSS Layout API</li>
+            <li>CSS Parser API</li>
+          </ul>
+          <aside class="notes">Listado de API. No entramos en detalle</aside>
+        </section>
+        <section>
+          <p>CSS Painting API</p>
+          <aside class="notes">
+            Veremos un ejemplo de uso de la API de pintado
+          </aside>
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <p>CSS Painting API - registro</p>
+          <pre>
               <code data-trim data-line-numbers="1,5|7|2-4">
                 class BtnPulse {
                   paint(ctx, size, props) {
@@ -438,23 +396,23 @@
                 registerPaint('btn-pulse', BtnPulse);
               </code>
             </pre>
-            <aside class="notes">
-              <ol>
-                <li>Creamos una clase</li>
-                <li>
-                  Llámamos al método registerPaint(...)
-                  <ol>
-                    <li>Primer parámetro: nombre que usaremos en CSS</li>
-                    <li>Segundo parámetro: La clase que hemos creado</li>
-                  </ol>
-                </li>
-                <li>Dibujamos canvas en la implementación de paint(...)</li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <p>CSS Painting API - registro (codepen)</p>
-            <pre>
+          <aside class="notes">
+            <ol>
+              <li>Creamos una clase</li>
+              <li>
+                Llámamos al método registerPaint(...)
+                <ol>
+                  <li>Primer parámetro: nombre que usaremos en CSS</li>
+                  <li>Segundo parámetro: La clase que hemos creado</li>
+                </ol>
+              </li>
+              <li>Dibujamos canvas en la implementación de paint(...)</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p>CSS Painting API - registro (codepen)</p>
+          <pre>
               <code data-trim data-line-numbers="7-10|3-5|11">
                 // Opción para usarlo en Codepen
                 (async () => {
@@ -470,24 +428,24 @@
                 })()
               </code>
             </pre>
-            <aside class="notes">
-              Por si queremos hacer pruebas en codepen<br />
-              <ol>
-                <li>
-                  La clase que creamos la metememos dentro de
-                  <code>script</code> y leemos su contenido
-                </li>
-                <li>
-                  Si el navegador no reconoce <code>paintWorklet</code> añadimos
-                  polyfill
-                </li>
-                <li>Añadimos el worklet</li>
-              </ol>
-            </aside>
-          </section>
-          <section>
-            <p>CSS Painting API - uso</p>
-            <pre>
+          <aside class="notes">
+            Por si queremos hacer pruebas en codepen<br />
+            <ol>
+              <li>
+                La clase que creamos la metememos dentro de
+                <code>script</code> y leemos su contenido
+              </li>
+              <li>
+                Si el navegador no reconoce <code>paintWorklet</code> añadimos
+                polyfill
+              </li>
+              <li>Añadimos el worklet</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p>CSS Painting API - uso</p>
+          <pre>
               <code data-trim data-line-numbers="1,6|3|4">
                 @supports (background: paint(something)) {
                   .element {
@@ -497,15 +455,15 @@
                 }
               </code>
             </pre>
-            <aside class="notes">
-              Los <code>paint</code> que definamos pueden usar en
-              <mark><code>background</code></mark> y
-              <mark><code>border</code></mark>
-            </aside>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas I</p>
-            <pre data-id="code-animation">
+          <aside class="notes">
+            Los <code>paint</code> que definamos se pueden usar en
+            <mark><code>background</code></mark> y
+            <mark><code>border</code></mark>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas I</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="1,7|6|2|4">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() { }
@@ -516,25 +474,25 @@
                 })
               </code>
             </pre>
-            <aside class="notes">
-              <ol>
-                <li>
-                  paint() {}: método que se ejecuta cada vez que el motor CSS
-                  necesite pintar/repintar el elemento
-                </li>
-                <li>
-                  static get inputProperties() {}: método estático para acceder
-                  a Custom Properties CSS.
-                </li>
-                <li>
-                  _paintCircles() {}: método auxiliar para no repetir código.
-                </li>
-              </ol>
-            </aside>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas II</p>
-            <pre data-id="code-animation">
+          <aside class="notes">
+            <ol>
+              <li>
+                paint() {}: método que se ejecuta cada vez que el motor CSS
+                necesite pintar/repintar el elemento
+              </li>
+              <li>
+                static get inputProperties() {}: método estático para acceder
+                a Custom Properties CSS.
+              </li>
+              <li>
+                _paintCircles() {}: método auxiliar para no repetir código.
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas II</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="2-4">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -547,10 +505,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas III</p>
-            <pre data-id="code-animation">
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas III</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="2-11">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -570,10 +528,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas IV</p>
-            <pre data-id="code-animation">
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas IV</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="13">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -593,10 +551,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas V</p>
-            <pre data-id="code-animation">
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas V</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="13-20">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -623,10 +581,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas VI</p>
-            <pre data-id="code-animation">
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas VI</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="22">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -653,10 +611,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section data-auto-animate>
-            <p>CSS Painting API - Canvas VI</p>
-            <pre data-id="code-animation">
+        </section>
+        <section data-auto-animate>
+          <p>CSS Painting API - Canvas VI</p>
+          <pre data-id="code-animation">
               <code data-trim data-line-numbers="22-32">
                 registerPaint('btn-pulse', class {
                   static get inputProperties() {
@@ -693,15 +651,10 @@
                 })
               </code>
             </pre>
-          </section>
-          <section>
-            <p
-              class="codepen"
-              data-height="640"
-              data-default-tab="result,html"
-              data-slug-hash="qBayPeR"
-              data-user="ivan_albizu"
-              style="
+        </section>
+        <section>
+          <p class="codepen" data-height="640" data-default-tab="result,html" data-slug-hash="qBayPeR"
+            data-user="ivan_albizu" style="
                 height: 640px;
                 box-sizing: border-box;
                 display: flex;
@@ -711,24 +664,22 @@
                 margin: 1em 0;
                 padding: 1em;
               "></p>
-            <script
-              async
-              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-          </section>
+          <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         </section>
-        <section data-background-color="#541F14">
-          <section>
-            <p>@layer</p>
-            <ul>
-              <li>Definición</li>
-              <li>Estado actual</li>
-              <li>¿Para que sirven?</li>
-              <li>Importación / nested / non-layered</li>
-            </ul>
-          </section>
-          <section>
-            <p>@layer definición</p>
-            <pre>
+      </section>
+      <section data-background-color="#541F14">
+        <section>
+          <p>@layer</p>
+          <ul>
+            <li>Definición</li>
+            <li>Estado actual</li>
+            <li>¿Para que sirven?</li>
+            <li>Importación / nested / non-layered</li>
+          </ul>
+        </section>
+        <section>
+          <p>@layer definición</p>
+          <pre>
               <code data-trim data-line-numbers>
                 @layer theme {rules};
                 @layer theme;
@@ -736,98 +687,86 @@
                 @layer {rules}
               </code>
             </pre>
-            <aside class="notes">
-              <ul>
-                <li>Crea una capa con nombre y estilos</li>
-                <li>Crea una capa con nombre</li>
-                <li>
-                  Crea varias capas con nombre con el orden en que sean
-                  nombradas
-                </li>
-                <li>
-                  Crea capa anónima sin nombre. No podremos hacer referencia a
-                  ella para añadir más estilos o reordenarla
-                </li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <p>Estado actual @layer - Caniuse</p>
-            <figure>
-              <img src="./public/layers/caniuse-layer.png" alt="" />
-              <figcaption>
-                <a href="https://caniuse.com/css-cascade-layers" target="_blank"
-                  >Caniuse @layer</a
-                >
-              </figcaption>
-            </figure>
-          </section>
-          <section>
-            <p>Capas @layer</p>
+          <aside class="notes">
             <ul>
-              <li>Más control sobre como se aplica la cascada</li>
-              <li>Evitar selectores complejos</li>
-              <li>Evitar técnicas <code>!important</code></li>
-            </ul>
-            <aside class="notes">
-              <ul>
-                <li>Permite más control sobre como se aplica la cascada</li>
-                <li>
-                  Evitar selectores complejos para asegurarnos colisiones por
-                  especificidad
-                </li>
-                <li>
-                  Evitar uso de !important sobre todo en clases de utilidad.
-                  Ojo, esta maldita palabra sigue prevaleciendo, pero no sería
-                  necesaria si usamos la definición de cascada en el orden
-                  deseado
-                </li>
-              </ul>
-            </aside>
-          </section>
-          <section>
-            <p>@layer - Orden de la cascada</p>
-            <ol>
-              <li>Browser styles</li>
-              <li>User Styles</li>
+              <li>Crea una capa con nombre y estilos</li>
+              <li>Crea una capa con nombre</li>
               <li>
-                Author Styles
-                <ol>
-                  <li>@layer theme</li>
-                  <li>@layer layout</li>
-                  <li>@layer utilities</li>
-                  <li>Non-Layered Styles</li>
-                </ol>
+                Crea varias capas con nombre con el orden en que sean
+                nombradas
               </li>
-            </ol>
-            <form
-              action="https://codepen.io/pen/define"
-              method="POST"
-              target="_blank">
-              <input
-                id="data-especificidad-input"
-                type="hidden"
-                name="data"
-                value="" />
-              <input
-                class="input-icon-codepen"
-                type="image"
-                src="./public/icon-codepen.svg" />
-            </form>
-          </section>
-          <section>
-            <p>@layer importación</p>
-            <pre>
+              <li>
+                Crea capa anónima sin nombre. No podremos hacer referencia a
+                ella para añadir más estilos o reordenarla
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <p>Estado actual @layer - Caniuse</p>
+          <figure>
+            <img src="./public/layers/caniuse-layer.png" alt="" />
+            <figcaption>
+              <a href="https://caniuse.com/css-cascade-layers" target="_blank">Caniuse @layer</a>
+            </figcaption>
+          </figure>
+        </section>
+        <section>
+          <p>Capas @layer</p>
+          <ul>
+            <li>Más control sobre como se aplica la cascada</li>
+            <li>Evitar selectores complejos</li>
+            <li>Evitar técnicas <code>!important</code></li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>Permite más control sobre como se aplica la cascada</li>
+              <li>
+                Evitar selectores complejos para asegurarnos colisiones por
+                especificidad
+              </li>
+              <li>
+                Evitar uso de !important sobre todo en clases de utilidad.
+                Ojo, esta maldita palabra sigue prevaleciendo, pero no sería
+                necesaria si usamos la definición de cascada en el orden
+                deseado
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <p>@layer - Orden de la cascada</p>
+          <ol>
+            <li>Browser styles</li>
+            <li>User Styles</li>
+            <li>
+              Author Styles
+              <ol>
+                <li>@layer theme</li>
+                <li>@layer layout</li>
+                <li>@layer utilities</li>
+                <li>Non-Layered Styles</li>
+              </ol>
+            </li>
+          </ol>
+          <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+            <input id="data-especificidad-input" type="hidden" name="data" value="" />
+            <input class="input-icon-codepen" type="image" src="./public/icon-codepen.svg" />
+          </form>
+        </section>
+        <section>
+          <p>@layer importación</p>
+          <pre>
               <code data-trim data-line-numbers>
                 @charset "UTF-8";
                 @import url("bootstrap.css");
                 @import url("bootstrap.css") layer(framework);
               </code>
             </pre>
-          </section>
-          <section>
-            <p>@layer nested</p>
-            <pre>
+        </section>
+        <section>
+          <p>@layer nested</p>
+          <pre>
               <code data-trim data-line-numbers>
                 @layer outer {
                   @layer inner {
@@ -844,10 +783,10 @@
                 }
               </code>
             </pre>
-          </section>
-          <section>
-            <p>@layer non-layered</p>
-            <pre>
+        </section>
+        <section>
+          <p>@layer non-layered</p>
+          <pre>
               <code data-trim data-line-numbers>
                 @layer base {
                   #button.super-specific {
@@ -859,752 +798,592 @@
                 }
               </code>
             </pre>
-          </section>
         </section>
-        <section data-background-color="#16213E">
-          <section>
-            <p>Funciones CSS + pseudo clases</p>
-            <ul>
-              <li>calc(), min(), max()</li>
-              <li>clamp()</li>
-              <li>Pseudo clases funcionales :is() :where() :has() :not()</li>
-            </ul>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases I</p>
-            <table>
-              <tr>
-                <td colspan="2">Display state</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"
-                    >:fullscreen</a
-                  >
-                </td>
-                <td>
-                  Matches an element that is currently in fullscreen mode.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:modal"
-                    >:modal</a
-                  >
-                </td>
-                <td>
-                  Matches an element that is in a state in which it excludes all
-                  interaction with elements outside it until the interaction has
-                  been dismissed.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture"
-                    >:picture-in-picture</a
-                  >
-                </td>
-                <td>
-                  Matches an element that is currently in picture-in-picture
-                  mode.
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">Linguistic</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"
-                    >:dir()</a
-                  >
-                </td>
-                <td>
-                  The directionality pseudo-class selects an element based on
-                  its directionality as determined by the document language.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"
-                    >:lang()</a
-                  >
-                </td>
-                <td>Select an element based on its content language.</td>
-              </tr>
-            </table>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases II</p>
-            <table>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill"
-                    >:autofill</a
-                  >
-                </td>
-                <td>
-                  Matches when an &lt;input&gt; has been autofilled by the
-                  browser.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:enabled"
-                    >:enabled</a
-                  >
-                </td>
-                <td>
-                  Represents a user interface element that is in an enabled
-                  state.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled"
-                    >:disabled</a
-                  >
-                </td>
-                <td>
-                  Represents a user interface element that is in a disabled
-                  state.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only"
-                    >:read-only</a
-                  >
-                </td>
-                <td>
-                  Represents any element that cannot be changed by the user.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write"
-                    >:read-write</a
-                  >
-                </td>
-                <td>Represents any element that is user-editable.</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown"
-                    >:placeholder-shown</a
-                  >
-                </td>
-                <td>
-                  Matches an input element that is displaying placeholder text.
-                  For example, it will match the placeholder attribute in the
-                  &lt;input&gt; and &lt;textarea&gt; elements.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:default"
-                    >:default</a
-                  >
-                </td>
-                <td>
-                  Matches one or more UI elements that are the default among a
-                  set of elements.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:checked"
-                    >:checked</a
-                  >
-                </td>
-                <td>
-                  Matches when elements such as checkboxes and radio buttons are
-                  toggled on.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate"
-                    >:indeterminate</a
-                  >
-                </td>
-                <td>
-                  Matches UI elements when they are in an indeterminate state.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"
-                    >:blank</a
-                  >
-                </td>
-                <td>
-                  Matches a user-input element which is empty, containing an
-                  empty string or other null input.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"
-                    >:valid</a
-                  >
-                </td>
-                <td>
-                  Matches an element with valid contents. For example, an input
-                  element with the type 'email' that contains a validly formed
-                  email address or an empty value if the control is not
-                  required.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"
-                    >:invalid</a
-                  >
-                </td>
-                <td>
-                  Matches an element with invalid contents. For example, an
-                  input element with type 'email' with a name entered.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range"
-                    >:in-range</a
-                  >
-                </td>
-                <td>
-                  Applies to elements with range limitations. For example, a
-                  slider control when the selected value is in the allowed
-                  range.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range"
-                    >:out-of-range</a
-                  >
-                </td>
-                <td>
-                  Applies to elements with range limitations. For example, a
-                  slider control when the selected value is outside the allowed
-                  range.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required"
-                    >:required</a
-                  >
-                </td>
-                <td>Matches when a form element is required.</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional"
-                    >:optional</a
-                  >
-                </td>
-                <td>Matches when a form element is optional.</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"
-                    >:user-invalid</a
-                  >
-                </td>
-                <td>
-                  Represents an element with incorrect input, but only when the
-                  user has interacted with it.
-                </td>
-              </tr>
-            </table>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases III</p>
-            <table>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"
-                    >:any-link</a
-                  >
-                </td>
-                <td>
-                  Matches an element if the element would match either :link or
-                  :visited.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link"
-                    >:link</a
-                  >
-                </td>
-                <td>Matches links that have not yet been visited.</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited"
-                    >:visited</a
-                  >
-                </td>
-                <td>Matches links that have been visited.</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link"
-                    >:local-link</a
-                  >
-                </td>
-                <td>
-                  Matches links whose absolute URL is the same as the target
-                  URL. For example, anchor links to the same page.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target"
-                    >:target</a
-                  >
-                </td>
-                <td>
-                  Matches the element which is the target of the document URL.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within"
-                    >:target-within</a
-                  >
-                </td>
-                <td>
-                  Matches elements which are the target of the document URL, but
-                  also elements which have a descendant which is the target of
-                  the document URL.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"
-                    >:scope</a
-                  >
-                </td>
-                <td>
-                  Represents elements that are a reference point for selectors
-                  to match against.
-                </td>
-              </tr>
-            </table>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases IV</p>
-            <table>
-              <tr>
-                <td colspan="2">DOM structure</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root"
-                    >:root</a
-                  >
-                </td>
-                <td>
-                  Represents an element that is the root of the document. In
-                  HTML this is usually the &lt;html&gt; element.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty"
-                    >:empty</a
-                  >
-                </td>
-                <td>
-                  Represents an element with no children other than white-space
-                  characters.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
-                    >:nth-child</a
-                  >
-                </td>
-                <td>
-                  Uses An+B notation to select elements from a list of sibling
-                  elements.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child"
-                    >:nth-last-child</a
-                  >
-                </td>
-                <td>
-                  Uses An+B notation to select elements from a list of sibling
-                  elements, counting backwards from the end of the list.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-child"
-                    >:first-child</a
-                  >
-                </td>
-                <td>Matches an element that is the first of its siblings.</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-child"
-                    >:last-child</a
-                  >
-                </td>
-                <td>Matches an element that is the last of its siblings.</td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child"
-                    >:only-child</a
-                  >
-                </td>
-                <td>
-                  Matches an element that has no siblings. For example, a list
-                  item with no other list items in that list.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type"
-                    >:nth-of-type</a
-                  >
-                </td>
-                <td>
-                  Uses An+B notation to select elements from a list of sibling
-                  elements that match a certain type from a list of sibling
-                  elements.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type"
-                    >:nth-last-of-type</a
-                  >
-                </td>
-                <td>
-                  Uses An+B notation to select elements from a list of sibling
-                  elements that match a certain type from a list of sibling
-                  elements counting backwards from the end of the list.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-of-type"
-                    >:first-of-type</a
-                  >
-                </td>
-                <td>
-                  Matches an element that is the first of its siblings, and also
-                  matches a certain type selector.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type"
-                    >:last-of-type</a
-                  >
-                </td>
-                <td>
-                  Matches an element that is the last of its siblings, and also
-                  matches a certain type selector.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type"
-                    >:only-of-type</a
-                  >
-                </td>
-                <td>
-                  Matches an element that has no siblings of the chosen type
-                  selector.
-                </td>
-              </tr>
-            </table>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases V</p>
-            <table>
-              <tr>
-                <td colspan="2">User action</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
-                    >:hover</a
-                  >
-                </td>
-                <td>
-                  Matches when a user designates an item with a pointing device,
-                  such as holding the mouse pointer over the item.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active"
-                    >:active</a
-                  >
-                </td>
-                <td>
-                  Matches when an item is being activated by the user. For
-                  example, when the item is clicked on.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus"
-                    >:focus</a
-                  >
-                </td>
-                <td>Matches when an element has focus.</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
-                    >:focus-visible</a
-                  >
-                </td>
-                <td>
-                  Matches when an element has focus and the user agent
-                  identifies that the element should be visibly focused.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within"
-                    >:focus-within</a
-                  >
-                </td>
-                <td>
-                  Matches an element to which :focus applies, plus any element
-                  that has a descendant to which :focus applies.
-                </td>
-              </tr>
-            </table>
-          </section>
-          <section>
-            <p>Funciones CSS + pseudo clases VI</p>
-            <table>
-              <tr>
-                <td colspan="2">Functional</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"
-                    >:is()</a
-                  >
-                </td>
-                <td>
-                  The matches-any pseudo-class matches any element that matches
-                  any of the selectors in the list provided.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not"
-                    >:not()</a
-                  >
-                </td>
-                <td>
-                  The negation, or matches-none, pseudo-class represents any
-                  element that is not represented by its argument.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"
-                    >:where()</a
-                  >
-                </td>
-                <td>
-                  The specificity-adjustment pseudo-class matches any element
-                  that matches any of the selectors in the list provided without
-                  adding any specificity weight.
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"
-                    >:has()</a
-                  >
-                </td>
-                <td>
-                  The relational pseudo-class represents an element if any of
-                  the relative selectors match when anchored against the
-                  attached element.
-                </td>
-              </tr>
-            </table>
-          </section>
+      </section>
+      <section data-background-color="#16213E">
+        <section>
+          <p>Funciones CSS + pseudo clases</p>
+          <ul>
+            <li>calc(), min(), max()</li>
+            <li>clamp()</li>
+            <li>Pseudo clases funcionales :is() :where() :has() :not()</li>
+          </ul>
         </section>
-        <section data-background-color="#16213E">
-          <section>
-            https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
-            https://css-tricks.com/a-new-container-query-polyfill-that-just-works/
-            https://codepen.io/ivan_albizu/pen/qBayPeR
-            https://codepen.io/ivan_albizu/pen/eYVpgNx
-          </section>
-          <section>
-            https://codepen.io/ivan_albizu/pen/YzQWxKN
-            https://codepen.io/ivan_albizu/pen/ExLLPvm
-            https://codepen.io/ivan_albizu/pen/NWXVbyG
-            https://ishadeed.com/article/container-queries-are-finally-here/
-            https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
-            https://ishoudinireadyyet.com/
-          </section>
+        <section>
+          <p>Funciones CSS + pseudo clases I</p>
+          <table>
+            <tr>
+              <td>Display state</td>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"
+                  title="Matches an element that is currently in fullscreen mode.">:fullscreen</a>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:modal"
+                  title="Matches an element that is in a state in which it excludes all interaction with elements outside it until the interaction has been dismissed.">:modal</a>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture"
+                  title="Matches an element that is currently in picture-in-picture mode.">:picture-in-picture</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Linguistic</td>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"
+                  title="The directionality pseudo-class selects an element based on its directionality as determined by the document language.">:dir()</a>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"
+                  title="Select an element based on its content language.">:lang()</a>
+              </td>
+            </tr>
+          </table>
         </section>
-      </div>
+        <section>
+          <p>Funciones CSS + pseudo clases I</p>
+          <table>
+            <tr>
+              <td colspan="2">Display state</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen">:fullscreen</a>
+              </td>
+              <td>
+                Matches an element that is currently in fullscreen mode.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:modal">:modal</a>
+              </td>
+              <td>
+                Matches an element that is in a state in which it excludes all
+                interaction with elements outside it until the interaction has
+                been dismissed.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture">:picture-in-picture</a>
+              </td>
+              <td>
+                Matches an element that is currently in picture-in-picture
+                mode.
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">Linguistic</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir">:dir()</a>
+              </td>
+              <td>
+                The directionality pseudo-class selects an element based on
+                its directionality as determined by the document language.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang">:lang()</a>
+              </td>
+              <td>Select an element based on its content language.</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <p>Funciones CSS + pseudo clases II</p>
+          <table>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill">:autofill</a>
+              </td>
+              <td>
+                Matches when an &lt;input&gt; has been autofilled by the
+                browser.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:enabled">:enabled</a>
+              </td>
+              <td>
+                Represents a user interface element that is in an enabled
+                state.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled">:disabled</a>
+              </td>
+              <td>
+                Represents a user interface element that is in a disabled
+                state.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only">:read-only</a>
+              </td>
+              <td>
+                Represents any element that cannot be changed by the user.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write">:read-write</a>
+              </td>
+              <td>Represents any element that is user-editable.</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown">:placeholder-shown</a>
+              </td>
+              <td>
+                Matches an input element that is displaying placeholder text.
+                For example, it will match the placeholder attribute in the
+                &lt;input&gt; and &lt;textarea&gt; elements.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:default">:default</a>
+              </td>
+              <td>
+                Matches one or more UI elements that are the default among a
+                set of elements.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:checked">:checked</a>
+              </td>
+              <td>
+                Matches when elements such as checkboxes and radio buttons are
+                toggled on.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate">:indeterminate</a>
+              </td>
+              <td>
+                Matches UI elements when they are in an indeterminate state.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank">:blank</a>
+              </td>
+              <td>
+                Matches a user-input element which is empty, containing an
+                empty string or other null input.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid">:valid</a>
+              </td>
+              <td>
+                Matches an element with valid contents. For example, an input
+                element with the type 'email' that contains a validly formed
+                email address or an empty value if the control is not
+                required.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid">:invalid</a>
+              </td>
+              <td>
+                Matches an element with invalid contents. For example, an
+                input element with type 'email' with a name entered.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range">:in-range</a>
+              </td>
+              <td>
+                Applies to elements with range limitations. For example, a
+                slider control when the selected value is in the allowed
+                range.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range">:out-of-range</a>
+              </td>
+              <td>
+                Applies to elements with range limitations. For example, a
+                slider control when the selected value is outside the allowed
+                range.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required">:required</a>
+              </td>
+              <td>Matches when a form element is required.</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional">:optional</a>
+              </td>
+              <td>Matches when a form element is optional.</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid">:user-invalid</a>
+              </td>
+              <td>
+                Represents an element with incorrect input, but only when the
+                user has interacted with it.
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <p>Funciones CSS + pseudo clases III</p>
+          <table>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link">:any-link</a>
+              </td>
+              <td>
+                Matches an element if the element would match either :link or
+                :visited.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link">:link</a>
+              </td>
+              <td>Matches links that have not yet been visited.</td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited">:visited</a>
+              </td>
+              <td>Matches links that have been visited.</td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link">:local-link</a>
+              </td>
+              <td>
+                Matches links whose absolute URL is the same as the target
+                URL. For example, anchor links to the same page.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">:target</a>
+              </td>
+              <td>
+                Matches the element which is the target of the document URL.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within">:target-within</a>
+              </td>
+              <td>
+                Matches elements which are the target of the document URL, but
+                also elements which have a descendant which is the target of
+                the document URL.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope">:scope</a>
+              </td>
+              <td>
+                Represents elements that are a reference point for selectors
+                to match against.
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <p>Funciones CSS + pseudo clases IV</p>
+          <table>
+            <tr>
+              <td colspan="2">DOM structure</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root</a>
+              </td>
+              <td>
+                Represents an element that is the root of the document. In
+                HTML this is usually the &lt;html&gt; element.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty">:empty</a>
+              </td>
+              <td>
+                Represents an element with no children other than white-space
+                characters.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child">:nth-child</a>
+              </td>
+              <td>
+                Uses An+B notation to select elements from a list of sibling
+                elements.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child">:nth-last-child</a>
+              </td>
+              <td>
+                Uses An+B notation to select elements from a list of sibling
+                elements, counting backwards from the end of the list.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-child">:first-child</a>
+              </td>
+              <td>Matches an element that is the first of its siblings.</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-child">:last-child</a>
+              </td>
+              <td>Matches an element that is the last of its siblings.</td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child">:only-child</a>
+              </td>
+              <td>
+                Matches an element that has no siblings. For example, a list
+                item with no other list items in that list.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type">:nth-of-type</a>
+              </td>
+              <td>
+                Uses An+B notation to select elements from a list of sibling
+                elements that match a certain type from a list of sibling
+                elements.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type">:nth-last-of-type</a>
+              </td>
+              <td>
+                Uses An+B notation to select elements from a list of sibling
+                elements that match a certain type from a list of sibling
+                elements counting backwards from the end of the list.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-of-type">:first-of-type</a>
+              </td>
+              <td>
+                Matches an element that is the first of its siblings, and also
+                matches a certain type selector.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type">:last-of-type</a>
+              </td>
+              <td>
+                Matches an element that is the last of its siblings, and also
+                matches a certain type selector.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type">:only-of-type</a>
+              </td>
+              <td>
+                Matches an element that has no siblings of the chosen type
+                selector.
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <p>Funciones CSS + pseudo clases V</p>
+          <table>
+            <tr>
+              <td colspan="2">User action</td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover">:hover</a>
+              </td>
+              <td>
+                Matches when a user designates an item with a pointing device,
+                such as holding the mouse pointer over the item.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active">:active</a>
+              </td>
+              <td>
+                Matches when an item is being activated by the user. For
+                example, when the item is clicked on.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus">:focus</a>
+              </td>
+              <td>Matches when an element has focus.</td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible">:focus-visible</a>
+              </td>
+              <td>
+                Matches when an element has focus and the user agent
+                identifies that the element should be visibly focused.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank"
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within">:focus-within</a>
+              </td>
+              <td>
+                Matches an element to which :focus applies, plus any element
+                that has a descendant to which :focus applies.
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <p>Funciones CSS + pseudo clases VI</p>
+          <table>
+            <tr>
+              <td colspan="2">Functional</td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">:is()</a>
+              </td>
+              <td>
+                The matches-any pseudo-class matches any element that matches
+                any of the selectors in the list provided.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not">:not()</a>
+              </td>
+              <td>
+                The negation, or matches-none, pseudo-class represents any
+                element that is not represented by its argument.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where">:where()</a>
+              </td>
+              <td>
+                The specificity-adjustment pseudo-class matches any element
+                that matches any of the selectors in the list provided without
+                adding any specificity weight.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has">:has()</a>
+              </td>
+              <td>
+                The relational pseudo-class represents an element if any of
+                the relative selectors match when anchored against the
+                attached element.
+              </td>
+            </tr>
+          </table>
+        </section>
+      </section>
+      <section data-background-color="#16213E">
+        <section>
+          https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+          https://css-tricks.com/a-new-container-query-polyfill-that-just-works/
+          https://codepen.io/ivan_albizu/pen/qBayPeR
+          https://codepen.io/ivan_albizu/pen/eYVpgNx
+        </section>
+        <section>
+          https://codepen.io/ivan_albizu/pen/YzQWxKN
+          https://codepen.io/ivan_albizu/pen/ExLLPvm
+          https://codepen.io/ivan_albizu/pen/NWXVbyG
+          https://ishadeed.com/article/container-queries-are-finally-here/
+          https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+          https://ishoudinireadyyet.com/
+        </section>
+      </section>
     </div>
+  </div>
 
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script src="plugin/zoom/zoom.js"></script>
-    <script src="dist/script.js"></script>
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        center: true,
-        hash: true,
-        width: 1100,
-        height: 700,
-        margin: 0.04,
-        minScale: 0.2,
-        maxScale: 1.5,
-        slideNumber: true,
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="dist/script.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+      width: 1100,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 1.5,
+      slideNumber: true,
 
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
-      });
-    </script>
-  </body>
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
+    });
+  </script>
+</body>
+
 </html>
