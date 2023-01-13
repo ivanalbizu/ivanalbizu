@@ -48,3 +48,6 @@ figure img + figcaption:hover {
 td {
   font-size: 20px;
 }
+.white-space-nowrap {
+  white-space: nowrap;
+}
