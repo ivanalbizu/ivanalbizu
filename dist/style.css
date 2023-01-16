@@ -4,14 +4,6 @@
 .reveal {
   --r-block-margin: 0;
 }
-.speaker-controls-notes,
-.speaker-controls-notes .value {
-  font-size: 14px !important;
-}
-
-.speaker-controls-notes .value {
-  font-size: .6em;
-}
 
 figure {
   display: flex;

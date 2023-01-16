@@ -25,11 +25,18 @@
           <li>CSS Houdini</li>
           <li>Funciones CSS + pseudo clases</li>
         </ul>
+        <aside class="notes">
+          <p>Veremos nuevas features CSS. Muchas no están todavía disponibles en todos lo navegadores</p>
+          <p>Antes de usarla en proyecto hay que mirar como está soportado</p>
+          <p>Muchas están en borrador, y por tanto pueden sufrir variaciones e incluso podría no estar disponibles en el futuro
+          </p>
+        </aside>
       </section>
       <section data-background-color="#0F3460">
         <section>
           <p>@container CSS</p>
           <ul>
+            <li>¿Qué es @container?</li>
             <li>Estado actual</li>
             <li>Definición de @container</li>
             <li>Unidades propias de @container</li>
@@ -38,18 +45,20 @@
           </ul>
         </section>
         <section>
+          <p>¿Qué es @container?</p>
           <figure>
             <img src="./public/containers/container-queries.png" alt="" />
           </figure>
           <aside class="notes">
-            Las @container queries se asemejan a las @media queries.<br />Las
+            <p>Las @container queries se asemejan a las @media queries.<br />Las
             @media queries hacen referencia al ancho de pantalla y las
             @container queries hacen referencia al ancho de un elemento que
-            tengamos definido como contenedor.<br />
-            En este ejemplo se ven 6 contenedores que tienen mismo contenido
+            tengamos definido como contenedor.</p>
+            <p>En este ejemplo se ven 6 contenedores que tienen mismo contenido
             pero que tienen menos anchos unas que otras, usando los
-            contenedores cambios la distrubución de elementos, su visibilidad
-            y valores de espaciados y topografías
+            contenedores cambiamos la distribución de elementos, su visibilidad y valores de espaciados y tipografías</p>
+            <p>Más adelante veremos que actualmente existen dos variantes: una asociada a tamaño de contenedores y otra a valores de
+              atributos. Y además, aparecen nuevas unidades CSS</p>
           </aside>
         </section>
         <section>
@@ -59,7 +68,11 @@
             <figcaption>
               <a href="https://caniuse.com/css-container-queries" target="_blank">Caniuse Container queries size</a>
             </figcaption>
+            <aside class="notes"></aside>
           </figure>
+          <aside class="notes">
+            <p>Consultando CANIUSE podemos ver el soporte para tamaño de contenedores</p>
+          </aside>
         </section>
         <section>
           <p>Estado actual @container units - Caniuse</p>
@@ -70,11 +83,18 @@
                 units</a>
             </figcaption>
           </figure>
+          <aside class="notes">
+            <p>Han aparecido nuevas unidades de medida que tienen analogía con unidades relacionadas al tamaño de viewport (vw /
+              vh / vmin / vmax)</p>
+          </aside>
         </section>
         <section>
           <p>Estado actual @container style</p>
           <p>Sin datos en Caniuse</p>
           <a href="https://github.com/w3c/csswg-drafts/issues/7185" target="_blank">Issues reported</a>
+          <aside class="notes">
+            <p>No existe información en CANIUSE sobre soporte para la versión de atributos en contenedores</p>
+          </aside>
         </section>
         <section>
           <p>Estado actual - @supports</p>
@@ -93,9 +113,8 @@
               </code>
             </pre>
           <aside class="notes">
-            Tenemos la posibilidad de detectar si el navegador no soporta
-            @container y en tal caso podemos escribir estilos para dar
-            alternativas o mostrar diálogos al usuario o lo que necesitemos
+            <p>Pequeño inciso: podríamos saber si está soportado @container en el navegador:</p>
+            <p>Podríamos escribir estilos alternativos o mostrar mensajes al usuario con el uso de @supports</p>
           </aside>
         </section>
         <section>
@@ -111,9 +130,8 @@
               </code>
             </pre>
           <aside class="notes">
-            Recomiendo tener una caja sólo para definirlo como contenedor sin
-            muchos estilos, si acaso estilos estéticos (colores, bordes, ...)
-            pero nada de <code>flex</code> ni <code>grid</code> y aplicar
+            Recomiendo tener una caja sólo para definirlo como contenedor sin aplicar estilos, si acaso estilos estéticos (colores,
+            bordes, ...) pero nada de <mark>flex</mark> ni <mark>grid</mark> y aplicar
             estilos a los hijos
           </aside>
         </section>
@@ -165,7 +183,6 @@
                   <li>Siempre le doy nombre para evitar "cosas extrañas"</li>
                 </ul>
               </li>
-              .
             </ol>
             <hr />
             <ol>
@@ -193,7 +210,7 @@
             </figcaption>
           </figure>
           <aside class="notes">
-            Existen muchas opciones para unidades
+            Han aparecido nuevas unidades CSS que aplican a @contenedores
             <ul>
               <li>cqw: % container width (vw)</li>
               <li>cqh: % container height (vh)</li>
@@ -216,8 +233,8 @@
               </code>
             </pre>
           <aside class="notes">
-            Ejemplo simple aplicado a tipografías.<br />Se puede aplicar a
-            cualquier atributo que que admita unidades
+            <p>Se puede aplicar a cualquier atributo que admita unidades. En este caso vemos ejemplo aplicado a tamaño de tipografía
+            </p>
           </aside>
         </section>
         <section>
@@ -247,7 +264,7 @@
           <aside class="notes">
             Opción bastante nueva y que puede sufrir modificaciones<br />
             <ol>
-              <li>Requiere <code>style(atributo: valor)</code></li>
+              <li>Requiere <code><mark>style</mark>(atributo: valor)</code></li>
               <li>
                 Supuestamente aplica a cualquier atributo CSS, pero en mis
                 pruebas sólo me ha funcionado con Custom Properties
@@ -327,7 +344,8 @@
             Presentación by Joan León
           </a>
           <aside class="notes">
-            Si quieres ampliar más información recomiendo ver estos recursos
+            <p>Si quieres ampliar más información recomiendo ver estos recursos</p>
+            <p>Se trata de video y presentación de slides que hizo Joan León</p>
           </aside>
         </section>
         <section>
@@ -350,6 +368,8 @@
               <li>Tradicional: proceso renderizado lineal</li>
               <li>CSS Houdini: tenemos una API para cada uno de los pasos</li>
             </ol>
+            <p>Con La API de Houdini, cualquier cambio que se produzca, no será necesario que se ejecute todo el renderizado, sólo
+              lo que se vea afectado</p>
           </aside>
         </section>
         <section>
@@ -362,7 +382,12 @@
             <li>CSSStyleRule</li>
             <li>CSSStyleDeclaration</li>
           </ul>
-          <aside class="notes">Modelo de objetivos de CSSOM</aside>
+          <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model" target="_blank">Más info: MDN</a>
+          </p>
+          <aside class="notes">
+            <p>Modelo de objetos de CSSOM, es conjunto de APIs que permite leer y/o modificar estilos desde Javascript</p>
+          </aside>
         </section>
         <section>
           <p>APIs definidas aunque no todas disponibles</p>
