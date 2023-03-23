@@ -11,14 +11,396 @@
   <link rel="stylesheet" href="dist/style.css" />
   <!-- Theme used for syntax highlighted code -->
   <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css" />
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 </head>
-
+<!--
+  https://www.renfe.com/es/es
+  https://transparencia.gob.es/transparencia/transparencia_Home/index/PublicidadActiva/OrganizacionYEmpleo/EstructuraOrg.html
+-->
 <body>
   <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
   <div class="reveal">
     <div class="slides">
+      <section data-background-color="tomato">
+        <p class="title-slide">Maquetación CSS</p>
+        <ul>
+          <li>Buenas prácticas</li>
+          <li>Metodología BEM</li>
+          <li>Sass</li>
+          <li>Custom Property (css variables)</li>
+        </ul>
+        <aside class="notes">
+          <p>TODO</p>
+        </aside>
+      </section>
+      <section data-background-color="#2A373F">
+        <section>
+          <p class="title-slide">Buenas prácticas</p>
+          <ul>
+            <li>Pasos previos</li>
+            <li>Reset de CSS</li>
+            <li>Defensive CSS</li>
+          </ul>
+          <aside class="notes">
+            <p>TODO</p>
+          </aside>
+        </section>
+        <section>
+          <p class="title-slide">Buenas prácticas: Pasos previos</p>
+          <div class="columns">
+            <div class="r-stack">
+              <img class="fragment fade-in-then-out" data-fragment-index="0" src="public/buenas-practicas/requisitos.png" width="398" height="600">
+              <img class="fragment fade-in-then-out" data-fragment-index="1" src="public/buenas-practicas/dudas.png" width="536" height="200">
+              <img class="fragment fade-in-then-out" data-fragment-index="2" src="public/buenas-practicas/afrontar-maqueta.jpg" width="446.43" height="500">
+              <img class="fragment fade-in-then-out" data-fragment-index="3" src="public/buenas-practicas/mosaic-1024.jpg" width="567" height="432">
+              <img class="fragment fade-in-then-out" data-fragment-index="4" src="public/buenas-practicas/reset-all-unset.png" width="409" height="403">
+              <img class="fragment fade-in-then-out" data-fragment-index="5" src="public/buenas-practicas/estilos-tipos-cajas.jpg" width="515" height="234">
+            </div>
+            <ul>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="0">Soporte a navegadores</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="1">Analizar diseños / dudas</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="2">Dibujar en papel layout</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="3">Identificar componentes</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="4">HTML con reset de estilos</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="5">Estilos para tipografías y cajas</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            <ol>
+              <li>Navegadores: saber que versiones de navegadores tienen que ser soportados. Así sabremos que cosas podemos o no podemos usar. Por ejemplo el <mark>aspect-ratio</mark> o <mark>gap</mark> para grid o flexbox. Esto puede venir definido por contrato, es buena idea preguntarlo y tratar de obtener información</li>
+              <li>Diseños: en muchas ocasiones los diseños tienen contenidos "dummy" con texto e imágenes ideales. Es interesante plantear dudas de flujo de textos y comportamientos con diferentes tamaños de imágenes</li>
+              <li>Complejidad: antes de empezar, es buena idea dibujar las cajas del layout o del componente</li>
+              <li>Componentes: revisar diseños para ver posibles componentes o elementos que puedan considerarse similares, que con pequeñas modificaciones se realice sus maquetas</li>
+              <li>Generar HTML: añadir todo el HTML (de página global o componente) previamente a la maquetación y limpiar todos los estilos</li>
+              <li>Estilos tipografías: definir las tipografías según diseños. Ojo que a veces los diseños no usan correctamente los <mark>line-height</mark>, a veces se usan para conseguir separaciones verticales con resto de elementos</li>
+              <li>Estilos para cajas: primero espaciados interiores y luego exteriores</li>
+            </ol>
+          </aside>
+        </section>
+        <section>
+          <p class="title-slide">Buenas prácticas: Resets CSS</p>
+          <p>Orden de la cascada</p>
+          <ol>
+            <li>Browser styles</li>
+            <li>User Styles</li>
+            <li>
+              Author Styles
+              <ol>
+                <li>@layer theme [...]</li>
+                <li>Non-Layered Styles</li>
+              </ol>
+            </li>
+          </ol>
+          <aside class="notes">
+            <p>TODO</p>
+          </aside>
+        </section>
+        <section data-background-iframe="https://meyerweb.com/eric/tools/css/reset/">
+          <p class="title-slide">Buenas prácticas: Resets CSS</p>
+          <p><a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank">Librería Reset CSS</a></p>
+          <aside class="notes">
+            <p>TODO</p>
+          </aside>
+        </section>
+        <section data-background-iframe="https://necolas.github.io/normalize.css/">
+          <p class="title-slide">Buenas prácticas: Resets CSS</p>
+          <p><a href="https://necolas.github.io/normalize.css/" target="_blank">Librería normalize CSS</a></p>
+          <aside class="notes">
+            <p>TODO</p>
+          </aside>
+        </section>
+        <section>
+          <p class="title-slide">Buenas prácticas: Resets CSS</p>
+          <p class="codepen" data-height="550" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="ExQXwve" data-editable="true" data-user="ivan_albizu" style="height: 550px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/ExQXwve">
+            CAP - Html limpio</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </section>
+        <section>
+          <p class="title-slide">Buenas prácticas: Defensive CSS</p>
+          <div class="columns">
+            <img src="public/buenas-practicas/defensive-css.png" width="451" height="573" alt="">
+            <ul>
+              <li>
+                Tratar de evitar "roturas" de CSS por diferentes casos de uso
+                <a href="https://ishadeed.com/article/defensive-css/" target="_blank">Ahmad Shadeed</a>
+              </li>
+            </ul>
+          </div>
+          <aside class="notes">
+            <p>TODO</p>
+          </aside>
+        </section>
+        <section data-background-color="#fff" data-background-iframe="https://ishadeed.com/article/defensive-css/" data-background-interactive></section>
+        <section>
+          <p class="codepen" data-height="573.3333129882812" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="QWMmmOm" data-editable="true" data-user="ivan_albizu" style="height: 573.3333129882812px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/QWMmmOm">
+            Prefers Reduced Motion</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </section>
+      </section>
+      <section>
+        <section>
+          <p class="title-slide">Metodología BEM</p>
+          <ul>
+            <li>Basado en el nombrado de clases</li>
+            <li>Evitar colisionado de estilos</li>
+            <li>Aporta semántica</li>
+          </ul>
+        </section>
+        <section>
+          <p class="title-slide">Metodología BEM: sintáxis</p>
+          <ul>
+            <li>B &rarr; Bloque</li>
+            <li>E &rarr; Elemento &rarr; __elemento</li>
+            <li>M &rarr; Modificador &rarr; --modificador</li>
+          </ul>
+          <img src="/public/buenas-practicas/bem-syntax.png" alt="">
+        </section>
+        <section>
+          <p class="title-slide">Metodología BEM: ejemplo header</p>
+          <p class="codepen" data-height="414.66668701171875" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="eYLQwVE" data-editable="true" data-user="ivan_albizu" style="height: 414.66668701171875px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/eYLQwVE">
+            CAP - BEM menu</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </section>
+        <section>
+          <p class="title-slide">Metodología BEM: ejemplo Card</p>
+          <img src="/public/buenas-practicas/bem-card.png" alt="">
+        </section>
+      </section>
+      <section data-background-color="#010174">
+        <section>
+          <p class="title-slide">Preprocesador SASS</p>
+          <ul>
+            <li>Transpilación</li>
+            <li>Indentación</li>
+            <li>Variables</li>
+            <li>Mixins</li>
+            <li>Maps</li>
+            <li>Funciones</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Transpilación</p>
+          <ul>
+            <li>Los navegadores reconocen CSS</li>
+            <li>Requiere herramienta intermedia que transforme SCSS a CSS</li>
+            <li>Más mantenible. Se dota de características propias de programación: variables, funciones, mapas...</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="5-7">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                  .list-item {
+                    display: inline-block;
+                  }
+                }
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="6-8">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                }
+                .list .list-item {
+                  display: inline-block;
+                }
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="7-9">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                }
+              }
+              .nav .list .list-item {
+                display: inline-block;
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="1-6">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                }
+              }
+              .nav .list .list-item {
+                display: inline-block;
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="1-4">
+              .nav .list {
+                margin: 0;
+                padding: 0;
+              }
+              .nav .list .list-item {
+                display: inline-block;
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Variables</p>
+          <pre data-id="code-animation-">
+            <code data-trim data-line-numbers="1-7">
+              $color-primary: #cc0; //definición de variable SASS
+              .nav {
+                color: $color-primary; //uso de variable SASS
+              }
+              .logo {
+                outline: 1px solid $color-primary; //uso de variable SASS
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Variables</p>
+          <pre data-id="code-animation-">
+            <code data-trim data-line-numbers="1,3,6">
+              $color-primary: #cc0; //definición de variable SASS
+              .nav {
+                color: $color-primary; //uso de variable SASS
+              }
+              .logo {
+                outline: 1px solid $color-primary; //uso de variable SASS
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Variables</p>
+          <pre data-id="code-animation-">
+            <code data-trim data-line-numbers="1,3,6">
+              $color-primary: #cc0; //definición de variable SASS
+              .nav {
+                color: #cc0; //lo que le llega al navegador
+              }
+              .logo {
+                outline: 1px solid #cc0; //lo que le llega al navegador
+              }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p class="title-slide">Preprocesador SASS: Variables</p>
+          <p class="codepen" data-height="579.2000427246094" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="abqyBYa" data-editable="true" data-user="ivan_albizu" style="height: 579.2000427246094px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/abqyBYa">
+            CAP - Sass variables</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Mixins</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="1-5">
+              @mixin theme($theme: DarkGray) {
+                background: $theme;
+                box-shadow: 0 0 1px rgba($theme, .25);
+                color: #fff;
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Mixins</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="5-11">
+              @mixin theme($theme: DarkGray) {
+                background: $theme;
+                box-shadow: 0 0 1px rgba($theme, .25);
+                color: #fff;
+              }
+              .info {
+                @include theme;
+              }
+              .alert {
+                @include theme($theme: DarkRed);
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Mixins</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="6-15">
+              @mixin theme($theme: DarkGray) {
+                background: $theme;
+                box-shadow: 0 0 1px rgba($theme, .25);
+                color: #fff;
+              }
+              .info {
+                background: DarkGray;
+                box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+                color: #fff;
+              }
+              .alert {
+                background: DarkRed;
+                box-shadow: 0 0 1px rgba(139, 0, 0, 0.25);
+                color: #fff;
+              }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p class="title-slide">Preprocesador SASS: Maps</p>
+          <pre data-id="code-animation-">
+            <code data-trim>
+              $theme-colors: (
+                "primary": $primary,
+                "danger": $danger
+              );
+              body {
+                background-color: map-get($theme-colors, "primary");
+              }
+              // el uso de map-get suele ser mediante función auxiliar para
+              // evitar posibles errores al no encontrar la 'key' o 'values' inesperados
+              // ejemplo: https://gist.github.com/lewismcarey/de2a70fe93ab235ba103
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p class="title-slide">Preprocesador SASS: Funciones / Loops</p>
+          <p>Ejemplo de uso, no entramos en detalles</p>
+          <p class="codepen" data-height="438.3999938964844" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="abpBOym" data-editable="true" data-user="ivan_albizu" style="height: 438.3999938964844px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/abpBOym">
+            fluid css</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+        </section>
+      </section>
       <section data-background-color="#E94560">
-        <p>Nuevas (y no tan nuevas) features CSS</p>
+        <p class="title-slide">Nuevas (y no tan nuevas) features CSS</p>
         <ul>
           <li>@container CSS</li>
           <li>Capas @layer</li>
@@ -34,7 +416,7 @@
       </section>
       <section data-background-color="#0F3460">
         <section>
-          <p>@container CSS</p>
+          <p class="title-slide">@container CSS</p>
           <ul>
             <li>¿Qué es @container?</li>
             <li>Estado actual</li>
@@ -45,7 +427,7 @@
           </ul>
         </section>
         <section>
-          <p>¿Qué es @container?</p>
+          <p class="title-slide">¿Qué es @container?</p>
           <figure>
             <img src="./public/containers/container-queries.png" alt="" />
           </figure>
@@ -62,7 +444,7 @@
           </aside>
         </section>
         <section>
-          <p>Estado actual @container size - Caniuse</p>
+          <p class="title-slide">Estado actual @container size - Caniuse</p>
           <figure>
             <img src="./public/containers/caniuse-container-query-size.png" alt="" />
             <figcaption>
@@ -75,7 +457,7 @@
           </aside>
         </section>
         <section>
-          <p>Estado actual @container units - Caniuse</p>
+          <p class="title-slide">Estado actual @container units - Caniuse</p>
           <figure>
             <img src="./public/containers/caniuse-container-query-units.png" alt="" />
             <figcaption>
@@ -89,7 +471,7 @@
           </aside>
         </section>
         <section>
-          <p>Estado actual @container style</p>
+          <p class="title-slide">Estado actual @container style</p>
           <p>Sin datos en Caniuse</p>
           <a href="https://github.com/w3c/csswg-drafts/issues/7185" target="_blank">Issues reported</a>
           <aside class="notes">
@@ -97,38 +479,38 @@
           </aside>
         </section>
         <section>
-          <p>Estado actual - @supports</p>
+          <p class="title-slide">Estado actual - @supports</p>
           <pre>
-              <code data-trim data-line-numbers="1,5">
-                @supports not (container: inline-size) {
-                  .warning {
-                    display: block;
-                  }
+            <code data-trim data-line-numbers="1,5">
+              @supports not (container: inline-size) {
+                .warning {
+                  display: block;
                 }
-                @supports (selector(:has(*))) {
-                  body {
-                    background-color: red
-                  }
+              }
+              @supports (selector(:has(*))) {
+                body {
+                  background-color: red
                 }
-              </code>
-            </pre>
+              }
+            </code>
+          </pre>
           <aside class="notes">
             <p>Pequeño inciso: podríamos saber si está soportado @container en el navegador:</p>
             <p>Podríamos escribir estilos alternativos o mostrar mensajes al usuario con el uso de @supports</p>
           </aside>
         </section>
         <section>
-          <p>Definición de @container | HTML</p>
+          <p class="title-slide">Definición de @container | HTML</p>
           <pre>
-              <code data-trim data-line-numbers="1,6|2-5">
-                <footer class="card__footer" data-container="btn">
-                  <div class="btn-groups">
-                    <button class="btn" type="button">Action 1</button>
-                    <button class="btn" type="button">Action 2</button>
-                  </div>
-                </footer>
-              </code>
-            </pre>
+            <code data-trim data-line-numbers="1,6|2-5">
+              <footer class="card__footer" data-container="btn">
+                <div class="btn-groups">
+                  <button class="btn" type="button">Action 1</button>
+                  <button class="btn" type="button">Action 2</button>
+                </div>
+              </footer>
+            </code>
+          </pre>
           <aside class="notes">
             Recomiendo tener una caja sólo para definirlo como contenedor sin aplicar estilos, si acaso estilos estéticos (colores,
             bordes, ...) pero nada de <mark>flex</mark> ni <mark>grid</mark> y aplicar
@@ -136,30 +518,30 @@
           </aside>
         </section>
         <section>
-          Definición de @container | CSS
+          <p class="title-slide">Definición de @container | CSS</p>
           <pre>
-              <code data-trim data-line-numbers="1-4|5-8|9-13|14-19">
-                [data-container="btn"] {
-                  container-type: inline-size;// size | inline-size | normal
-                  container-name: btns;
-                }
+            <code data-trim data-line-numbers="1-4|5-8|9-13|14-19">
+              [data-container="btn"] {
+                container-type: inline-size;// size | inline-size | normal
+                container-name: btns;
+              }
+              .btn-groups {
+                display: flex;
+                flex-direction: column;
+              }
+              @container btns (min-width: 300px) {
                 .btn-groups {
-                  display: flex;
-                  flex-direction: column;
+                  flex-direction: row;
                 }
-                @container btns (min-width: 300px) {
-                  .btn-groups {
-                    flex-direction: row;
-                  }
+              }
+              @container (width > 900px) {
+                .card {
+                  --bg-color: brown;
+                  --padding: 16px;
                 }
-                @container (width > 900px) {
-                  .card {
-                    --bg-color: brown;
-                    --padding: 16px;
-                  }
-                }
-              </code>
-            </pre>
+              }
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>
@@ -202,7 +584,7 @@
           </aside>
         </section>
         <section>
-          <p>Unidades propias de @container</p>
+          <p class="title-slide">Unidades propias de @container</p>
           <figure>
             <img src="./public/containers/cq-units.png" alt="Container queries Units" />
             <figcaption>
@@ -222,7 +604,7 @@
           </aside>
         </section>
         <section>
-          <p>Unidades propias de @container</p>
+          <p class="title-slide">Unidades propias de @container</p>
           <pre>
               <code data-trim data-line-numbers="2">
                 .title-card {
@@ -238,29 +620,29 @@
           </aside>
         </section>
         <section>
-          <p>@container style()</p>
+          <p class="title-slide">@container style()</p>
           <pre>
-              <code data-trim data-line-numbers="1,15|2-4,15|5-14|16-18">
-                @container style(--type: primary) {
+            <code data-trim data-line-numbers="1,15|2-4,15|5-14|16-18">
+              @container style(--type: primary) {
+                .card {
+                  border: 0.5rem dotted currentColor;
+                }
+                @container style(--sub-type: narrow) {
                   .card {
-                    border: 0.5rem dotted currentColor;
-                  }
-                  @container style(--sub-type: narrow) {
-                    .card {
-                      border-width: 0.2rem;
-                    }
-                  }
-                  @container style(--sub-type: wide) {
-                    .card {
-                      border-width: 1rem;
-                    }
+                    border-width: 0.2rem;
                   }
                 }
-                @container style(--type: primary) or style(--type: secondary) {
-                  // some styles
+                @container style(--sub-type: wide) {
+                  .card {
+                    border-width: 1rem;
+                  }
                 }
-              </code>
-            </pre>
+              }
+              @container style(--type: primary) or style(--type: secondary) {
+                // some styles
+              }
+            </code>
+          </pre>
           <aside class="notes">
             Opción bastante nueva y que puede sufrir modificaciones<br />
             <ol>
@@ -291,24 +673,24 @@
           </aside>
         </section>
         <section>
-          <p>@container size + style()</p>
+          <p class="title-slide">@container size + style()</p>
           <pre>
-              <code data-trim data-line-numbers="1,6">
-                @container card (min-width: 600px) and style(--responsive: true) {
-                  .card {
-                    outline: 2px solid currentColor;
-                    outline-offset: -8px;
-                  }
+            <code data-trim data-line-numbers="1,6">
+              @container card (min-width: 600px) and style(--responsive: true) {
+                .card {
+                  outline: 2px solid currentColor;
+                  outline-offset: -8px;
                 }
-              </code>
-            </pre>
+              }
+            </code>
+          </pre>
           <aside class="notes">
             Tenemos la posibilidad de combinar contenedores de tamaños y de
             estilos
           </aside>
         </section>
         <section>
-          <p>End</p>
+          <p class="title-slide">End</p>
           <figure>
             <img onmouseenter="this.src='./public/containers/giphy-container.gif'"
               onmouseleave="this.src='./public/containers/giphy-container.png'" width="300"
@@ -319,7 +701,7 @@
       </section>
       <section data-background-color="#533483">
         <section>
-          <p>CSS houdini</p>
+          <p class="title-slide">CSS houdini</p>
           <ul>
             <li>
               Grupo de APIs que da acceso directo a
@@ -373,7 +755,7 @@
           </aside>
         </section>
         <section>
-          <p>CSSOM</p>
+          <p class="title-slide">CSSOM</p>
           <ul>
             <li>document.styleSheets</li>
             <li>CSSStyleSheetList</li>
@@ -390,7 +772,7 @@
           </aside>
         </section>
         <section>
-          <p>APIs definidas aunque no todas disponibles</p>
+          <p class="title-slide">APIs definidas aunque no todas disponibles</p>
           <ul>
             <li><strong>CSS Properties and Values API</strong></li>
             <li><strong>CSS Typed OM</strong></li>
@@ -402,25 +784,25 @@
           <aside class="notes">Listado de API. No entramos en detalle</aside>
         </section>
         <section>
-          <p>CSS Painting API</p>
+          <p class="title-slide">CSS Painting API</p>
           <aside class="notes">
             Veremos un ejemplo de uso de la API de pintado
           </aside>
           <aside class="notes"></aside>
         </section>
         <section>
-          <p>CSS Painting API - registro</p>
+          <p class="title-slide">CSS Painting API: registro</p>
           <pre>
-              <code data-trim data-line-numbers="1,5|7|2-4">
-                class BtnPulse {
-                  paint(ctx, size, props) {
-                    // Code
-                  }
+            <code data-trim data-line-numbers="1,5|7|2-4">
+              class BtnPulse {
+                paint(ctx, size, props) {
+                  // Code
                 }
+              }
 
-                registerPaint('btn-pulse', BtnPulse);
-              </code>
-            </pre>
+              registerPaint('btn-pulse', BtnPulse);
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>Creamos una clase</li>
@@ -436,23 +818,23 @@
           </aside>
         </section>
         <section>
-          <p>CSS Painting API - registro (codepen)</p>
+          <p class="title-slide">CSS Painting API: registro (codepen)</p>
           <pre>
-              <code data-trim data-line-numbers="7-10|3-5|11">
-                // Opción para usarlo en Codepen
-                (async () => {
-                  if (typeof CSS === 'undefined' || !('paintWorklet' in CSS)) {
-                    await import("https://unpkg.com/css-paint-polyfill");
-                  }
+            <code data-trim data-line-numbers="7-10|3-5|11">
+              // Opción para usarlo en Codepen
+              (async () => {
+                if (typeof CSS === 'undefined' || !('paintWorklet' in CSS)) {
+                  await import("https://unpkg.com/css-paint-polyfill");
+                }
 
-                  const paintModule = URL.createObjectURL(new Blob(
-                    [ document.querySelector('[type="houdini/paint-worklet"]').textContent ],
-                    { type: "text/javascript" }
-                  ));
-                  await CSS.paintWorklet.addModule(paintModule);
-                })()
-              </code>
-            </pre>
+                const paintModule = URL.createObjectURL(new Blob(
+                  [ document.querySelector('[type="houdini/paint-worklet"]').textContent ],
+                  { type: "text/javascript" }
+                ));
+                await CSS.paintWorklet.addModule(paintModule);
+              })()
+            </code>
+          </pre>
           <aside class="notes">
             Por si queremos hacer pruebas en codepen<br />
             <ol>
@@ -469,17 +851,17 @@
           </aside>
         </section>
         <section>
-          <p>CSS Painting API - uso</p>
+          <p class="title-slide">CSS Painting API: uso</p>
           <pre>
-              <code data-trim data-line-numbers="1,6|3|4">
-                @supports (background: paint(something)) {
-                  .element {
-                    background: tomato paint(btn-pulse);
-                    border-image: paint(another-houdini-definition);
-                  }
+            <code data-trim data-line-numbers="1,6|3|4">
+              @supports (background: paint(something)) {
+                .element {
+                  background: tomato paint(btn-pulse);
+                  border-image: paint(another-houdini-definition);
                 }
-              </code>
-            </pre>
+              }
+            </code>
+          </pre>
           <aside class="notes">
             Los <code>paint</code> que definamos se pueden usar en
             <mark><code>background</code></mark> y
@@ -487,18 +869,18 @@
           </aside>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas I</p>
+          <p class="title-slide">CSS Painting API: Canvas I</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="1,7|6|2|4">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() { }
+            <code data-trim data-line-numbers="1,7|6|2|4">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() { }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad)  { }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad)  { }
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>
@@ -516,166 +898,166 @@
           </aside>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas II</p>
+          <p class="title-slide">CSS Painting API: Canvas II</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="2-4">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return []
-                  }
+            <code data-trim data-line-numbers="2-4">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return []
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad)  { }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad)  { }
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas III</p>
+          <p class="title-slide">CSS Painting API: Canvas III</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="2-11">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return [
-                      '--x',
-                      '--y',
-                      '--rad',
-                      '--pulse-rad',
-                      '--fill',
-                      '--pulse-stroke-color'
-                    ]
-                  }
+            <code data-trim data-line-numbers="2-11">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return [
+                    '--x',
+                    '--y',
+                    '--rad',
+                    '--pulse-rad',
+                    '--fill',
+                    '--pulse-stroke-color'
+                  ]
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) { }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) { }
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas IV</p>
+          <p class="title-slide">CSS Painting API: Canvas IV</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="13">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return [
-                      '--x',
-                      '--y',
-                      '--rad',
-                      '--pulse-rad',
-                      '--fill',
-                      '--pulse-stroke-color'
-                    ]
-                  }
+            <code data-trim data-line-numbers="13">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return [
+                    '--x',
+                    '--y',
+                    '--rad',
+                    '--pulse-rad',
+                    '--fill',
+                    '--pulse-stroke-color'
+                  ]
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {}
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {}
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas V</p>
+          <p class="title-slide">CSS Painting API - Canvas V</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="13-20">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return [
-                      '--x',
-                      '--y',
-                      '--rad',
-                      '--pulse-rad',
-                      '--fill',
-                      '--pulse-stroke-color'
-                    ]
-                  }
+            <code data-trim data-line-numbers="13-20">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return [
+                    '--x',
+                    '--y',
+                    '--rad',
+                    '--pulse-rad',
+                    '--fill',
+                    '--pulse-stroke-color'
+                  ]
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
-                    ctx.beginPath()
-                    ctx.fillStyle = fillStyle
-                    ctx.strokeStyle = strokeStyle
-                    ctx.arc(x, y, rad, 0, 2 * Math.PI)
-                    ctx.fill()
-                    ctx.stroke()
-                  }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
+                  ctx.beginPath()
+                  ctx.fillStyle = fillStyle
+                  ctx.strokeStyle = strokeStyle
+                  ctx.arc(x, y, rad, 0, 2 * Math.PI)
+                  ctx.fill()
+                  ctx.stroke()
+                }
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas VI</p>
+          <p class="title-slide">CSS Painting API: Canvas VI</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="22">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return [
-                      '--x',
-                      '--y',
-                      '--rad',
-                      '--pulse-rad',
-                      '--fill',
-                      '--pulse-stroke-color'
-                    ]
-                  }
+            <code data-trim data-line-numbers="22">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return [
+                    '--x',
+                    '--y',
+                    '--rad',
+                    '--pulse-rad',
+                    '--fill',
+                    '--pulse-stroke-color'
+                  ]
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
-                    ctx.beginPath()
-                    ctx.fillStyle = fillStyle
-                    ctx.strokeStyle = strokeStyle
-                    ctx.arc(x, y, rad, 0, 2 * Math.PI)
-                    ctx.fill()
-                    ctx.stroke()
-                  }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
+                  ctx.beginPath()
+                  ctx.fillStyle = fillStyle
+                  ctx.strokeStyle = strokeStyle
+                  ctx.arc(x, y, rad, 0, 2 * Math.PI)
+                  ctx.fill()
+                  ctx.stroke()
+                }
 
-                  paint(ctx, size, props) { }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) { }
+              })
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
-          <p>CSS Painting API - Canvas VI</p>
+          <p class="title-slide">CSS Painting API: Canvas VI</p>
           <pre data-id="code-animation">
-              <code data-trim data-line-numbers="22-32">
-                registerPaint('btn-pulse', class {
-                  static get inputProperties() {
-                    return [
-                      '--x',
-                      '--y',
-                      '--rad',
-                      '--pulse-rad',
-                      '--fill',
-                      '--pulse-stroke-color'
-                    ]
-                  }
+            <code data-trim data-line-numbers="22-32">
+              registerPaint('btn-pulse', class {
+                static get inputProperties() {
+                  return [
+                    '--x',
+                    '--y',
+                    '--rad',
+                    '--pulse-rad',
+                    '--fill',
+                    '--pulse-stroke-color'
+                  ]
+                }
 
-                  _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
-                    ctx.beginPath()
-                    ctx.fillStyle = fillStyle
-                    ctx.strokeStyle = strokeStyle
-                    ctx.arc(x, y, rad, 0, 2 * Math.PI)
-                    ctx.fill()
-                    ctx.stroke()
-                  }
+                _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad) {
+                  ctx.beginPath()
+                  ctx.fillStyle = fillStyle
+                  ctx.strokeStyle = strokeStyle
+                  ctx.arc(x, y, rad, 0, 2 * Math.PI)
+                  ctx.fill()
+                  ctx.stroke()
+                }
 
-                  paint(ctx, size, props) {
-                    const x = props.get('--x')
-                    const y = props.get('--y')
-                    const rad = props.get('--rad')
-                    const fill = (props.get('--fill')).toString()
-                    const pulseRad = props.get('--pulse-rad')
-                    const pulseStrokeColor = (props.get('--pulse-stroke-color')).toString()
-                
-                    this._paintCircles(ctx, fill, '#fff', x.value, y.value, rad.value)
-                    this._paintCircles(ctx, 'transparent', pulseStrokeColor, x.value, y.value, pulseRad.value + rad.value)
-                  }
-                })
-              </code>
-            </pre>
+                paint(ctx, size, props) {
+                  const x = props.get('--x')
+                  const y = props.get('--y')
+                  const rad = props.get('--rad')
+                  const fill = (props.get('--fill')).toString()
+                  const pulseRad = props.get('--pulse-rad')
+                  const pulseStrokeColor = (props.get('--pulse-stroke-color')).toString()
+              
+                  this._paintCircles(ctx, fill, '#fff', x.value, y.value, rad.value)
+                  this._paintCircles(ctx, 'transparent', pulseStrokeColor, x.value, y.value, pulseRad.value + rad.value)
+                }
+              })
+            </code>
+          </pre>
         </section>
         <section>
           <p class="codepen" data-height="640" data-default-tab="result,html" data-slug-hash="qBayPeR"
@@ -694,7 +1076,7 @@
       </section>
       <section data-background-color="#541F14">
         <section>
-          <p>@layer</p>
+          <p class="title-slide">@layer</p>
           <ul>
             <li>Definición</li>
             <li>Estado actual</li>
@@ -703,15 +1085,15 @@
           </ul>
         </section>
         <section>
-          <p>@layer definición</p>
+          <p class="title-slide">@layer definición</p>
           <pre>
-              <code data-trim data-line-numbers>
-                @layer theme {rules};
-                @layer theme;
-                @layer theme, layout, utilities;
-                @layer {rules}
-              </code>
-            </pre>
+            <code data-trim data-line-numbers>
+              @layer theme {rules};
+              @layer theme;
+              @layer theme, layout, utilities;
+              @layer {rules}
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>Crea una capa con nombre y estilos</li>
@@ -728,7 +1110,7 @@
           </aside>
         </section>
         <section>
-          <p>Estado actual @layer - Caniuse</p>
+          <p class="title-slide">Estado actual @layer: Caniuse</p>
           <figure>
             <img src="./public/layers/caniuse-layer.png" alt="" />
             <figcaption>
@@ -737,7 +1119,7 @@
           </figure>
         </section>
         <section>
-          <p>Capas @layer</p>
+          <p class="title-slide">Capas @layer</p>
           <ul>
             <li>Más control sobre como se aplica la cascada</li>
             <li>Evitar selectores complejos</li>
@@ -760,7 +1142,7 @@
           </aside>
         </section>
         <section>
-          <p>@layer - Orden de la cascada</p>
+          <p class="title-slide">@layer: Orden de la cascada</p>
           <ol>
             <li>Browser styles</li>
             <li>User Styles</li>
@@ -780,15 +1162,15 @@
           </form>
         </section>
         <section>
-          <p>@layer importación</p>
+          <p class="title-slide">@layer importación</p>
           <pre>
-              <code data-trim data-line-numbers>
-                @charset "UTF-8";
-                @layer reset;
-                @import url("bootstrap.css");
-                @import url("bootstrap.css") layer(framework);
-              </code>
-            </pre>
+            <code data-trim data-line-numbers>
+              @charset "UTF-8";
+              @layer reset;
+              @import url("bootstrap.css");
+              @import url("bootstrap.css") layer(framework);
+            </code>
+          </pre>
           <aside class="notes">
             TODO Pensar si mover esta dispositiva en la diapositiva: @layer definición
             <p>Se puede importar estilos y al mismo tiempo asignarlo a una capa</p>
@@ -797,24 +1179,24 @@
           </aside>
         </section>
         <section>
-          <p>@layer nested</p>
+          <p class="title-slide">@layer nested</p>
           <pre>
-              <code data-trim data-trim data-line-numbers="1-7|7-14">
-                @layer outer {
-                  @layer inner {
-                    .button {
-                      color: red;
-                    }
+            <code data-trim data-trim data-line-numbers="1-7|7-14">
+              @layer outer {
+                @layer inner {
+                  .button {
+                    color: red;
                   }
                 }
+              }
 
-                @layer outer.inner {
-                  .another {
-                    color: green;
-                  }
+              @layer outer.inner {
+                .another {
+                  color: green;
                 }
-              </code>
-            </pre>
+              }
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>Se puede incluir @layer dentro de otras</li>
@@ -823,36 +1205,36 @@
           </aside>
         </section>
         <section>
-          <p>@layer non-layered</p>
+          <p class="title-slide">@layer non-layered</p>
           <pre>
-              <code data-trim data-line-numbers>
-                @layer base {
-                  #button.super-specific {
-                    color: red;
-                  }
+            <code data-trim data-line-numbers>
+              @layer base {
+                #button.super-specific {
+                  color: red;
                 }
-                button {
-                  color: green;
-                }
-              </code>
-            </pre>
+              }
+              button {
+                color: green;
+              }
+            </code>
+          </pre>
           <aside class="notes">
             <ol>
               <li>Los estilos fuera de capas serán agrupados como capa anónimas al final del resto de capas</li>
               <li>Los estilos sin capa prevalecen sobre el resto, independientemente de su especificidad</li>
             </ol>
           </aside>
-          </section>
-          <section>
-            <p>Recursos interesantes</p>
-            <a href="https://css-tricks.com/css-cascade-layers/" target="_blank">CSS tricks</a>
-            <br>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">MDN @layer</a>
+        </section>
+        <section>
+          <p class="title-slide">Recursos interesantes</p>
+          <a href="https://css-tricks.com/css-cascade-layers/" target="_blank">CSS tricks</a>
+          <br>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">MDN @layer</a>
         </section>
       </section>
       <section data-background-color="#16213E">
         <section>
-          <p>Funciones CSS + pseudo clases</p>
+          <p class="title-slide">Funciones CSS + pseudo clases</p>
           <ul>
             <li>calc(), min(), max()</li>
             <li>clamp()</li>
@@ -860,7 +1242,7 @@
           </ul>
         </section>
         <section>
-          <p>Funciones CSS + pseudo clases</p>
+          <p class="title-slide">Funciones CSS + pseudo clases</p>
           <table>
             <tr>
               <td class="white-space-nowrap">Display state</td>

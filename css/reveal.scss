@@ -1627,6 +1627,7 @@ $overlayHeaderPadding: 5px;
 	padding-right: 0.75em;
 	text-align: right;
 	vertical-align: top;
+	min-width: 2.2ch;
 }
 
 .reveal .hljs.has-highlights tr:not(.highlight-line) {
@@ -1827,3 +1828,17 @@ $notesWidthPercent: 25%;
 @import 'print/pdf.scss';
 @import 'print/paper.scss';
 
+.reveal {
+	.columns {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		img {
+			max-height: 70vh;
+			width: auto;
+		}
+	}
+}
+
+.title-slide {
+	font-size: 4rem;
+}
