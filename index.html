@@ -63,6 +63,7 @@
               <li class="fragment fade-in-then-semi-out" data-fragment-index="3">Identificar componentes</li>
               <li class="fragment fade-in-then-semi-out" data-fragment-index="4">HTML con reset de estilos</li>
               <li class="fragment fade-in-then-semi-out" data-fragment-index="5">Estilos para tipografías y cajas</li>
+              <li class="fragment fade-in-then-semi-out" data-fragment-index="6">Reglas CSS</li>
             </ul>
           </div>
           <aside class="notes">
@@ -92,21 +93,22 @@
             </li>
           </ol>
           <aside class="notes">
-            <p>TODO</p>
+            <p>Cascada de estilos: navegadores / usuarios</p>
+            <p>Cascada de estilos: nosotros como maquetadores</p>
           </aside>
         </section>
         <section data-background-iframe="https://meyerweb.com/eric/tools/css/reset/">
           <p class="title-slide">Buenas prácticas: Resets CSS</p>
           <p><a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank">Librería Reset CSS</a></p>
           <aside class="notes">
-            <p>TODO</p>
+            <p>Contiene reset de estilos antiguos</p>
           </aside>
         </section>
         <section data-background-iframe="https://necolas.github.io/normalize.css/">
           <p class="title-slide">Buenas prácticas: Resets CSS</p>
           <p><a href="https://necolas.github.io/normalize.css/" target="_blank">Librería normalize CSS</a></p>
           <aside class="notes">
-            <p>TODO</p>
+            <p>Usado por Bootstrap</p>
           </aside>
         </section>
         <section>
@@ -116,6 +118,9 @@
             CAP - Html limpio</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
             on <a href="https://codepen.io">CodePen</a>.</span>
           </p>
+          <aside class="notes">
+            <p>Nos interesa usar reset de terceros, los nuestros propios o comninación de ambos</p>
+          </aside>
         </section>
         <section>
           <p class="title-slide">Buenas prácticas: Defensive CSS</p>
@@ -129,7 +134,7 @@
             </ul>
           </div>
           <aside class="notes">
-            <p>TODO</p>
+            <p>Ahmad Shadeed ha creado este termino para englobar cosas que más o menos un maquetador debería realizar mientras maqueta y como pruebas antes de dar por cerrado su trabajo</p>
           </aside>
         </section>
         <section data-background-color="#fff" data-background-iframe="https://ishadeed.com/article/defensive-css/" data-background-interactive></section>
@@ -161,7 +166,7 @@
         </section>
         <section>
           <p class="title-slide">Metodología BEM: ejemplo header</p>
-          <p class="codepen" data-height="414.66668701171875" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="eYLQwVE" data-editable="true" data-user="ivan_albizu" style="height: 414.66668701171875px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+          <p class="codepen" data-height="524" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="eYLQwVE" data-editable="true" data-user="ivan_albizu" style="height: 524px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
             <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/eYLQwVE">
             CAP - BEM menu</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
             on <a href="https://codepen.io">CodePen</a>.</span>
@@ -177,12 +182,17 @@
           <p class="title-slide">Preprocesador SASS</p>
           <ul>
             <li>Transpilación</li>
-            <li>Indentación</li>
+            <li>Indentación (nesting)</li>
             <li>Variables</li>
+            <li>Operador "&"</li>
             <li>Mixins</li>
             <li>Maps</li>
             <li>Funciones</li>
           </ul>
+          <aside class="notes">
+            <p>Vamos a hacer una pequeña introducción</p>
+            <p>Para mi lo ideal, y es como yo lo hice, es empezar poco a poco; primero incorporas el uso de variables, luego la indentación. Ir añadiendo poco a poco las diferentes opciones</p>
+          </aside>
         </section>
         <section data-auto-animate>
           <p class="title-slide">Preprocesador SASS: Transpilación</p>
@@ -195,15 +205,13 @@
         <section data-auto-animate>
           <p class="title-slide">Preprocesador SASS: Indentación</p>
           <pre data-id="code-animation">
-            <code data-trim data-line-numbers="5-7">
-              .nav {
-                .list {
-                  margin: 0;
-                  padding: 0;
-                  .list-item {
-                    display: inline-block;
-                  }
-                }
+            <code data-trim data-line-numbers="1-7">
+              .nav .list {
+                margin: 0;
+                padding: 0;
+              }
+              .nav .list .list-item {
+                display: inline-block;
               }
             </code>
           </pre>
@@ -211,28 +219,10 @@
         <section data-auto-animate>
           <p class="title-slide">Preprocesador SASS: Indentación</p>
           <pre data-id="code-animation">
-            <code data-trim data-line-numbers="6-8">
-              .nav {
-                .list {
-                  margin: 0;
-                  padding: 0;
-                }
-                .list .list-item {
-                  display: inline-block;
-                }
-              }
-            </code>
-          </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="7-9">
-              .nav {
-                .list {
-                  margin: 0;
-                  padding: 0;
-                }
+            <code data-trim data-line-numbers="1-4">
+              .nav .list {
+                margin: 0;
+                padding: 0;
               }
               .nav .list .list-item {
                 display: inline-block;
@@ -259,13 +249,47 @@
         <section data-auto-animate>
           <p class="title-slide">Preprocesador SASS: Indentación</p>
           <pre data-id="code-animation">
-            <code data-trim data-line-numbers="1-4">
-              .nav .list {
-                margin: 0;
-                padding: 0;
+            <code data-trim data-line-numbers="7-9">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                }
               }
               .nav .list .list-item {
                 display: inline-block;
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="6-8">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                }
+                .list .list-item {
+                  display: inline-block;
+                }
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Indentación</p>
+          <pre data-id="code-animation">
+            <code data-trim data-line-numbers="5-7">
+              .nav {
+                .list {
+                  margin: 0;
+                  padding: 0;
+                  .list-item {
+                    display: inline-block;
+                  }
+                }
               }
             </code>
           </pre>
@@ -319,6 +343,58 @@
             CAP - Sass variables</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
             on <a href="https://codepen.io">CodePen</a>.</span>
           </p>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+          <pre data-id="code-animation-2">
+            <code data-trim data-line-numbers="3,5">
+              .header {
+                // some code
+                &__nav {
+                  // perhaps, more code
+                }
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+          <pre data-id="code-animation-2">
+            <code data-trim data-line-numbers="4,6">
+              .header {
+                // some code
+              }
+              .header__nav {
+                // perhaps, more code
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+          <pre data-id="code-animation-">
+            <code data-trim data-line-numbers="3,5">
+              .link {
+                // some code
+                &.is-active {
+                  // perhaps, more code
+                }
+              }
+            </code>
+          </pre>
+        </section>
+        <section data-auto-animate>
+          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+          <pre data-id="code-animation-">
+            <code data-trim data-line-numbers="4,6">
+              .link {
+                // some code
+              }
+              .link.is-active {
+                // perhaps, more code
+              }
+            </code>
+          </pre>
         </section>
         <section data-auto-animate>
           <p class="title-slide">Preprocesador SASS: Mixins</p>
