@@ -55,6 +55,7 @@ html * {
 }
 
 .reveal ::selection {
+  --r-selection-background-color: #f69f00;
   color: var(--r-selection-color);
   background: var(--r-selection-background-color);
   text-shadow: none;

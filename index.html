@@ -21,7 +21,7 @@
   <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
   <div class="reveal">
     <div class="slides">
-      <section data-background-color="tomato">
+      <section data-background-color="#752618">
         <p class="title-slide">Maquetación CSS</p>
         <ul>
           <li>Buenas prácticas</li>
@@ -30,7 +30,13 @@
           <li>Custom Property (css variables)</li>
         </ul>
         <aside class="notes">
-          <p>TODO</p>
+          <p>Veremos estos 4 bloques</p>
+          <ol>
+            <li>Sobre "buenas prácticas" será desde mi punto de vista los problemas más comunes que se suelen producir en maquetación</li>
+            <li>Metodologías CSS hay muchas. Comentaremos en que consiste BEM</li>
+            <li>Hablar de Sass daría para muchas horas. Veremos qué es y ejemplos</li>
+            <li>Custom properties, también se les denomina "variables css" es relativamente moderno y muy potente</li>
+          </ol>
         </aside>
       </section>
       <section data-background-color="#2A373F">
@@ -42,7 +48,12 @@
             <li>Defensive CSS</li>
           </ul>
           <aside class="notes">
-            <p>TODO</p>
+            <p>He dividido este bloque de "buenas prácticas" para tratar de mantener un hilo conductor, pero todo está muy relacionado</p>
+            <p>La idea es tratar de crear maquetaciones lo más optimizadas posibles:</p>
+            <ol>
+              <li>No nos llamen para decirnos que esta <strong>maquetación está mal</strong> o <strong>rompe</strong> por tal sitio</li>
+              <li>Que sea <strong>mantenible y ampliable</strong>: que no sea un dolor de cabeza ampliar alguna maqueta para añadir nuevos cosas de usos</li>
+            </ol>
           </aside>
         </section>
         <section>
@@ -67,14 +78,22 @@
             </ul>
           </div>
           <aside class="notes">
+            <p>Pararse un poco a pensar antes de ponerse a maquetar como locos</p>
             <ol>
-              <li>Navegadores: saber que versiones de navegadores tienen que ser soportados. Así sabremos que cosas podemos o no podemos usar. Por ejemplo el <mark>aspect-ratio</mark> o <mark>gap</mark> para grid o flexbox. Esto puede venir definido por contrato, es buena idea preguntarlo y tratar de obtener información</li>
-              <li>Diseños: en muchas ocasiones los diseños tienen contenidos "dummy" con texto e imágenes ideales. Es interesante plantear dudas de flujo de textos y comportamientos con diferentes tamaños de imágenes</li>
-              <li>Complejidad: antes de empezar, es buena idea dibujar las cajas del layout o del componente</li>
-              <li>Componentes: revisar diseños para ver posibles componentes o elementos que puedan considerarse similares, que con pequeñas modificaciones se realice sus maquetas</li>
-              <li>Generar HTML: añadir todo el HTML (de página global o componente) previamente a la maquetación y limpiar todos los estilos</li>
-              <li>Estilos tipografías: definir las tipografías según diseños. Ojo que a veces los diseños no usan correctamente los <mark>line-height</mark>, a veces se usan para conseguir separaciones verticales con resto de elementos</li>
-              <li>Estilos para cajas: primero espaciados interiores y luego exteriores</li>
+              <li><strong>Navegadores</strong>: saber que versiones de navegadores tienen que ser soportados. Así sabremos que cosas podemos o no podemos usar. Esto <strong>puede venir definido por contrato</strong>, es buena idea preguntarlo y tratar de obtener información. Por ejemplo el <mark>aspect-ratio</mark> o <mark>gap</mark> para grid o flexbox.</li>
+              <li><strong>Diseños</strong>: en muchas ocasiones los diseños tienen <strong>contenidos "dummy"</strong> con texto e imágenes ideales. Es interesante <strong>plantear dudas</strong> de flujo de textos y comportamientos con diferentes tamaños de imágenes</li>
+              <li><strong>Complejidad</strong>: antes de empezar, es buena idea <strong>dibujar las cajas</strong> del layout o del componente</li>
+              <li><strong>Componentes</strong>: revisar diseños para <strong>localizar posibles componentes</strong> o elementos que puedan considerarse similares, que con pequeñas modificaciones se realice sus maquetas</li>
+              <li><strong>Generar</strong> HTML: añadir todo el HTML (de página global o componente) previamente a la maquetación y limpiar todos los estilos</li>
+              <li><strong>Estilos</strong> tipografías: definir las tipografías según diseños. Ojo que a veces los diseños no usan correctamente los <mark>line-height</mark>, a veces se usan para conseguir separaciones verticales con resto de elementos</li>
+              <li><strong>Estilos</strong> para cajas: primero espaciados interiores y luego exteriores</li>
+              <li><strong>Reglas</strong> CSS: 
+                <ul>
+                  <li>Usar selectores mediante clases o atributos. Evitar #ID</li>
+                  <li>Evitar dar estilos directamente a etiquetas</li>
+                  <li>Ser coherente con nombres para selectores: que representen lo que se pretende estilar. Sintáxis coherente: capitalize, guiones...</li>
+                </ul>
+              </li>
             </ol>
           </aside>
         </section>
@@ -93,8 +112,8 @@
             </li>
           </ol>
           <aside class="notes">
-            <p>Cascada de estilos: navegadores / usuarios</p>
-            <p>Cascada de estilos: nosotros como maquetadores</p>
+            <p>Nuestro control, como maquetadores, radica en el punto 3</p>
+            <p>Pueden venir estilos por encima nuestra, punto 1 y 2, que nos impactan mucho</p>
           </aside>
         </section>
         <section data-background-iframe="https://meyerweb.com/eric/tools/css/reset/">
@@ -119,7 +138,7 @@
             on <a href="https://codepen.io">CodePen</a>.</span>
           </p>
           <aside class="notes">
-            <p>Nos interesa usar reset de terceros, los nuestros propios o comninación de ambos</p>
+            <p>Nos interesa usar reset de terceros, los nuestros propios o combinación de ambos</p>
           </aside>
         </section>
         <section>
@@ -134,17 +153,10 @@
             </ul>
           </div>
           <aside class="notes">
-            <p>Ahmad Shadeed ha creado este termino para englobar cosas que más o menos un maquetador debería realizar mientras maqueta y como pruebas antes de dar por cerrado su trabajo</p>
+            <p>Ahmad Shadeed ha creado este termino para englobar cosas que un maquetador debería realizar mientras maqueta y como pruebas antes de dar por cerrado su trabajo</p>
           </aside>
         </section>
         <section data-background-color="#fff" data-background-iframe="https://ishadeed.com/article/defensive-css/" data-background-interactive></section>
-        <section>
-          <p class="codepen" data-height="573.3333129882812" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="QWMmmOm" data-editable="true" data-user="ivan_albizu" style="height: 573.3333129882812px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/QWMmmOm">
-            Prefers Reduced Motion</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-        </section>
       </section>
       <section>
         <section>
@@ -475,7 +487,14 @@
           </p>
         </section>
       </section>
-      <section data-background-color="#E94560">
+      <section data-background-color="red">
+        <p class="codepen" data-height="573.3333129882812" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="QWMmmOm" data-editable="true" data-user="ivan_albizu" style="height: 573.3333129882812px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+          <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/QWMmmOm">
+          Prefers Reduced Motion</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+          on <a href="https://codepen.io">CodePen</a>.</span>
+        </p>
+      </section>
+      <section data-background-color="#752618">
         <p class="title-slide">Nuevas (y no tan nuevas) features CSS</p>
         <ul>
           <li>@container CSS</li>
@@ -764,6 +783,15 @@
             Tenemos la posibilidad de combinar contenedores de tamaños y de
             estilos
           </aside>
+        </section>
+        <section>
+          <p class="title-slide">Ejemplos de contenedores</p>
+          https://codepen.io/ivan_albizu/pen/YzQWxKN<br>
+          https://codepen.io/ivan_albizu/pen/ExLLPvm<br>
+          https://codepen.io/ivan_albizu/pen/NWXVbyG<br>
+          https://ishadeed.com/article/container-queries-are-finally-here/<br>
+          https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries<br>
+          https://ishoudinireadyyet.com/<br>
         </section>
         <section>
           <p class="title-slide">End</p>
@@ -1150,7 +1178,7 @@
           <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         </section>
       </section>
-      <section data-background-color="#541F14">
+      <section data-background-color="#113b00">
         <section>
           <p class="title-slide">@layer</p>
           <ul>
@@ -1481,22 +1509,6 @@
           </table>
           <hr>
           <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank">Fuente: MDN</a>
-        </section>
-      </section>
-      <section data-background-color="#16213E">
-        <section>
-          https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
-          https://css-tricks.com/a-new-container-query-polyfill-that-just-works/
-          https://codepen.io/ivan_albizu/pen/qBayPeR
-          https://codepen.io/ivan_albizu/pen/eYVpgNx
-        </section>
-        <section>
-          https://codepen.io/ivan_albizu/pen/YzQWxKN
-          https://codepen.io/ivan_albizu/pen/ExLLPvm
-          https://codepen.io/ivan_albizu/pen/NWXVbyG
-          https://ishadeed.com/article/container-queries-are-finally-here/
-          https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
-          https://ishoudinireadyyet.com/
         </section>
       </section>
     </div>
