@@ -1718,6 +1718,159 @@
           <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank">Fuente: MDN</a>
         </section>
       </section>
+      <section data-background-color="#272001">
+        <section>
+          <p class="title-slide">Astro</p>
+          <ul>
+            <li>File based routing</li>
+            <li>components / layout / pages</li>
+            <li>script / layout / style (scope by default)</li>
+          </ul>
+        </section>
+        <section>
+          <p class="title-slide">Astro scaffolding I</p>
+          <nav class="tree-nav">
+            <details open>
+              <summary>public</summary>
+              <div>
+                <div>assets</div>
+                <div>folders</div>
+              </div>
+            </details>
+            <details open>
+              <summary>src</summary>
+              <details open>
+                <summary>components</summary>
+                <div>
+                  <div>Header.astro</div>
+                  <div>Button.vue</div>
+                </div>
+              </details>
+              <details open>
+                <summary>layouts</summary>
+                <div>
+                  <div>Layout.astro</div>
+                  <div>BlogLayout.astro</div>
+                </div>
+              </details>
+              <details open>
+                <summary>pages</summary>
+                <div>
+                  <div>index.astro</div>
+                  <div>about.astro</div>
+                </div>
+              </details>
+            </details>
+          </nav>
+        </section>
+        <section>
+          <p class="title-slide">Astro scaffolding II</p>
+          <nav class="tree-nav">
+            <details open>
+              <summary>public</summary>
+              <div>
+                <div>assets</div>
+                <div>folders</div>
+              </div>
+            </details>
+            <details open>
+              <summary>src</summary>
+              <details>
+                <summary>components</summary>
+                <div>
+                  <div>Header.astro</div>
+                  <div>Button.vue</div>
+                </div>
+              </details>
+              <details>
+                <summary>layouts</summary>
+                <div>
+                  <div>Layout.astro</div>
+                  <div>BlogLayout.astro</div>
+                </div>
+              </details>
+              <details>
+                <summary>pages</summary>
+                <div>
+                  <div>index.astro</div>
+                  <div>about.astro</div>
+                </div>
+              </details>
+              <details>
+                <summary>content</summary>
+                <div>
+                  <div>config.ts</div>
+                </div>
+                <details>
+                  <summary>blog</summary>
+                  <div>
+                    <div>entry-one.md</div>
+                    <div>entry-two.mdx</div>
+                  </div>
+                </details>
+              </details>
+            </details>
+          </nav>
+        </section>
+        <section>
+          <p class="title-slide">Astro Transitions - inicialización</p>
+          <pre>
+            <div class="code-filename">src/pages/index.astro</div>
+            <code data-trim data-line-numbers="2,7">
+              ---
+              import { ViewTransitions } from 'astro:transitions';
+              ---
+              &lt;html lang="en"&gt;
+                &lt;head&gt;
+                  <title>Title pages</title>
+                  <ViewTransitions />
+                &lt;/head&gt;
+                &lt;body&gt;
+                  <h1>Welcome to my website!</h1>
+                &lt;/body&gt;
+              &lt;/html&gt;
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p class="title-slide">Astro Transitions - directivas</p>
+          <pre>
+            <code data-trim>
+              <div transition:name="unique name in a page"></div>
+              <div transition:animate="fade (default) | initial | slide | none"></div>
+              <div transition:persist></div>
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p class="title-slide">Astro Transitions - ¿Qué es?</p>
+          <p>View Transitions API</p>
+          <p>Interceptar la navegación</p>
+          <p>Animar elementos de Página Destino con Página Destino</p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank">MDN: View_Transitions_API</a>
+          <br>
+          <a href="https://developer.chrome.com/docs/web-platform/view-transitions/" target="_blank">developer.crome: view-transitions</a>
+        </section>
+        <section>
+          <p class="title-slide">Astro Transitions - Ejemplos</p>
+          <p>Sin Astro</p>
+          <a href="https://http203-playlist.netlify.app/" target="_blank">Youtube videos</a>
+          <p>Cons Astro</p>
+          <a href="https://astro-records.pages.dev/" target="_blank">Discos de música</a>
+          <br>
+          <a href="https://tympanus.net/codrops/2023/10/03/animating-multi-page-navigations-with-browser-view-transitions-and-astro" target="_blank">Prendas de ropa</a>
+        </section>
+        <section>
+          <p class="title-slide">Astro Transitions</p>
+          <ul>
+            <li>view-transition - SPA mode</li>
+            <li>node v18.14.1 or later</li>
+            <li>https://astro.build/blog/astro-3/</li>
+            <li>https://docs.astro.build/en/guides/view-transitions/#customizing-animations</li>
+            <li>transition:name={`${product.slug} price`}</li>
+          </ul>
+        </section>
+      </section>
     </div>
   </div>
 

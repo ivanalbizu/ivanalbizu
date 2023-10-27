@@ -43,3 +43,24 @@ td {
 .white-space-nowrap {
   white-space: nowrap;
 }
+.tree-nav {
+  text-align: left;
+}
+summary {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+details {
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  line-height: 3.2rem;
+}
+details > div {
+  margin-left: 4rem;
+}
+.code-filename {
+  background-color: rgba(0,0,0,.4);
+  text-align: right;
+  padding: 2px;
+  font-size: 1.1rem;
+}
