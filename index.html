@@ -1722,13 +1722,13 @@
         <section>
           <p class="title-slide">Astro</p>
           <ul>
-            <li>File based routing</li>
+            <li>File-based routing</li>
             <li>components / layout / pages</li>
-            <li>script / layout / style (scope by default)</li>
+            <li>script / layout / style</li>
           </ul>
         </section>
         <section>
-          <p class="title-slide">Astro scaffolding I</p>
+          <p class="title-slide">Astro - scaffolding I</p>
           <nav class="tree-nav">
             <details open>
               <summary>public</summary>
@@ -1764,7 +1764,7 @@
           </nav>
         </section>
         <section>
-          <p class="title-slide">Astro scaffolding II</p>
+          <p class="title-slide">Astro - scaffolding II</p>
           <nav class="tree-nav">
             <details open>
               <summary>public</summary>
@@ -1812,6 +1812,39 @@
             </details>
           </nav>
         </section>
+        <section>
+          <p class="title-slide">Astro - estructura de un fichero</p>
+          <pre>
+            <code data-trim data-line-numbers="1-11|13-17|19-21|23-25">
+              ---
+              import Layout from "../layouts/Layout.astro";
+              import ProductCard from "../components/ProductCard.astro";
+
+              interface Props {
+                title: string;
+                description: string;
+              }
+
+              const { title, description } = Astro.props;
+              ---
+
+              <Layout title="Shop">
+                <div class="products">
+                  [...]
+                </div>
+              </Layout>
+
+              <style>
+                .products {}
+              </style>
+
+              <script>
+                console.log('loaded')
+              </script>
+            </code>
+          </pre>
+        </section>
+        <section data-background-color="#fff" data-background-iframe="https://github.com/ivanalbizu/astro-view-transitions/tree/main/src/" data-background-interactive></section>
         <section>
           <p class="title-slide">Astro Transitions - inicialización</p>
           <pre>
