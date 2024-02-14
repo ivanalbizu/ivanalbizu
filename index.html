@@ -1107,6 +1107,12 @@
               </p>
             </aside>
           </section>
+          <section
+            data-background-color="#fff"
+            data-background-iframe="https://lab.ishadeed.com/container-queries"
+            data-background-interactive>
+            <p class="title-slide">spoiler</p>
+          </section>
           <section>
             <p class="title-slide">Estado actual @container size - Caniuse</p>
             <figure>
@@ -1364,9 +1370,10 @@
                   pruebas sólo me ha funcionado con Custom Properties
                 </li>
                 <li>
-                  El atributo que se quiera "escuchar" debe "leerse" en el padre
-                  y si se cumple el valor entonces si podemos aplicar estilos a
-                  los hijos que nos interese
+                  El atributo que se quiera "escuchar" debe "leerse" en el
+                  elemento definido como contenedor y si se cumple el valor
+                  entonces si podemos aplicar estilos a los hijos que nos
+                  interese
                 </li>
               </ol>
               <hr />
@@ -1439,14 +1446,14 @@
             <p class="title-slide">Ejemplo II: @container querie + unit</p>
             <p
               class="codepen"
-              data-height="5640"
+              data-height="640"
               data-theme-id="dark"
               data-default-tab="css,result"
               data-slug-hash="NWXVbyG"
               data-editable="true"
               data-user="ivan_albizu"
               style="
-                height: 5640px;
+                height: 640px;
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
