@@ -1385,6 +1385,92 @@
             </aside>
           </section>
           <section>
+            <p class="title-slide">@container size + style()</p>
+            <pre>
+            <code data-trim data-line-numbers="1,6">
+              @container card (min-width: 600px) and style(--responsive: true) {
+                .card {
+                  outline: 2px solid currentColor;
+                  outline-offset: -8px;
+                }
+              }
+            </code>
+          </pre>
+            <aside class="notes">
+              Tenemos la posibilidad de combinar contenedores de tamaños y de
+              estilos
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Ejemplo I: @container querie</p>
+            <p
+              class="codepen"
+              data-height="640"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="YzQWxKN"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 640px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/YzQWxKN">
+                  CSS @container</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section>
+            <p class="title-slide">Ejemplo II: @container querie + unit</p>
+            <p
+              class="codepen"
+              data-height="5640"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="NWXVbyG"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 5640px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/NWXVbyG">
+                  Container Queries + Container Units</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section>
+            <p class="title-slide">Ejemplo III: @container style()</p>
             <p
               class="codepen"
               data-height="640"
@@ -1418,6 +1504,7 @@
               src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
           </section>
           <section>
+            <p class="title-slide">Ejemplo IV: @container style()</p>
             <p
               class="codepen"
               data-height="640"
@@ -1425,7 +1512,7 @@
               data-slug-hash="ExLLPvm"
               data-user="ivan_albizu"
               style="
-                height: 6400px;
+                height: 640px;
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
@@ -1449,33 +1536,7 @@
               src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
           </section>
           <section>
-            <p class="title-slide">@container size + style()</p>
-            <pre>
-            <code data-trim data-line-numbers="1,6">
-              @container card (min-width: 600px) and style(--responsive: true) {
-                .card {
-                  outline: 2px solid currentColor;
-                  outline-offset: -8px;
-                }
-              }
-            </code>
-          </pre>
-            <aside class="notes">
-              Tenemos la posibilidad de combinar contenedores de tamaños y de
-              estilos
-            </aside>
-          </section>
-          <section>
-            <p class="title-slide">Ejemplos de contenedores</p>
-            <a href="https://codepen.io/ivan_albizu/pen/YzQWxKN" target="_blank"
-              >Containers</a
-            ><br />
-            <a href="https://codepen.io/ivan_albizu/pen/ExLLPvm" target="_blank"
-              >Nested style()</a
-            ><br />
-            <a href="https://codepen.io/ivan_albizu/pen/NWXVbyG" target="_blank"
-              >Container Queries + Container Units</a
-            ><br />
+            <p class="title-slide">Recursos de interés</p>
             <a
               href="https://ishadeed.com/article/container-queries-are-finally-here"
               target="_blank"
