@@ -1,191 +1,383 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>CSS features</title>
-  <link rel="stylesheet" href="dist/reset.css" />
-  <link rel="stylesheet" href="dist/reveal.css" />
-  <link rel="stylesheet" href="dist/theme/black.css" />
-  <link rel="stylesheet" href="dist/style.css" />
-  <!-- Theme used for syntax highlighted code -->
-  <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css" />
-  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-</head>
-<!--
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>CSS features</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+    <link rel="stylesheet" href="dist/style.css" />
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css" />
+    <script
+      async
+      src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  </head>
+  <!--
   https://www.renfe.com/es/es
   https://transparencia.gob.es/transparencia/transparencia_Home/index/PublicidadActiva/OrganizacionYEmpleo/EstructuraOrg.html
 -->
-<body>
-  <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
-  <div class="reveal">
-    <div class="slides">
-      <section data-background-color="#752618">
-        <p class="title-slide">Maquetación CSS</p>
-        <ul>
-          <li>Buenas prácticas</li>
-          <li>Metodología BEM</li>
-          <li>Sass</li>
-          <li>Custom Property (css variables)</li>
-        </ul>
-        <aside class="notes">
-          <p>Veremos estos 4 bloques</p>
-          <ol>
-            <li>Sobre "buenas prácticas" será desde mi punto de vista los problemas más comunes que se suelen producir en maquetación</li>
-            <li>Metodologías CSS hay muchas. Comentaremos en que consiste BEM</li>
-            <li>Hablar de Sass daría para muchas horas. Veremos qué es y ejemplos</li>
-            <li>Custom properties, también se les denomina "variables css" es relativamente moderno y muy potente</li>
-          </ol>
-        </aside>
-      </section>
-      <section data-background-color="#2A373F">
-        <section>
-          <p class="title-slide">Buenas prácticas</p>
+  <body>
+    <!-- https://colorhunt.co/palette/16213e0f3460533483e94560 -->
+    <div class="reveal">
+      <div class="slides">
+        <section data-background-color="#752618">
+          <p class="title-slide">Maquetación CSS</p>
           <ul>
-            <li>Pasos previos</li>
-            <li>Reset de CSS</li>
-            <li>Defensive CSS</li>
+            <li>Buenas prácticas</li>
+            <li>Metodología BEM</li>
+            <li>Sass</li>
+            <li>Custom Property (css variables)</li>
           </ul>
           <aside class="notes">
-            <p>He dividido este bloque de "buenas prácticas" para tratar de mantener un hilo conductor, pero todo está muy relacionado</p>
-            <p>La idea es tratar de crear maquetaciones lo más optimizadas posibles:</p>
+            <p>Veremos estos 4 bloques</p>
             <ol>
-              <li>No nos llamen para decirnos que esta <strong>maquetación está mal</strong> o <strong>rompe</strong> por tal sitio</li>
-              <li>Que sea <strong>mantenible y ampliable</strong>: que no sea un dolor de cabeza ampliar alguna maqueta para añadir nuevos cosas de usos</li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Buenas prácticas: Pasos previos</p>
-          <div class="columns">
-            <div class="r-stack">
-              <img class="fragment fade-in-then-out" data-fragment-index="0" src="public/buenas-practicas/requisitos.png" width="398" height="600">
-              <img class="fragment fade-in-then-out" data-fragment-index="1" src="public/buenas-practicas/dudas.png" width="536" height="200">
-              <img class="fragment fade-in-then-out" data-fragment-index="2" src="public/buenas-practicas/afrontar-maqueta.jpg" width="446.43" height="500">
-              <img class="fragment fade-in-then-out" data-fragment-index="3" src="public/buenas-practicas/mosaic-1024.jpg" width="567" height="432">
-              <img class="fragment fade-in-then-out" data-fragment-index="4" src="public/buenas-practicas/reset-all-unset.png" width="409" height="403">
-              <img class="fragment fade-in-then-out" data-fragment-index="5" src="public/buenas-practicas/estilos-tipos-cajas.jpg" width="515" height="234">
-            </div>
-            <ul>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="0">Soporte a navegadores</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="1">Analizar diseños / dudas</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="2">Dibujar en papel layout</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="3">Identificar componentes</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="4">HTML con reset de estilos</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="5">Estilos para tipografías y cajas</li>
-              <li class="fragment fade-in-then-semi-out" data-fragment-index="6">Reglas CSS</li>
-            </ul>
-          </div>
-          <aside class="notes">
-            <p>Pararse un poco a pensar antes de ponerse a maquetar como locos</p>
-            <ol>
-              <li><strong>Navegadores</strong>: saber que versiones de navegadores tienen que ser soportados. Así sabremos que cosas podemos o no podemos usar. Esto <strong>puede venir definido por contrato</strong>, es buena idea preguntarlo y tratar de obtener información. Por ejemplo el <mark>aspect-ratio</mark> o <mark>gap</mark> para grid o flexbox.</li>
-              <li><strong>Diseños</strong>: en muchas ocasiones los diseños tienen <strong>contenidos "dummy"</strong> con texto e imágenes ideales. Es interesante <strong>plantear dudas</strong> de flujo de textos y comportamientos con diferentes tamaños de imágenes</li>
-              <li><strong>Complejidad</strong>: antes de empezar, es buena idea <strong>dibujar las cajas</strong> del layout o del componente</li>
-              <li><strong>Componentes</strong>: revisar diseños para <strong>localizar posibles componentes</strong> o elementos que puedan considerarse similares, que con pequeñas modificaciones se realice sus maquetas</li>
-              <li><strong>Generar</strong> HTML: añadir todo el HTML (de página global o componente) previamente a la maquetación y limpiar todos los estilos</li>
-              <li><strong>Estilos</strong> tipografías: definir las tipografías según diseños. Ojo que a veces los diseños no usan correctamente los <mark>line-height</mark>, a veces se usan para conseguir separaciones verticales con resto de elementos</li>
-              <li><strong>Estilos</strong> para cajas: primero espaciados interiores y luego exteriores</li>
-              <li><strong>Reglas</strong> CSS: 
-                <ul>
-                  <li>Usar selectores mediante clases o atributos. Evitar #ID</li>
-                  <li>Evitar dar estilos directamente a etiquetas</li>
-                  <li>Ser coherente con nombres para selectores: que representen lo que se pretende estilar. Sintáxis coherente: capitalize, guiones...</li>
-                </ul>
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Buenas prácticas: Resets CSS</p>
-          <p>Orden de la cascada</p>
-          <ol>
-            <li>Browser styles</li>
-            <li>User Styles</li>
-            <li>
-              Author Styles
-              <ol>
-                <li>@layer theme [...]</li>
-                <li>Non-Layered Styles</li>
-              </ol>
-            </li>
-          </ol>
-          <aside class="notes">
-            <p>Nuestro control, como maquetadores, radica en el punto 3</p>
-            <p>Pueden venir estilos por encima nuestra, punto 1 y 2, que nos impactan mucho</p>
-          </aside>
-        </section>
-        <section data-background-iframe="https://meyerweb.com/eric/tools/css/reset/">
-          <p class="title-slide">Buenas prácticas: Resets CSS</p>
-          <p><a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank">Librería Reset CSS</a></p>
-          <aside class="notes">
-            <p>Contiene reset de estilos antiguos</p>
-          </aside>
-        </section>
-        <section data-background-iframe="https://necolas.github.io/normalize.css/">
-          <p class="title-slide">Buenas prácticas: Resets CSS</p>
-          <p><a href="https://necolas.github.io/normalize.css/" target="_blank">Librería normalize CSS</a></p>
-          <aside class="notes">
-            <p>Usado por Bootstrap</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Buenas prácticas: Resets CSS</p>
-          <p class="codepen" data-height="550" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="ExQXwve" data-editable="true" data-user="ivan_albizu" style="height: 550px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/ExQXwve">
-            CAP - Html limpio</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-          <aside class="notes">
-            <p>Nos interesa usar reset de terceros, los nuestros propios o combinación de ambos</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Buenas prácticas: Defensive CSS</p>
-          <div class="columns">
-            <img src="public/buenas-practicas/defensive-css.png" width="451" height="573" alt="">
-            <ul>
               <li>
-                Tratar de evitar "roturas" de CSS por diferentes casos de uso
-                <a href="https://ishadeed.com/article/defensive-css/" target="_blank">Ahmad Shadeed</a>
+                Sobre "buenas prácticas" será desde mi punto de vista los
+                problemas más comunes que se suelen producir en maquetación
+              </li>
+              <li>
+                Metodologías CSS hay muchas. Comentaremos en que consiste BEM
+              </li>
+              <li>
+                Hablar de Sass daría para muchas horas. Veremos qué es y
+                ejemplos
+              </li>
+              <li>
+                Custom properties, también se les denomina "variables css" es
+                relativamente moderno y muy potente
+              </li>
+            </ol>
+          </aside>
+        </section>
+        <section data-background-color="#2A373F">
+          <section>
+            <p class="title-slide">Buenas prácticas</p>
+            <ul>
+              <li>Pasos previos</li>
+              <li>Reset de CSS</li>
+              <li>Defensive CSS</li>
+            </ul>
+            <aside class="notes">
+              <p>
+                He dividido este bloque de "buenas prácticas" para tratar de
+                mantener un hilo conductor, pero todo está muy relacionado
+              </p>
+              <p>
+                La idea es tratar de crear maquetaciones lo más optimizadas
+                posibles:
+              </p>
+              <ol>
+                <li>
+                  No nos llamen para decirnos que esta
+                  <strong>maquetación está mal</strong> o
+                  <strong>rompe</strong> por tal sitio
+                </li>
+                <li>
+                  Que sea <strong>mantenible y ampliable</strong>: que no sea un
+                  dolor de cabeza ampliar alguna maqueta para añadir nuevos
+                  cosas de usos
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Buenas prácticas: Pasos previos</p>
+            <div class="columns">
+              <div class="r-stack">
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="0"
+                  src="public/buenas-practicas/requisitos.png"
+                  width="398"
+                  height="600" />
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="1"
+                  src="public/buenas-practicas/dudas.png"
+                  width="536"
+                  height="200" />
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="2"
+                  src="public/buenas-practicas/afrontar-maqueta.jpg"
+                  width="446.43"
+                  height="500" />
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="3"
+                  src="public/buenas-practicas/mosaic-1024.jpg"
+                  width="567"
+                  height="432" />
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="4"
+                  src="public/buenas-practicas/reset-all-unset.png"
+                  width="409"
+                  height="403" />
+                <img
+                  class="fragment fade-in-then-out"
+                  data-fragment-index="5"
+                  src="public/buenas-practicas/estilos-tipos-cajas.jpg"
+                  width="515"
+                  height="234" />
+              </div>
+              <ul>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="0">
+                  Soporte a navegadores
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="1">
+                  Analizar diseños / dudas
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="2">
+                  Dibujar en papel layout
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="3">
+                  Identificar componentes
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="4">
+                  HTML con reset de estilos
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="5">
+                  Estilos para tipografías y cajas
+                </li>
+                <li
+                  class="fragment fade-in-then-semi-out"
+                  data-fragment-index="6">
+                  Reglas CSS
+                </li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <p>
+                Pararse un poco a pensar antes de ponerse a maquetar como locos
+              </p>
+              <ol>
+                <li>
+                  <strong>Navegadores</strong>: saber que versiones de
+                  navegadores tienen que ser soportados. Así sabremos que cosas
+                  podemos o no podemos usar. Esto
+                  <strong>puede venir definido por contrato</strong>, es buena
+                  idea preguntarlo y tratar de obtener información. Por ejemplo
+                  el <mark>aspect-ratio</mark> o <mark>gap</mark> para grid o
+                  flexbox.
+                </li>
+                <li>
+                  <strong>Diseños</strong>: en muchas ocasiones los diseños
+                  tienen <strong>contenidos "dummy"</strong> con texto e
+                  imágenes ideales. Es interesante
+                  <strong>plantear dudas</strong> de flujo de textos y
+                  comportamientos con diferentes tamaños de imágenes
+                </li>
+                <li>
+                  <strong>Complejidad</strong>: antes de empezar, es buena idea
+                  <strong>dibujar las cajas</strong> del layout o del componente
+                </li>
+                <li>
+                  <strong>Componentes</strong>: revisar diseños para
+                  <strong>localizar posibles componentes</strong> o elementos
+                  que puedan considerarse similares, que con pequeñas
+                  modificaciones se realice sus maquetas
+                </li>
+                <li>
+                  <strong>Generar</strong> HTML: añadir todo el HTML (de página
+                  global o componente) previamente a la maquetación y limpiar
+                  todos los estilos
+                </li>
+                <li>
+                  <strong>Estilos</strong> tipografías: definir las tipografías
+                  según diseños. Ojo que a veces los diseños no usan
+                  correctamente los <mark>line-height</mark>, a veces se usan
+                  para conseguir separaciones verticales con resto de elementos
+                </li>
+                <li>
+                  <strong>Estilos</strong> para cajas: primero espaciados
+                  interiores y luego exteriores
+                </li>
+                <li>
+                  <strong>Reglas</strong> CSS:
+                  <ul>
+                    <li>
+                      Usar selectores mediante clases o atributos. Evitar #ID
+                    </li>
+                    <li>Evitar dar estilos directamente a etiquetas</li>
+                    <li>
+                      Ser coherente con nombres para selectores: que representen
+                      lo que se pretende estilar. Sintáxis coherente:
+                      capitalize, guiones...
+                    </li>
+                  </ul>
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Buenas prácticas: Resets CSS</p>
+            <p>Orden de la cascada</p>
+            <ol>
+              <li>Browser styles</li>
+              <li>User Styles</li>
+              <li>
+                Author Styles
+                <ol>
+                  <li>@layer theme [...]</li>
+                  <li>Non-Layered Styles</li>
+                </ol>
+              </li>
+            </ol>
+            <aside class="notes">
+              <p>Nuestro control, como maquetadores, radica en el punto 3</p>
+              <p>
+                Pueden venir estilos por encima nuestra, punto 1 y 2, que nos
+                impactan mucho
+              </p>
+            </aside>
+          </section>
+          <section
+            data-background-iframe="https://meyerweb.com/eric/tools/css/reset/">
+            <p class="title-slide">Buenas prácticas: Resets CSS</p>
+            <p>
+              <a
+                href="https://meyerweb.com/eric/tools/css/reset/"
+                target="_blank"
+                >Librería Reset CSS</a
+              >
+            </p>
+            <aside class="notes">
+              <p>Contiene reset de estilos antiguos</p>
+            </aside>
+          </section>
+          <section
+            data-background-iframe="https://necolas.github.io/normalize.css/">
+            <p class="title-slide">Buenas prácticas: Resets CSS</p>
+            <p>
+              <a href="https://necolas.github.io/normalize.css/" target="_blank"
+                >Librería normalize CSS</a
+              >
+            </p>
+            <aside class="notes">
+              <p>Usado por Bootstrap</p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Buenas prácticas: Resets CSS</p>
+            <p
+              class="codepen"
+              data-height="550"
+              data-theme-id="dark"
+              data-default-tab="html,result"
+              data-slug-hash="ExQXwve"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 550px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/ExQXwve">
+                  CAP - Html limpio</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <aside class="notes">
+              <p>
+                Nos interesa usar reset de terceros, los nuestros propios o
+                combinación de ambos
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Buenas prácticas: Defensive CSS</p>
+            <div class="columns">
+              <img
+                src="public/buenas-practicas/defensive-css.png"
+                width="451"
+                height="573"
+                alt="" />
+              <ul>
+                <li>
+                  Tratar de evitar "roturas" de CSS por diferentes casos de uso
+                  <a
+                    href="https://ishadeed.com/article/defensive-css/"
+                    target="_blank"
+                    >Ahmad Shadeed</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <p>
+                Ahmad Shadeed ha creado este termino para englobar cosas que un
+                maquetador debería realizar mientras maqueta y como pruebas
+                antes de dar por cerrado su trabajo
+              </p>
+            </aside>
+          </section>
+          <section
+            data-background-color="#fff"
+            data-background-iframe="https://ishadeed.com/article/defensive-css/"
+            data-background-interactive></section>
+        </section>
+        <section data-background-color="#010174">
+          <section>
+            <p class="title-slide">Preprocesador SASS</p>
+            <ul>
+              <li>Transpilación</li>
+              <li>Indentación (nesting)</li>
+              <li>Variables</li>
+              <li>Operador "&"</li>
+              <li>Mixins</li>
+              <li>Maps</li>
+              <li>Funciones</li>
+            </ul>
+            <aside class="notes">
+              <p>Vamos a hacer una pequeña introducción</p>
+              <p>
+                Para mi lo ideal, y es como yo lo hice, es empezar poco a poco;
+                primero incorporas el uso de variables, luego la indentación. Ir
+                añadiendo poco a poco las diferentes opciones
+              </p>
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Transpilación</p>
+            <ul>
+              <li>Los navegadores reconocen CSS</li>
+              <li>Requiere herramienta intermedia que transforme SCSS a CSS</li>
+              <li>
+                Más mantenible. Se dota de características propias de
+                programación: variables, funciones, mapas...
               </li>
             </ul>
-          </div>
-          <aside class="notes">
-            <p>Ahmad Shadeed ha creado este termino para englobar cosas que un maquetador debería realizar mientras maqueta y como pruebas antes de dar por cerrado su trabajo</p>
-          </aside>
-        </section>
-        <section data-background-color="#fff" data-background-iframe="https://ishadeed.com/article/defensive-css/" data-background-interactive></section>
-      </section>
-      <section data-background-color="#010174">
-        <section>
-          <p class="title-slide">Preprocesador SASS</p>
-          <ul>
-            <li>Transpilación</li>
-            <li>Indentación (nesting)</li>
-            <li>Variables</li>
-            <li>Operador "&"</li>
-            <li>Mixins</li>
-            <li>Maps</li>
-            <li>Funciones</li>
-          </ul>
-          <aside class="notes">
-            <p>Vamos a hacer una pequeña introducción</p>
-            <p>Para mi lo ideal, y es como yo lo hice, es empezar poco a poco; primero incorporas el uso de variables, luego la indentación. Ir añadiendo poco a poco las diferentes opciones</p>
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Transpilación</p>
-          <ul>
-            <li>Los navegadores reconocen CSS</li>
-            <li>Requiere herramienta intermedia que transforme SCSS a CSS</li>
-            <li>Más mantenible. Se dota de características propias de programación: variables, funciones, mapas...</li>
-          </ul>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-7">
               .nav .list {
                 margin: 0;
@@ -196,10 +388,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-4">
               .nav .list {
                 margin: 0;
@@ -210,10 +402,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-6">
               .nav {
                 .list {
@@ -226,10 +418,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="7-9">
               .nav {
                 .list {
@@ -242,10 +434,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="6-8">
               .nav {
                 .list {
@@ -258,10 +450,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Indentación</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Indentación</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="5-7">
               .nav {
                 .list {
@@ -274,10 +466,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Variables</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Variables</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="1-7">
               $color-primary: #cc0; //definición de variable SASS
               .nav {
@@ -288,10 +480,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Variables</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Variables</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="1,3,6">
               $color-primary: #cc0; //definición de variable SASS
               .nav {
@@ -302,10 +494,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Variables</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Variables</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="1,3,6">
               $color-primary: #cc0; //definición de variable SASS
               .nav {
@@ -316,18 +508,41 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Preprocesador SASS: Variables</p>
-          <p class="codepen" data-height="579.2000427246094" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="abqyBYa" data-editable="true" data-user="ivan_albizu" style="height: 579.2000427246094px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/abqyBYa">
-            CAP - Sass variables</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
-          <pre data-id="code-animation-2">
+          </section>
+          <section>
+            <p class="title-slide">Preprocesador SASS: Variables</p>
+            <p
+              class="codepen"
+              data-height="579.2000427246094"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="abqyBYa"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 579.2000427246094px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/abqyBYa">
+                  CAP - Sass variables</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+            <pre data-id="code-animation-2">
             <code data-trim data-line-numbers="3,5">
               .header {
                 // some code
@@ -337,10 +552,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
-          <pre data-id="code-animation-2">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+            <pre data-id="code-animation-2">
             <code data-trim data-line-numbers="4,6">
               .header {
                 // some code
@@ -350,10 +565,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="3,5">
               .link {
                 // some code
@@ -363,10 +578,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Operador "&"</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Operador "&"</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="4,6">
               .link {
                 // some code
@@ -376,10 +591,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Mixins</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Mixins</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-5">
               @mixin theme($theme: DarkGray) {
                 background: $theme;
@@ -388,10 +603,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Mixins</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Mixins</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="5-11">
               @mixin theme($theme: DarkGray) {
                 background: $theme;
@@ -406,10 +621,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Preprocesador SASS: Mixins</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Preprocesador SASS: Mixins</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="6-15">
               @mixin theme($theme: DarkGray) {
                 background: $theme;
@@ -428,10 +643,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Preprocesador SASS: Maps</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section>
+            <p class="title-slide">Preprocesador SASS: Maps</p>
+            <pre data-id="code-animation-">
             <code data-trim>
               $theme-colors: (
                 "primary": $primary,
@@ -445,87 +660,133 @@
               // ejemplo: https://gist.github.com/lewismcarey/de2a70fe93ab235ba103
             </code>
           </pre>
+          </section>
+          <section>
+            <p class="title-slide">Preprocesador SASS: Funciones / Loops</p>
+            <p>Ejemplo de uso, no entramos en detalles</p>
+            <p
+              class="codepen"
+              data-height="438.3999938964844"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="abpBOym"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 438.3999938964844px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/abpBOym">
+                  fluid css</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+          </section>
         </section>
         <section>
-          <p class="title-slide">Preprocesador SASS: Funciones / Loops</p>
-          <p>Ejemplo de uso, no entramos en detalles</p>
-          <p class="codepen" data-height="438.3999938964844" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="abpBOym" data-editable="true" data-user="ivan_albizu" style="height: 438.3999938964844px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/abpBOym">
-            fluid css</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
+          <section>
+            <p class="title-slide">Metodología BEM</p>
+            <ul>
+              <li>Basado en el nombrado de clases</li>
+              <li>Evitar colisionado de estilos</li>
+              <li>Aporta semántica</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Metodología BEM: sintáxis</p>
+            <ul>
+              <li>B &rarr; Bloque</li>
+              <li>E &rarr; Elemento &rarr; __elemento</li>
+              <li>M &rarr; Modificador &rarr; --modificador</li>
+            </ul>
+            <img src="/public/buenas-practicas/bem-syntax.png" alt="" />
+          </section>
+          <section>
+            <p class="title-slide">Metodología BEM: ejemplo header</p>
+            <p
+              class="codepen"
+              data-height="524"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="eYLQwVE"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 524px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/eYLQwVE">
+                  CAP - BEM menu</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+          </section>
         </section>
-      </section>
-      <section>
-        <section>
-          <p class="title-slide">Metodología BEM</p>
-          <ul>
-            <li>Basado en el nombrado de clases</li>
-            <li>Evitar colisionado de estilos</li>
-            <li>Aporta semántica</li>
-          </ul>
-        </section>
-        <section>
-          <p class="title-slide">Metodología BEM: sintáxis</p>
-          <ul>
-            <li>B &rarr; Bloque</li>
-            <li>E &rarr; Elemento &rarr; __elemento</li>
-            <li>M &rarr; Modificador &rarr; --modificador</li>
-          </ul>
-          <img src="/public/buenas-practicas/bem-syntax.png" alt="">
-        </section>
-        <section>
-          <p class="title-slide">Metodología BEM: ejemplo header</p>
-          <p class="codepen" data-height="524" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="eYLQwVE" data-editable="true" data-user="ivan_albizu" style="height: 524px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/eYLQwVE">
-            CAP - BEM menu</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-        </section>
-      </section>
-      <section data-background-color="#32022d">
-        <section>
-          <p class="title-slide">Custom Property</p>
-          <ul>
-            <li>Definición</li>
-            <li>Ámbito</li>
-            <li>Registro</li>
-            <li>Ejemplos</li>
-          </ul>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: definición</p>
-          <pre data-id="code-animation">
+        <section data-background-color="#32022d">
+          <section>
+            <p class="title-slide">Custom Property</p>
+            <ul>
+              <li>Definición</li>
+              <li>Ámbito</li>
+              <li>Registro</li>
+              <li>Ejemplos</li>
+            </ul>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: definición</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1">
               --main-color: #32022c; // definición de Property y asignación de valor
               color: var(--main-color);
               border-color: var(--main-color, purple);
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: definición</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: definición</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-2">
               --main-color: #32022c; // definición de Property y asignación de valor
               color: var(--main-color); // uso de Property
               border-color: var(--main-color, purple);
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: definición</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: definición</p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-3">
               --main-color: #32022c; // definición de Property y asignación de valor
               color: var(--main-color); // uso de Property
               border-color: var(--main-color, purple); // uso de Property con fallback
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ámbito</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: ámbito</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="1-5">
               // en cualquier regla CSS tendrá este valor
               // salvo que se sobreescriba en otra regla
@@ -541,10 +802,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ámbito</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: ámbito</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="4,7-12">
               // en cualquier regla CSS tendrá este valor
               // salvo que se sobreescriba en otra regla
@@ -560,10 +821,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ámbito</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">Custom Property: ámbito</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="4,11,12-14">
               // en cualquier regla CSS tendrá este valor
               // salvo que se sobreescriba en otra regla
@@ -582,10 +843,10 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Custom Property: registro</p>
-          <pre>
+          </section>
+          <section>
+            <p class="title-slide">Custom Property: registro</p>
+            <pre>
             <code data-trim data-line-numbers="1-5">
               @property --coordinate-x {
                 initial-value: 50%;
@@ -594,21 +855,51 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Custom Property: registro</p>
-          <p class="codepen" data-height="409" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="mdBEbEL" data-editable="true" data-user="ivan_albizu" style="height: 409px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/mdBEbEL">
-            Transition for custom Property (css Vars)</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-          <aside class="notes">
-            <p>Las Custom Property no son animables. Podemos registrar nuestras Custom Property desde CSS y desde Javascript, con esto conseguiremos que sean "animables", aunque actualmente no está soportado en todos lo navegadores</p>
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ejemplo mejora accesibilidad</p>
-          <pre data-id="code-animation">
+          </section>
+          <section>
+            <p class="title-slide">Custom Property: registro</p>
+            <p
+              class="codepen"
+              data-height="409"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="mdBEbEL"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 409px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/mdBEbEL">
+                  Transition for custom Property (css Vars)</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <aside class="notes">
+              <p>
+                Las Custom Property no son animables. Podemos registrar nuestras
+                Custom Property desde CSS y desde Javascript, con esto
+                conseguiremos que sean "animables", aunque actualmente no está
+                soportado en todos lo navegadores
+              </p>
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">
+              Custom Property: ejemplo mejora accesibilidad
+            </p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-4">
               :root {
                 --t-delay-btn: .3s;
@@ -616,10 +907,12 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ejemplo mejora accesibilidad</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">
+              Custom Property: ejemplo mejora accesibilidad
+            </p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="1-4,5-11">
               :root {
                 --t-delay-btn: .3s;
@@ -634,10 +927,12 @@
               }
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">Custom Property: ejemplo mejora accesibilidad</p>
-          <pre data-id="code-animation">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">
+              Custom Property: ejemplo mejora accesibilidad
+            </p>
+            <pre data-id="code-animation">
             <code data-trim data-line-numbers="5-10">
               :root {
                 --t-delay-btn: .3s;
@@ -658,18 +953,43 @@
               }
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Custom Property: ejemplo mejora accesibilidad</p>
-          <p class="codepen" data-height="573.3333129882812" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="QWMmmOm" data-editable="true" data-user="ivan_albizu" style="height: 573.3333129882812px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/QWMmmOm">
-            Prefers Reduced Motion</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-        </section>
-        <section>
-          <p class="title-slide">Custom Property: ejemplo Web component</p>
-          <pre data-id="code-animation-">
+          </section>
+          <section>
+            <p class="title-slide">
+              Custom Property: ejemplo mejora accesibilidad
+            </p>
+            <p
+              class="codepen"
+              data-height="573.3333129882812"
+              data-theme-id="dark"
+              data-default-tab="html,result"
+              data-slug-hash="QWMmmOm"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 573.3333129882812px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/QWMmmOm">
+                  Prefers Reduced Motion</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+          </section>
+          <section>
+            <p class="title-slide">Custom Property: ejemplo Web component</p>
+            <pre data-id="code-animation-">
             <code data-trim data-line-numbers="1-3">
               :host button:hover,
               :host button:focus-within {
@@ -680,114 +1000,182 @@
               }
             </code>
           </pre>
+          </section>
+          <section>
+            <p class="title-slide">Custom Property: ejemplo Web component</p>
+            <p
+              class="codepen"
+              data-height="500"
+              data-theme-id="dark"
+              data-default-tab="result"
+              data-slug-hash="abLQJxv"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 500px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/abLQJxv">
+                  WebComponent Tabs with Slots</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+          </section>
+          <section
+            data-background-color="#fff"
+            data-background-iframe="https://ivanalbizu.eu/experimentos/storybook/?path=/story/tab-tab--tab-1"
+            data-background-interactive></section>
         </section>
         <section>
-          <p class="title-slide">Custom Property: ejemplo Web component</p>
-          <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="result" data-slug-hash="abLQJxv" data-editable="true" data-user="ivan_albizu" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/abLQJxv">
-            WebComponent Tabs with Slots</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
-        </section>
-        <section data-background-color="#fff" data-background-iframe="https://ivanalbizu.eu/experimentos/storybook/?path=/story/tab-tab--tab-1" data-background-interactive></section>
-      </section>
-      <section>
-        <p class="title-slide">Taller CSS</p>
-        <a href="https://github.com/ivanalbizu/taller-css" target="_blank">https://github.com/ivanalbizu/taller-css</a>
-        <p>Ramas:</p>
-        <ul>
-          <li>feature/01-html</li>
-          <li>feature/02-css-cajas</li>
-          <li>feature/03-desktop</li>
-          <li>feature/04-pixel-perfect</li>
-        </ul>
-      </section>
-      <section data-background-color="#752618">
-        <p class="title-slide">Nuevas (y no tan nuevas) features CSS</p>
-        <ul>
-          <li>@container CSS</li>
-          <li>Capas @layer</li>
-          <li>CSS Houdini</li>
-          <li>Funciones CSS + pseudo clases</li>
-        </ul>
-        <aside class="notes">
-          <p>Veremos nuevas features CSS. Muchas no están todavía disponibles en todos lo navegadores</p>
-          <p>Antes de usarla en proyecto hay que mirar como está soportado</p>
-          <p>Muchas están en borrador, y por tanto pueden sufrir variaciones e incluso podría no estar disponibles en el futuro</p>
-        </aside>
-      </section>
-      <section data-background-color="#0F3460">
-        <section>
-          <p class="title-slide">@container CSS</p>
+          <p class="title-slide">Taller CSS</p>
+          <a href="https://github.com/ivanalbizu/taller-css" target="_blank"
+            >https://github.com/ivanalbizu/taller-css</a
+          >
+          <p>Ramas:</p>
           <ul>
-            <li>¿Qué es @container?</li>
-            <li>Estado actual</li>
-            <li>Definición de @container</li>
-            <li>Unidades propias de @container</li>
-            <li>@container style()</li>
-            <li>Nested @container</li>
+            <li>feature/01-html</li>
+            <li>feature/02-css-cajas</li>
+            <li>feature/03-desktop</li>
+            <li>feature/04-pixel-perfect</li>
           </ul>
         </section>
-        <section>
-          <p class="title-slide">¿Qué es @container?</p>
-          <figure>
-            <img src="./public/containers/container-queries.png" alt="" />
-          </figure>
+        <section data-background-color="#752618">
+          <p class="title-slide">Nuevas (y no tan nuevas) features CSS</p>
+          <ul>
+            <li>@container CSS</li>
+            <li>Capas @layer</li>
+            <li>CSS Houdini</li>
+            <li>Funciones CSS + pseudo clases</li>
+          </ul>
           <aside class="notes">
-            <p>Las @container queries se asemejan a las @media queries.<br />Las
-            @media queries hacen referencia al ancho de pantalla y las
-            @container queries hacen referencia al ancho de un elemento que
-            tengamos definido como contenedor.</p>
-            <p>En este ejemplo se ven 6 contenedores que tienen mismo contenido
-            pero que tienen menos anchos unas que otras, usando los
-            contenedores cambiamos la distribución de elementos, su visibilidad y valores de espaciados y tipografías</p>
-            <p>Más adelante veremos que actualmente existen dos variantes: una asociada a tamaño de contenedores y otra a valores de
-              atributos. Y además, aparecen nuevas unidades CSS</p>
+            <p>
+              Veremos nuevas features CSS. Muchas no están todavía disponibles
+              en todos lo navegadores
+            </p>
+            <p>Antes de usarla en proyecto hay que mirar como está soportado</p>
+            <p>
+              Muchas están en borrador, y por tanto pueden sufrir variaciones e
+              incluso podría no estar disponibles en el futuro
+            </p>
           </aside>
         </section>
-        <section>
-          <p class="title-slide">Estado actual @container size - Caniuse</p>
-          <figure>
-            <img src="./public/containers/caniuse-container-query-size.png" alt="" />
-            <figcaption>
-              <a href="https://caniuse.com/css-container-queries" target="_blank">Caniuse Container queries size</a>
-            </figcaption>
-            <aside class="notes"></aside>
-          </figure>
-          <aside class="notes">
-            <p>Consultando CANIUSE podemos ver el soporte para tamaño de contenedores</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Estado actual @container units - Caniuse</p>
-          <figure>
-            <img src="./public/containers/caniuse-container-query-units.png" alt="" />
-            <figcaption>
-              <a href="https://caniuse.com/css-container-query-units" target="_blank">Caniuse Container queries
-                units</a>
-            </figcaption>
-          </figure>
-          <aside class="notes">
-            <p>Han aparecido nuevas unidades de medida que tienen analogía con unidades relacionadas al tamaño de viewport (vw /
-              vh / vmin / vmax)</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Estado actual @container style</p>
-          <figure>
-            <img src="./public/containers/caniuse-container-query-style.png" style="max-height:56vh;" alt="" />
-            <figcaption>
-              <a href="https://caniuse.com/?search=css-container-style" target="_blank">Caniuse Container queries
-                style()</a>
-            </figcaption>
-          </figure>
-          <aside class="notes">
-            <p>Parcialmente soportado en ciertos navegadores y para Custom Propertys</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Estado actual - @supports</p>
-          <pre>
+        <section data-background-color="#0F3460">
+          <section>
+            <p class="title-slide">@container CSS</p>
+            <ul>
+              <li>¿Qué es @container?</li>
+              <li>Estado actual</li>
+              <li>Definición de @container</li>
+              <li>Unidades propias de @container</li>
+              <li>@container style()</li>
+              <li>Nested @container</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">¿Qué es @container?</p>
+            <figure>
+              <img src="./public/containers/container-queries.png" alt="" />
+            </figure>
+            <aside class="notes">
+              <p>
+                Las @container queries se asemejan a las @media queries.<br />Las
+                @media queries hacen referencia al ancho de pantalla y las
+                @container queries hacen referencia al ancho de un elemento que
+                tengamos definido como contenedor.
+              </p>
+              <p>
+                En este ejemplo se ven 6 contenedores que tienen mismo contenido
+                pero que tienen menos anchos unas que otras, usando los
+                contenedores cambiamos la distribución de elementos, su
+                visibilidad y valores de espaciados y tipografías
+              </p>
+              <p>
+                Más adelante veremos que actualmente existen dos variantes: una
+                asociada a tamaño de contenedores y otra a valores de atributos.
+                Y además, aparecen nuevas unidades CSS
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Estado actual @container size - Caniuse</p>
+            <figure>
+              <img
+                src="./public/containers/caniuse-container-query-size.png"
+                alt="" />
+              <figcaption>
+                <a
+                  href="https://caniuse.com/css-container-queries"
+                  target="_blank"
+                  >Caniuse Container queries size</a
+                >
+              </figcaption>
+              <aside class="notes"></aside>
+            </figure>
+            <aside class="notes">
+              <p>
+                Consultando CANIUSE podemos ver el soporte para tamaño de
+                contenedores
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Estado actual @container units - Caniuse</p>
+            <figure>
+              <img
+                src="./public/containers/caniuse-container-query-units.png"
+                alt="" />
+              <figcaption>
+                <a
+                  href="https://caniuse.com/css-container-query-units"
+                  target="_blank"
+                  >Caniuse Container queries units</a
+                >
+              </figcaption>
+            </figure>
+            <aside class="notes">
+              <p>
+                Han aparecido nuevas unidades de medida que tienen analogía con
+                unidades relacionadas al tamaño de viewport (vw / vh / vmin /
+                vmax)
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Estado actual @container style</p>
+            <figure>
+              <img
+                src="./public/containers/caniuse-container-query-style.png"
+                style="max-height: 56vh"
+                alt="" />
+              <figcaption>
+                <a
+                  href="https://caniuse.com/?search=css-container-style"
+                  target="_blank"
+                  >Caniuse Container queries style()</a
+                >
+              </figcaption>
+            </figure>
+            <aside class="notes">
+              <p>
+                Parcialmente soportado en ciertos navegadores y para Custom
+                Propertys
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Estado actual - @supports</p>
+            <pre>
             <code data-trim data-line-numbers="1,5">
               @supports not (container: inline-size) {
                 .warning {
@@ -801,14 +1189,20 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            <p>Pequeño inciso: podríamos saber si está soportado @container en el navegador:</p>
-            <p>Podríamos escribir estilos alternativos o mostrar mensajes al usuario con el uso de @supports</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Definición de @container | HTML</p>
-          <pre>
+            <aside class="notes">
+              <p>
+                Pequeño inciso: podríamos saber si está soportado @container en
+                el navegador:
+              </p>
+              <p>
+                Podríamos escribir estilos alternativos o mostrar mensajes al
+                usuario con el uso de @supports
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Definición de @container | HTML</p>
+            <pre>
             <code data-trim data-line-numbers="1,6|2-5">
               <footer class="card__footer" data-container="btn">
                 <div class="btn-groups">
@@ -818,101 +1212,108 @@
               </footer>
             </code>
           </pre>
-          <aside class="notes">
-            Recomiendo tener una caja sólo para definirlo como contenedor sin aplicar estilos, si acaso estilos estéticos (colores,
-            bordes, ...) pero nada de <mark>flex</mark> ni <mark>grid</mark> y aplicar
-            estilos a los hijos
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Definición de @container | CSS</p>
-          <pre>
-            <code data-trim data-line-numbers="1-4|5-8|9-13|14-19">
-              [data-container="btn"] {
-                container-type: inline-size;// size | inline-size | normal
-                container-name: btns;
-              }
-              .btn-groups {
-                display: flex;
-                flex-direction: column;
-              }
-              @container btns (min-width: 300px) {
+            <aside class="notes">
+              Recomiendo tener una caja sólo para definirlo como contenedor sin
+              aplicar estilos, si acaso estilos estéticos (colores, bordes, ...)
+              pero nada de <mark>flex</mark> ni <mark>grid</mark> y aplicar
+              estilos a los hijos
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Definición de @container | CSS</p>
+            <pre>
+              <code data-trim data-line-numbers="1-5|6-9|10-14|15-20">
+                [data-container="btn"] {
+                  container-type: inline-size;// size | inline-size | normal
+                  container-name: btns;
+                  //container: &lt;container-name&gt; / &lt;container-type&gt;;
+                }
                 .btn-groups {
-                  flex-direction: row;
+                  display: flex;
+                  flex-direction: column;
                 }
-              }
-              @container (width > 900px) {
-                .card {
-                  --bg-color: brown;
-                  --padding: 16px;
+                @container btns (min-width: 300px) {
+                  .btn-groups {
+                    flex-direction: row;
+                  }
                 }
-              }
-            </code>
-          </pre>
-          <aside class="notes">
-            <ol>
-              <li>
-                Definición del elemento que será el contenedor
-                <ul>
-                  <li>
-                    size: dimensiones <code>block</code> e
-                    <code>inline</code> eje. Aplica layout, style y size.
-                  </li>
-                  <li>
-                    inline-size: dimensiones <code>inline</code> eje. Aplica
-                    layout, style y inline-size.
-                  </li>
-                  <li>normal: no se trata como contenedor</li>
-                </ul>
-              </li>
-              <li>
-                Nombre del contenedor
-                <ul>
-                  <li>Opcional si sólo se tiene un contenedor</li>
-                  <li>Siempre le doy nombre para evitar "cosas extrañas"</li>
-                </ul>
-              </li>
-            </ol>
-            <hr />
-            <ol>
-              <li>Aplicamos estilos por defecto como a cualquier elemento</li>
-            </ol>
-            <hr />
-            <ol>
-              <li>
-                Aplicamos estilos a cualquier elemento hijo del contenedor
-              </li>
-            </ol>
-            <hr />
-            <ol>
-              <li>Podemos usar operadores <>
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Unidades propias de @container</p>
-          <figure>
-            <img src="./public/containers/cq-units.png" alt="Container queries Units" />
-            <figcaption>
-              <a href="https://drafts.csswg.org/css-contain-3/#container-lengths" target="_blank">More info</a>
-            </figcaption>
-          </figure>
-          <aside class="notes">
-            Han aparecido nuevas unidades CSS que aplican a @contenedores
-            <ul>
-              <li>cqw: % container width (vw)</li>
-              <li>cqh: % container height (vh)</li>
-              <li>cqi: % container inline size</li>
-              <li>cqb: % container block size</li>
-              <li>cqmin: menor de los valores cqi | cqb</li>
-              <li>cqmax: mayor de los valores cqi | cqb</li>
-            </ul>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Unidades propias de @container</p>
-          <pre>
+                @container (width > 900px) {
+                  .card {
+                    --bg-color: brown;
+                    --padding: 16px;
+                  }
+                }
+              </code>
+            </pre>
+            <aside class="notes">
+              <ol>
+                <li>
+                  Definición del elemento que será el contenedor
+                  <ul>
+                    <li>
+                      size: dimensiones <code>block</code> e
+                      <code>inline</code> eje. Aplica layout, style y size.
+                    </li>
+                    <li>
+                      inline-size: dimensiones <code>inline</code> eje. Aplica
+                      layout, style y inline-size.
+                    </li>
+                    <li>normal: no se trata como contenedor</li>
+                  </ul>
+                </li>
+                <li>
+                  Nombre del contenedor
+                  <ul>
+                    <li>Opcional si sólo se tiene un contenedor</li>
+                    <li>Siempre le doy nombre para evitar "cosas extrañas"</li>
+                  </ul>
+                </li>
+              </ol>
+              <hr />
+              <ol>
+                <li>Aplicamos estilos por defecto como a cualquier elemento</li>
+              </ol>
+              <hr />
+              <ol>
+                <li>
+                  Aplicamos estilos a cualquier elemento hijo del contenedor
+                </li>
+              </ol>
+              <hr />
+              <ol>
+                <li>Podemos usar operadores <></li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Unidades propias de @container</p>
+            <figure>
+              <img
+                src="./public/containers/cq-units.png"
+                alt="Container queries Units" />
+              <figcaption>
+                <a
+                  href="https://drafts.csswg.org/css-contain-3/#container-lengths"
+                  target="_blank"
+                  >More info</a
+                >
+              </figcaption>
+            </figure>
+            <aside class="notes">
+              Han aparecido nuevas unidades CSS que aplican a @contenedores
+              <ul>
+                <li>cqw: % container width (vw)</li>
+                <li>cqh: % container height (vh)</li>
+                <li>cqi: % container inline size</li>
+                <li>cqb: % container block size</li>
+                <li>cqmin: menor de los valores cqi | cqb</li>
+                <li>cqmax: mayor de los valores cqi | cqb</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Unidades propias de @container</p>
+            <pre>
               <code data-trim data-line-numbers="2">
                 .title-card {
                   font-size: clamp(1rem, 3cqi + 1rem, 4rem);
@@ -921,14 +1322,16 @@
                 }
               </code>
             </pre>
-          <aside class="notes">
-            <p>Se puede aplicar a cualquier atributo que admita unidades. En este caso vemos ejemplo aplicado a tamaño de tipografía
-            </p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">@container style()</p>
-          <pre>
+            <aside class="notes">
+              <p>
+                Se puede aplicar a cualquier atributo que admita unidades. En
+                este caso vemos ejemplo aplicado a tamaño de tipografía
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">@container style()</p>
+            <pre>
             <code data-trim data-line-numbers="1,15|2-4,15|5-14|16-18">
               @container style(--type: primary) {
                 .card {
@@ -950,38 +1353,104 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            Opción bastante nueva y que puede sufrir modificaciones<br />
-            <ol>
-              <li>Requiere <code><mark>style</mark>(atributo: valor)</code></li>
-              <li>
-                Supuestamente aplica a cualquier atributo CSS, pero en mis
-                pruebas sólo me ha funcionado con Custom Properties
-              </li>
-              <li>
-                El atributo que se quiera "escuchar" debe "leerse" en el padre
-                y si se cumple el valor entonces si podemos aplicar estilos a
-                los hijos que nos interese
-              </li>
-            </ol>
-            <hr />
-            <ol>
-              <li>
-                Podemos hacer nesting de contenedores al estilo
-                <code>if if</code>
-              </li>
-            </ol>
-            <hr />
-            <ol>
-              <li>
-                Podemos usar operadores <code>OR</code> y <code>AND</code>
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">@container size + style()</p>
-          <pre>
+            <aside class="notes">
+              Opción bastante nueva y que puede sufrir modificaciones<br />
+              <ol>
+                <li>
+                  Requiere <code><mark>style</mark>(atributo: valor)</code>
+                </li>
+                <li>
+                  Supuestamente aplica a cualquier atributo CSS, pero en mis
+                  pruebas sólo me ha funcionado con Custom Properties
+                </li>
+                <li>
+                  El atributo que se quiera "escuchar" debe "leerse" en el padre
+                  y si se cumple el valor entonces si podemos aplicar estilos a
+                  los hijos que nos interese
+                </li>
+              </ol>
+              <hr />
+              <ol>
+                <li>
+                  Podemos hacer nesting de contenedores al estilo
+                  <code>if if</code>
+                </li>
+              </ol>
+              <hr />
+              <ol>
+                <li>
+                  Podemos usar operadores <code>OR</code> y <code>AND</code>
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p
+              class="codepen"
+              data-height="640"
+              data-theme-id="dark"
+              data-default-tab="css,result"
+              data-slug-hash="zYbywrX"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 640px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/zYbywrX">
+                  Untitled</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section>
+            <p
+              class="codepen"
+              data-height="640"
+              data-default-tab="css,result"
+              data-slug-hash="ExLLPvm"
+              data-user="ivan_albizu"
+              style="
+                height: 6400px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/ExLLPvm">
+                  CSS @containers | nested + layers</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section>
+            <p class="title-slide">@container size + style()</p>
+            <pre>
             <code data-trim data-line-numbers="1,6">
               @container card (min-width: 600px) and style(--responsive: true) {
                 .card {
@@ -991,123 +1460,175 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            Tenemos la posibilidad de combinar contenedores de tamaños y de
-            estilos
-          </aside>
+            <aside class="notes">
+              Tenemos la posibilidad de combinar contenedores de tamaños y de
+              estilos
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Ejemplos de contenedores</p>
+            <a href="https://codepen.io/ivan_albizu/pen/YzQWxKN" target="_blank"
+              >Containers</a
+            ><br />
+            <a href="https://codepen.io/ivan_albizu/pen/ExLLPvm" target="_blank"
+              >Nested style()</a
+            ><br />
+            <a href="https://codepen.io/ivan_albizu/pen/NWXVbyG" target="_blank"
+              >Container Queries + Container Units</a
+            ><br />
+            <a
+              href="https://ishadeed.com/article/container-queries-are-finally-here"
+              target="_blank"
+              >Ahmad Shadeed - container queries</a
+            ><br />
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries"
+              target="_blank"
+              >MDN - container queries</a
+            ><br />
+          </section>
+          <section>
+            <p class="title-slide">End</p>
+            <figure>
+              <img
+                onmouseenter="this.src='./public/containers/giphy-container.gif'"
+                onmouseleave="this.src='./public/containers/giphy-container.png'"
+                width="300"
+                src="./public/containers/giphy-container.png"
+                alt="" />
+            </figure>
+            <p>Un gran poder conlleva una gran responsabilidad</p>
+          </section>
         </section>
-        <section>
-          <p class="title-slide">Ejemplos de contenedores</p>
-          <a href="https://codepen.io/ivan_albizu/pen/YzQWxKN" target="_blank">nested container I</a><br>
-          <a href="https://codepen.io/ivan_albizu/pen/ExLLPvm" target="_blank">nested container I</a><br>
-          <a href="https://codepen.io/ivan_albizu/pen/NWXVbyG" target="_blank">Card + units container</a><br>
-          <a href="https://ishadeed.com/article/container-queries-are-finally-here" target="_blank">Ahmad Shadeed - container queries</a><br>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries" target="_blank">MDN - container queries</a><br>
-        </section>
-        <section>
-          <p class="title-slide">End</p>
-          <figure>
-            <img onmouseenter="this.src='./public/containers/giphy-container.gif'"
-              onmouseleave="this.src='./public/containers/giphy-container.png'" width="300"
-              src="./public/containers/giphy-container.png" alt="" />
-          </figure>
-          <p>Un gran poder conlleva una gran responsabilidad</p>
-        </section>
-      </section>
-      <section data-background-color="#533483">
-        <section>
-          <p class="title-slide">CSS houdini</p>
-          <ul>
-            <li>
-              Grupo de APIs que da acceso directo a
-              <abbr title="modelo de objetos de CSS">CSSOM</abbr>
-            </li>
-            <li>Mediante <abbr title="módulos javascript">worklets</abbr></li>
-            <li>
-              Permite escribir código que el navegador puede analizar como CSS
-            </li>
-            <li>
-              Crear nuevas funcionalidades CSS sin esperar a que se
-              implementen de forma nativa en los navegadores
-            </li>
-          </ul>
-          <aside class="notes">Sin entrar en detalle</aside>
-        </section>
-        <section>
-          <p>Ampliar información de manera más técnica y con más ejemplos</p>
-          <a href="https://www.youtube.com/watch?v=jk_rQZzyqLQ&t=440s" target="_blank">Charla en youtube by Joan
-            León</a><br />
-          <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">
-            Presentación by Joan León
-          </a>
-          <aside class="notes">
-            <p>Si quieres ampliar más información recomiendo ver estos recursos</p>
-            <p>Se trata de video y presentación de slides que hizo Joan León</p>
-          </aside>
-        </section>
-        <section>
-          <figure>
-            <img src="./public/css-houdini/CSS-Houdini-rendering-process-polyfilled.png" width="700" alt="" />
-            <figcaption>
-              Renderizado del navegador tradicional
-              <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">source</a>
-            </figcaption>
-          </figure>
-          <figure>
-            <img src="./public/css-houdini/CSS-Houdini-rendering-process.png" width="700" alt="" />
-            <figcaption>
-              Renderizado del navegador con CSS Houdini
-              <a href="https://octuweb.com/css-houdini-algo-mas-que-magia/" target="_blank">source</a>
-            </figcaption>
-          </figure>
-          <aside class="notes">
-            <ol>
-              <li>Tradicional: proceso renderizado lineal</li>
-              <li>CSS Houdini: tenemos una API para cada uno de los pasos</li>
-            </ol>
-            <p>Con La API de Houdini, cualquier cambio que se produzca, no será necesario que se ejecute todo el renderizado, sólo
-              lo que se vea afectado</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">CSSOM</p>
-          <ul>
-            <li>document.styleSheets</li>
-            <li>CSSStyleSheetList</li>
-            <li>CSSStyleSheet</li>
-            <li>CSSRuleList</li>
-            <li>CSSStyleRule</li>
-            <li>CSSStyleDeclaration</li>
-          </ul>
-          <p>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model" target="_blank">Más info: MDN</a>
-          </p>
-          <aside class="notes">
-            <p>Modelo de objetos de CSSOM, es conjunto de APIs que permite leer y/o modificar estilos desde Javascript</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">APIs definidas aunque no todas disponibles</p>
-          <ul>
-            <li><strong>CSS Properties and Values API</strong></li>
-            <li><strong>CSS Typed OM</strong></li>
-            <li><strong>CSS Painting API</strong></li>
-            <li>Worklets</li>
-            <li>CSS Layout API</li>
-            <li>CSS Parser API</li>
-          </ul>
-          <aside class="notes">Listado de API. No entramos en detalle</aside>
-        </section>
-        <section>
-          <p class="title-slide">CSS Painting API</p>
-          <aside class="notes">
-            Veremos un ejemplo de uso de la API de pintado
-          </aside>
-          <aside class="notes"></aside>
-        </section>
-        <section>
-          <p class="title-slide">CSS Painting API: registro</p>
-          <pre>
+        <section data-background-color="#533483">
+          <section>
+            <p class="title-slide">CSS houdini</p>
+            <ul>
+              <li>
+                Grupo de APIs que da acceso directo a
+                <abbr title="modelo de objetos de CSS">CSSOM</abbr>
+              </li>
+              <li>Mediante <abbr title="módulos javascript">worklets</abbr></li>
+              <li>
+                Permite escribir código que el navegador puede analizar como CSS
+              </li>
+              <li>
+                Crear nuevas funcionalidades CSS sin esperar a que se
+                implementen de forma nativa en los navegadores
+              </li>
+            </ul>
+            <aside class="notes">Sin entrar en detalle</aside>
+          </section>
+          <section>
+            <p>Ampliar información de manera más técnica y con más ejemplos</p>
+            <a
+              href="https://www.youtube.com/watch?v=jk_rQZzyqLQ&t=440s"
+              target="_blank"
+              >Charla en youtube by Joan León</a
+            ><br />
+            <a
+              href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
+              target="_blank">
+              Presentación by Joan León
+            </a>
+            <aside class="notes">
+              <p>
+                Si quieres ampliar más información recomiendo ver estos recursos
+              </p>
+              <p>
+                Se trata de video y presentación de slides que hizo Joan León
+              </p>
+            </aside>
+          </section>
+          <section>
+            <figure>
+              <img
+                src="./public/css-houdini/CSS-Houdini-rendering-process-polyfilled.png"
+                width="700"
+                alt="" />
+              <figcaption>
+                Renderizado del navegador tradicional
+                <a
+                  href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
+                  target="_blank"
+                  >source</a
+                >
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="./public/css-houdini/CSS-Houdini-rendering-process.png"
+                width="700"
+                alt="" />
+              <figcaption>
+                Renderizado del navegador con CSS Houdini
+                <a
+                  href="https://octuweb.com/css-houdini-algo-mas-que-magia/"
+                  target="_blank"
+                  >source</a
+                >
+              </figcaption>
+            </figure>
+            <aside class="notes">
+              <ol>
+                <li>Tradicional: proceso renderizado lineal</li>
+                <li>CSS Houdini: tenemos una API para cada uno de los pasos</li>
+              </ol>
+              <p>
+                Con La API de Houdini, cualquier cambio que se produzca, no será
+                necesario que se ejecute todo el renderizado, sólo lo que se vea
+                afectado
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">CSSOM</p>
+            <ul>
+              <li>document.styleSheets</li>
+              <li>CSSStyleSheetList</li>
+              <li>CSSStyleSheet</li>
+              <li>CSSRuleList</li>
+              <li>CSSStyleRule</li>
+              <li>CSSStyleDeclaration</li>
+            </ul>
+            <p>
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model"
+                target="_blank"
+                >Más info: MDN</a
+              >
+            </p>
+            <aside class="notes">
+              <p>
+                Modelo de objetos de CSSOM, es conjunto de APIs que permite leer
+                y/o modificar estilos desde Javascript
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">
+              APIs definidas aunque no todas disponibles
+            </p>
+            <ul>
+              <li><strong>CSS Properties and Values API</strong></li>
+              <li><strong>CSS Typed OM</strong></li>
+              <li><strong>CSS Painting API</strong></li>
+              <li>Worklets</li>
+              <li>CSS Layout API</li>
+              <li>CSS Parser API</li>
+            </ul>
+            <aside class="notes">Listado de API. No entramos en detalle</aside>
+          </section>
+          <section>
+            <p class="title-slide">CSS Painting API</p>
+            <aside class="notes">
+              Veremos un ejemplo de uso de la API de pintado
+            </aside>
+            <aside class="notes"></aside>
+          </section>
+          <section>
+            <p class="title-slide">CSS Painting API: registro</p>
+            <pre>
             <code data-trim data-line-numbers="1,5|7|2-4">
               class BtnPulse {
                 paint(ctx, size, props) {
@@ -1118,23 +1639,23 @@
               registerPaint('btn-pulse', BtnPulse);
             </code>
           </pre>
-          <aside class="notes">
-            <ol>
-              <li>Creamos una clase</li>
-              <li>
-                Llámamos al método registerPaint(...)
-                <ol>
-                  <li>Primer parámetro: nombre que usaremos en CSS</li>
-                  <li>Segundo parámetro: La clase que hemos creado</li>
-                </ol>
-              </li>
-              <li>Dibujamos canvas en la implementación de paint(...)</li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">CSS Painting API: registro (codepen)</p>
-          <pre>
+            <aside class="notes">
+              <ol>
+                <li>Creamos una clase</li>
+                <li>
+                  Llámamos al método registerPaint(...)
+                  <ol>
+                    <li>Primer parámetro: nombre que usaremos en CSS</li>
+                    <li>Segundo parámetro: La clase que hemos creado</li>
+                  </ol>
+                </li>
+                <li>Dibujamos canvas en la implementación de paint(...)</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">CSS Painting API: registro (codepen)</p>
+            <pre>
             <code data-trim data-line-numbers="7-10|3-5|11">
               // Opción para usarlo en Codepen
               (async () => {
@@ -1150,24 +1671,24 @@
               })()
             </code>
           </pre>
-          <aside class="notes">
-            Por si queremos hacer pruebas en codepen<br />
-            <ol>
-              <li>
-                La clase que creamos la metememos dentro de
-                <code>script</code> y leemos su contenido
-              </li>
-              <li>
-                Si el navegador no reconoce <code>paintWorklet</code> añadimos
-                polyfill
-              </li>
-              <li>Añadimos el worklet</li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">CSS Painting API: uso</p>
-          <pre>
+            <aside class="notes">
+              Por si queremos hacer pruebas en codepen<br />
+              <ol>
+                <li>
+                  La definición de Paint la metememos dentro de
+                  <code>script</code> y leemos su contenido
+                </li>
+                <li>
+                  Si el navegador no reconoce <code>paintWorklet</code> añadimos
+                  polyfill
+                </li>
+                <li>Añadimos el worklet</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">CSS Painting API: uso</p>
+            <pre>
             <code data-trim data-line-numbers="1,6|3|4">
               @supports (background: paint(something)) {
                 .element {
@@ -1177,17 +1698,21 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            Los <code>paint</code> que definamos se pueden usar en
-            <mark><code>background</code></mark> y
-            <mark><code>border</code></mark>
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas I</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="1,7|6|2|4">
+            <aside class="notes">
+              Los <code>paint</code> que definamos se pueden usar en
+              <mark><code>background</code></mark> y
+              <mark><code>border</code></mark>
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas I</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="1,11|10|2|4|6|8">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() { }
 
                 _paintCircles(ctx, fillStyle, strokeStyle, x, y, rad)  { }
@@ -1196,27 +1721,39 @@
               })
             </code>
           </pre>
-          <aside class="notes">
-            <ol>
-              <li>
-                paint() {}: método que se ejecuta cada vez que el motor CSS
-                necesite pintar/repintar el elemento
-              </li>
-              <li>
-                static get inputProperties() {}: método estático para acceder
-                a Custom Properties CSS.
-              </li>
-              <li>
-                _paintCircles() {}: método auxiliar para no repetir código.
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas II</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="2-4">
+            <aside class="notes">
+              <ol>
+                <li>
+                  paint() {}: método que se ejecuta cada vez que el motor CSS
+                  necesite pintar/repintar el elemento
+                </li>
+                <li>
+                  static get contextOptions() {}: método estático para
+                  habilitar/deshabilitar opacitdad de colores
+                </li>
+                <li>
+                  static get inputArguments() {}: método estático para exponer
+                  atributos que queramos usar en Paint.
+                </li>
+                <li>
+                  static get inputProperties() {}: método estático para acceder
+                  a Custom Properties CSS.
+                </li>
+                <li>
+                  _paintCircles() {}: método auxiliar para no repetir código.
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas II</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="6-8">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return []
                 }
@@ -1227,12 +1764,16 @@
               })
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas III</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="2-11">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas III</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="6-15">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return [
                     '--x',
@@ -1250,12 +1791,16 @@
               })
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas IV</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="13">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas IV</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="17">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return [
                     '--x',
@@ -1273,12 +1818,16 @@
               })
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API - Canvas V</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="13-20">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API - Canvas V</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="17-24">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return [
                     '--x',
@@ -1303,12 +1852,16 @@
               })
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas VI</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="22">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas VI</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="26">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return [
                     '--x',
@@ -1333,12 +1886,16 @@
               })
             </code>
           </pre>
-        </section>
-        <section data-auto-animate>
-          <p class="title-slide">CSS Painting API: Canvas VI</p>
-          <pre data-id="code-animation">
-            <code data-trim data-line-numbers="22-32">
+          </section>
+          <section data-auto-animate>
+            <p class="title-slide">CSS Painting API: Canvas VII</p>
+            <pre data-id="code-animation">
+            <code data-trim data-line-numbers="26-36">
               registerPaint('btn-pulse', class {
+                static get contextOptions() { }
+
+                static get inputArguments() { }
+
                 static get inputProperties() {
                   return [
                     '--x',
@@ -1366,17 +1923,22 @@
                   const fill = (props.get('--fill')).toString()
                   const pulseRad = props.get('--pulse-rad')
                   const pulseStrokeColor = (props.get('--pulse-stroke-color')).toString()
-              
+
                   this._paintCircles(ctx, fill, '#fff', x.value, y.value, rad.value)
                   this._paintCircles(ctx, 'transparent', pulseStrokeColor, x.value, y.value, pulseRad.value + rad.value)
                 }
               })
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="codepen" data-height="640" data-default-tab="result,html" data-slug-hash="qBayPeR"
-            data-user="ivan_albizu" style="
+          </section>
+          <section>
+            <p
+              class="codepen"
+              data-height="640"
+              data-default-tab="result,html"
+              data-slug-hash="qBayPeR"
+              data-user="ivan_albizu"
+              style="
                 height: 640px;
                 box-sizing: border-box;
                 display: flex;
@@ -1386,23 +1948,64 @@
                 margin: 1em 0;
                 padding: 1em;
               "></p>
-          <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section>
+            <p
+              class="codepen"
+              data-height="640"
+              data-theme-id="dark"
+              data-default-tab="result"
+              data-slug-hash="OJBWzGQ"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="
+                height: 640px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid;
+                margin: 1em 0;
+                padding: 1em;
+              ">
+              <span
+                >See the Pen
+                <a href="https://codepen.io/ivan_albizu/pen/OJBWzGQ">
+                  CSS Houdini Paint API - bezierCurve</a
+                >
+                by Iván Albizu (<a href="https://codepen.io/ivan_albizu"
+                  >@ivan_albizu</a
+                >) on <a href="https://codepen.io">CodePen</a>.</span
+              >
+            </p>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            <script
+              async
+              src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+          </section>
+          <section
+            data-background-color="#fff"
+            data-background-iframe="https://ishoudinireadyyet.com/"
+            data-background-interactive></section>
         </section>
-        <section data-background-color="#fff" data-background-iframe="https://ishoudinireadyyet.com/" data-background-interactive></section>
-      </section>
-      <section data-background-color="#113b00">
-        <section>
-          <p class="title-slide">@layer</p>
-          <ul>
-            <li>Definición</li>
-            <li>Estado actual</li>
-            <li>¿Para que sirven?</li>
-            <li>Importación / nested / non-layered</li>
-          </ul>
-        </section>
-        <section>
-          <p class="title-slide">@layer definición</p>
-          <pre>
+        <section data-background-color="#113b00">
+          <section>
+            <p class="title-slide">@layer</p>
+            <ul>
+              <li>Definición</li>
+              <li>Estado actual</li>
+              <li>¿Para que sirven?</li>
+              <li>Importación / nested / non-layered</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">@layer definición</p>
+            <pre>
             <code data-trim data-line-numbers>
               @layer theme {rules};
               @layer theme;
@@ -1410,76 +2013,89 @@
               @layer {rules}
             </code>
           </pre>
-          <aside class="notes">
-            <ol>
-              <li>Crea una capa con nombre y estilos</li>
-              <li>Crea una capa con nombre</li>
-              <li>
-                Crea varias capas con nombre con el orden en que sean
-                nombradas
-              </li>
-              <li>
-                Crea capa anónima sin nombre. No podremos hacer referencia a
-                ella para añadir más estilos o reordenarla
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">Estado actual @layer: Caniuse</p>
-          <figure>
-            <img src="./public/layers/caniuse-layer.png" alt="" />
-            <figcaption>
-              <a href="https://caniuse.com/css-cascade-layers" target="_blank">Caniuse @layer</a>
-            </figcaption>
-          </figure>
-        </section>
-        <section>
-          <p class="title-slide">Capas @layer</p>
-          <ul>
-            <li>Más control sobre como se aplica la cascada</li>
-            <li>Evitar selectores complejos</li>
-            <li>Evitar técnicas <code>!important</code></li>
-          </ul>
-          <aside class="notes">
-            <ol>
-              <li>Permite más control sobre como se aplica la cascada</li>
-              <li>
-                Evitar selectores complejos para asegurarnos colisiones por
-                especificidad
-              </li>
-              <li>
-                Evitar uso de !important sobre todo en clases de utilidad.
-                Ojo, esta maldita palabra sigue prevaleciendo, pero no sería
-                necesaria si usamos la definición de cascada en el orden
-                deseado. Se suele usar mucho en clases tipo 'utilities', podría declararse al final
-              </li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">@layer: Orden de la cascada</p>
-          <ol>
-            <li>Browser styles</li>
-            <li>User Styles</li>
-            <li>
-              Author Styles
+            <aside class="notes">
               <ol>
-                <li>@layer theme</li>
-                <li>@layer layout</li>
-                <li>@layer utilities</li>
-                <li>Non-Layered Styles</li>
+                <li>Crea una capa con nombre y estilos</li>
+                <li>Crea una capa con nombre</li>
+                <li>
+                  Crea varias capas con nombre con el orden en que sean
+                  nombradas
+                </li>
+                <li>
+                  Crea capa anónima sin nombre. No podremos hacer referencia a
+                  ella para añadir más estilos o reordenarla
+                </li>
               </ol>
-            </li>
-          </ol>
-          <form action="https://codepen.io/pen/define" method="POST" target="_blank">
-            <input id="data-especificidad-input" type="hidden" name="data" value="" />
-            <input class="input-icon-codepen" type="image" src="./public/icon-codepen.svg" />
-          </form>
-        </section>
-        <section>
-          <p class="title-slide">@layer importación</p>
-          <pre>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Estado actual @layer: Caniuse</p>
+            <figure>
+              <img src="./public/layers/caniuse-layer.png" alt="" />
+              <figcaption>
+                <a href="https://caniuse.com/css-cascade-layers" target="_blank"
+                  >Caniuse @layer</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section>
+            <p class="title-slide">Capas @layer</p>
+            <ul>
+              <li>Más control sobre como se aplica la cascada</li>
+              <li>Evitar selectores complejos</li>
+              <li>Evitar técnicas <code>!important</code></li>
+            </ul>
+            <aside class="notes">
+              <ol>
+                <li>Permite más control sobre como se aplica la cascada</li>
+                <li>
+                  Evitar selectores complejos para asegurarnos colisiones por
+                  especificidad
+                </li>
+                <li>
+                  Evitar uso de !important sobre todo en clases de utilidad.
+                  Ojo, esta maldita palabra sigue prevaleciendo, pero no sería
+                  necesaria si usamos la definición de cascada en el orden
+                  deseado. Se suele usar mucho en clases tipo 'utilities',
+                  podría declararse al final
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">@layer: Orden de la cascada</p>
+            <ol>
+              <li>Browser styles</li>
+              <li>User Styles</li>
+              <li>
+                Author Styles
+                <ol>
+                  <li>@layer theme</li>
+                  <li>@layer layout</li>
+                  <li>@layer utilities</li>
+                  <li>Non-Layered Styles</li>
+                </ol>
+              </li>
+            </ol>
+            <form
+              action="https://codepen.io/pen/define"
+              method="POST"
+              target="_blank">
+              <input
+                id="data-especificidad-input"
+                type="hidden"
+                name="data"
+                value="" />
+              <input
+                class="input-icon-codepen"
+                type="image"
+                src="./public/icon-codepen.svg" />
+            </form>
+          </section>
+          <section>
+            <p class="title-slide">@layer importación</p>
+            <pre>
             <code data-trim data-line-numbers>
               @charset "UTF-8";
               @layer reset;
@@ -1487,16 +2103,22 @@
               @import url("bootstrap.css") layer(framework);
             </code>
           </pre>
-          <aside class="notes">
-            TODO Pensar si mover esta dispositiva en la diapositiva: @layer definición
-            <p>Se puede importar estilos y al mismo tiempo asignarlo a una capa</p>
-            <p>Cuando se importan estilos, dicha importación debe ser la primera linea de la hoja a excepción de nombrado de layer
-              o el charset de caracteres</p>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">@layer nested</p>
-          <pre>
+            <aside class="notes">
+              TODO Pensar si mover esta dispositiva en la diapositiva: @layer
+              definición
+              <p>
+                Se puede importar estilos y al mismo tiempo asignarlo a una capa
+              </p>
+              <p>
+                Cuando se importan estilos, dicha importación debe ser la
+                primera linea de la hoja a excepción de nombrado de layer o el
+                charset de caracteres
+              </p>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">@layer nested</p>
+            <pre>
             <code data-trim data-trim data-line-numbers="1-7|7-14">
               @layer outer {
                 @layer inner {
@@ -1513,16 +2135,16 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            <ol>
-              <li>Se puede incluir @layer dentro de otras</li>
-              <li>El nesteo se puede hacer con la notación de punto</li>
-            </ol>
-          </aside>
-        </section>
-        <section>
-          <p class="title-slide">@layer non-layered</p>
-          <pre>
+            <aside class="notes">
+              <ol>
+                <li>Se puede incluir @layer dentro de otras</li>
+                <li>El nesteo se puede hacer con la notación de punto</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">@layer non-layered</p>
+            <pre>
             <code data-trim data-line-numbers>
               @layer base {
                 #button.super-specific {
@@ -1534,302 +2156,540 @@
               }
             </code>
           </pre>
-          <aside class="notes">
-            <ol>
-              <li>Los estilos fuera de capas serán agrupados como capa anónimas al final del resto de capas</li>
-              <li>Los estilos sin capa prevalecen sobre el resto, independientemente de su especificidad</li>
-            </ol>
-          </aside>
+            <aside class="notes">
+              <ol>
+                <li>
+                  Los estilos fuera de capas serán agrupados como capa anónimas
+                  al final del resto de capas
+                </li>
+                <li>
+                  Los estilos sin capa prevalecen sobre el resto,
+                  independientemente de su especificidad
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Recursos interesantes</p>
+            <a href="https://css-tricks.com/css-cascade-layers/" target="_blank"
+              >CSS tricks</a
+            >
+            <br />
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer"
+              >MDN @layer</a
+            >
+          </section>
         </section>
-        <section>
-          <p class="title-slide">Recursos interesantes</p>
-          <a href="https://css-tricks.com/css-cascade-layers/" target="_blank">CSS tricks</a>
-          <br>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">MDN @layer</a>
+        <section data-background-color="#16213E">
+          <section>
+            <p class="title-slide">Funciones CSS + pseudo clases</p>
+            <ul>
+              <li>calc(), min(), max()</li>
+              <li>clamp()</li>
+              <li>Pseudo clases funcionales :is() :where() :has() :not()</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Funciones CSS + pseudo clases</p>
+            <table>
+              <tr>
+                <td class="white-space-nowrap">Display state</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"
+                    title="Matches an element that is currently in fullscreen mode."
+                    >:fullscreen</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:modal"
+                    title="Matches an element that is in a state in which it excludes all interaction with elements outside it until the interaction has been dismissed."
+                    >:modal</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture"
+                    title="Matches an element that is currently in picture-in-picture mode."
+                    >:picture-in-picture</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">Linguistic</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"
+                    title="The directionality pseudo-class selects an element based on its directionality as determined by the document language."
+                    >:dir()</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"
+                    title="Select an element based on its content language."
+                    >:lang()</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">Input pseudo-classes</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill"
+                    title="Matches when an &lt;input&gt; has been autofilled by the browser."
+                    >:autofill</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:enabled"
+                    title="Represents a user interface element that is in an enabled state."
+                    >:enabled</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled"
+                    title="Represents a user interface element that is in a disabled"
+                    >:disabled</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only"
+                    title="Represents any element that cannot be changed by the user."
+                    >:read-only</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write"
+                    title="Represents any element that is user-editable."
+                    >:read-write</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown"
+                    title="Matches an input element that is displaying placeholder text. For example, it will match the placeholder attribute in the &lt;input&gt; and &lt;textarea&gt; elements."
+                    >:placeholder-shown</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:default"
+                    title="Matches one or more UI elements that are the default among a set of elements."
+                    >:default</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:checked"
+                    title="Matches when elements such as checkboxes and radio buttons are toggled on."
+                    >:checked</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate"
+                    title="Matches UI elements when they are in an indeterminate state."
+                    >:indeterminate</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"
+                    title="Matches a user-input element which is empty, containing an empty string or other null input."
+                    >:blank</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"
+                    title="Matches an element with valid contents. For example, an input element with the type 'email' that contains a validly formed email address or an empty value if the control is not required."
+                    >:valid</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"
+                    title="Matches an element with invalid contents. For example, an input element with type 'email' with a name entered."
+                    >:invalid</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range"
+                    title="Applies to elements with range limitations. For example, a slider control when the selected value is in the allowed range."
+                    >:in-range</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range"
+                    title="Applies to elements with range limitations. For example, a slider control when the selected value is outside the allowed range."
+                    >:out-of-range</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required"
+                    title="Matches when a form element is required."
+                    >:required</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional"
+                    title="Matches when a form element is optional."
+                    >:optional</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"
+                    title="Represents an element with incorrect input, but only when the user has interacted with it."
+                    >:user-invalid</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">Location</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"
+                    title="Matches an element if the element would match either :link or :visited."
+                    >:any-link</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link"
+                    title="Matches links that have not yet been visited."
+                    >:link</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited"
+                    title="Matches links that have been visited."
+                    >:visited</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link"
+                    title="Matches links whose absolute URL is the same as the target URL. For example, anchor links to the same page."
+                    >:local-link</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target"
+                    title="Matches the element which is the target of the document URL."
+                    >:target</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within"
+                    title="Matches elements which are the target of the document URL, but also elements which have a descendant which is the target of the document URL."
+                    >:target-within</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"
+                    title="Represents elements that are a reference point for selectors to match against."
+                    >:scope</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">DOM structure</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root"
+                    title="Represents an element that is the root of the document. In HTML this is usually the &lt;html&gt; element."
+                    >:root</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty"
+                    title="Represents an element with no children other than white-space characters."
+                    >:empty</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
+                    title="Uses An+B notation to select elements from a list of sibling elements."
+                    >:nth-child</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child"
+                    title="Uses An+B notation to select elements from a list of sibling elements, counting backwards from the end of the list."
+                    >:nth-last-child</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-child"
+                    title="Matches an element that is the first of its siblings."
+                    >:first-child</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-child"
+                    title="Matches an element that is the last of its siblings."
+                    >:last-child</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child"
+                    title="Matches an element that has no siblings. For example, a list item with no other list items in that list."
+                    >:only-child</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type"
+                    title="Uses An+B notation to select elements from a list of sibling elements that match a certain type from a list of sibling elements."
+                    >:nth-of-type</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type"
+                    title="Uses An+B notation to select elements from a list of sibling elements that match a certain type from a list of sibling elements counting backwards from the end of the list."
+                    >:nth-last-of-type</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-of-type"
+                    title="Matches an element that is the first of its siblings, and also matches a certain type selector."
+                    >:first-of-type</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type"
+                    title="Matches an element that is the last of its siblings, and also matches a certain type selector."
+                    >:last-of-type</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type"
+                    title="Matches an element that has no siblings of the chosen type selector."
+                    >:only-of-type</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">User action</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
+                    title="Matches when a user designates an item with a pointing device, such as holding the mouse pointer over the item."
+                    >:hover</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active"
+                    title="Matches when an item is being activated by the user. For example, when the item is clicked on."
+                    >:active</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus"
+                    title="Matches when an element has focus."
+                    >:focus</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+                    title="Matches when an element has focus and the user agent identifies that the element should be visibly focused."
+                    >:focus-visible</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within"
+                    title="Matches an element to which :focus applies, plus any element that has a descendant to which :focus applies."
+                    >:focus-within</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="white-space-nowrap">Functional</td>
+                <td>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"
+                    title="The matches-any pseudo-class matches any element that matches any of the selectors in the list provided."
+                    >:is()</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not"
+                    title="The negation, or matches-none, pseudo-class represents any element that is not represented by its argument."
+                    >:not()</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"
+                    title="The specificity-adjustment pseudo-class matches any element that matches any of the selectors in the list provided without adding any specificity weight."
+                    >:where()</a
+                  >
+                  |
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"
+                    title="The relational pseudo-class represents an element if any of the relative selectors match when anchored against the attached element."
+                    >:has()</a
+                  >
+                </td>
+              </tr>
+            </table>
+            <hr />
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"
+              target="_blank"
+              >Fuente: MDN</a
+            >
+          </section>
         </section>
-      </section>
-      <section data-background-color="#16213E">
-        <section>
-          <p class="title-slide">Funciones CSS + pseudo clases</p>
-          <ul>
-            <li>calc(), min(), max()</li>
-            <li>clamp()</li>
-            <li>Pseudo clases funcionales :is() :where() :has() :not()</li>
-          </ul>
-        </section>
-        <section>
-          <p class="title-slide">Funciones CSS + pseudo clases</p>
-          <table>
-            <tr>
-              <td class="white-space-nowrap">Display state</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"
-                  title="Matches an element that is currently in fullscreen mode.">:fullscreen</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:modal"
-                  title="Matches an element that is in a state in which it excludes all interaction with elements outside it until the interaction has been dismissed.">:modal</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture"
-                  title="Matches an element that is currently in picture-in-picture mode.">:picture-in-picture</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">Linguistic</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"
-                  title="The directionality pseudo-class selects an element based on its directionality as determined by the document language.">:dir()</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"
-                  title="Select an element based on its content language.">:lang()</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">Input pseudo-classes</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill"
-                  title="Matches when an &lt;input&gt; has been autofilled by the browser.">:autofill</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:enabled"
-                  title="Represents a user interface element that is in an enabled state.">:enabled</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled"
-                  title="Represents a user interface element that is in a disabled">:disabled</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only"
-                  title="Represents any element that cannot be changed by the user.">:read-only</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write"
-                  title="Represents any element that is user-editable.">:read-write</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown"
-                  title="Matches an input element that is displaying placeholder text. For example, it will match the placeholder attribute in the &lt;input&gt; and &lt;textarea&gt; elements.">:placeholder-shown</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:default"
-                  title="Matches one or more UI elements that are the default among a set of elements.">:default</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:checked"
-                  title="Matches when elements such as checkboxes and radio buttons are toggled on.">:checked</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate"
-                  title="Matches UI elements when they are in an indeterminate state.">:indeterminate</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"
-                  title="Matches a user-input element which is empty, containing an empty string or other null input.">:blank</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"
-                  title="Matches an element with valid contents. For example, an input element with the type 'email' that contains a validly formed email address or an empty value if the control is not required.">:valid</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"
-                  title="Matches an element with invalid contents. For example, an input element with type 'email' with a name entered.">:invalid</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range"
-                  title="Applies to elements with range limitations. For example, a slider control when the selected value is in the allowed range.">:in-range</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range"
-                  title="Applies to elements with range limitations. For example, a slider control when the selected value is outside the allowed range.">:out-of-range</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required"
-                  title="Matches when a form element is required.">:required</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional"
-                  title="Matches when a form element is optional.">:optional</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"
-                  title="Represents an element with incorrect input, but only when the user has interacted with it.">:user-invalid</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">Location</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"
-                  title="Matches an element if the element would match either :link or :visited.">:any-link</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link"
-                  title="Matches links that have not yet been visited.">:link</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited"
-                  title="Matches links that have been visited.">:visited</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link"
-                  title="Matches links whose absolute URL is the same as the target URL. For example, anchor links to the same page.">:local-link</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target"
-                  title="Matches the element which is the target of the document URL.">:target</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within"
-                  title="Matches elements which are the target of the document URL, but also elements which have a descendant which is the target of the document URL.">:target-within</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"
-                  title="Represents elements that are a reference point for selectors to match against.">:scope</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">DOM structure</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root"
-                  title="Represents an element that is the root of the document. In HTML this is usually the &lt;html&gt; element.">:root</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty"
-                  title="Represents an element with no children other than white-space characters.">:empty</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child"
-                  title="Uses An+B notation to select elements from a list of sibling elements.">:nth-child</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child"
-                  title="Uses An+B notation to select elements from a list of sibling elements, counting backwards from the end of the list.">:nth-last-child</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-child"
-                  title="Matches an element that is the first of its siblings.">:first-child</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-child"
-                  title="Matches an element that is the last of its siblings.">:last-child</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child"
-                  title="Matches an element that has no siblings. For example, a list item with no other list items in that list.">:only-child</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type"
-                  title="Uses An+B notation to select elements from a list of sibling elements that match a certain type from a list of sibling elements.">:nth-of-type</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type"
-                  title="Uses An+B notation to select elements from a list of sibling elements that match a certain type from a list of sibling elements counting backwards from the end of the list.">:nth-last-of-type</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-of-type"
-                  title="Matches an element that is the first of its siblings, and also matches a certain type selector.">:first-of-type</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type"
-                  title="Matches an element that is the last of its siblings, and also matches a certain type selector.">:last-of-type</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type"
-                  title="Matches an element that has no siblings of the chosen type selector.">:only-of-type</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">User action</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover"
-                  title="Matches when a user designates an item with a pointing device, such as holding the mouse pointer over the item.">:hover</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active"
-                  title="Matches when an item is being activated by the user. For example, when the item is clicked on.">:active</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus"
-                  title="Matches when an element has focus.">:focus</a> |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
-                  title="Matches when an element has focus and the user agent identifies that the element should be visibly focused.">:focus-visible</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within"
-                  title="Matches an element to which :focus applies, plus any element that has a descendant to which :focus applies.">:focus-within</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="white-space-nowrap">Functional</td>
-              <td>
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"
-                  title="The matches-any pseudo-class matches any element that matches any of the selectors in the list provided.">:is()</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not"
-                  title="The negation, or matches-none, pseudo-class represents any element that is not represented by its argument.">:not()</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"
-                  title="The specificity-adjustment pseudo-class matches any element that matches any of the selectors in the list provided without adding any specificity weight.">:where()</a>
-                |
-                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"
-                  title="The relational pseudo-class represents an element if any of the relative selectors match when anchored against the attached element.">:has()</a>
-              </td>
-            </tr>
-          </table>
-          <hr>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank">Fuente: MDN</a>
-        </section>
-      </section>
-      <section data-background-color="#272001">
-        <section>
-          <p class="title-slide">Astro</p>
-          <ul>
-            <li>File-based routing</li>
-            <li>components / layout / pages</li>
-            <li>script / layout / style</li>
-          </ul>
-        </section>
-        <section>
-          <p class="title-slide">Astro - Islands</p>
-          <figure>
-            <img src="public/astro/astro-islands.png" height="600">
-            <figcaption>
-              Astro islands
-              <a href="https://docs.astro.build/en/concepts/islands/" target="_blank">source</a>
-            </figcaption>
-          </figure>
-        </section>
-        <section>
-          <p class="title-slide">Astro - scaffolding I</p>
-          <nav class="tree-nav">
-            <details open>
-              <summary>public</summary>
-              <div>
-                <div>assets</div>
-                <div>folders</div>
-              </div>
-            </details>
-            <details open>
-              <summary>src</summary>
+        <section data-background-color="#272001">
+          <section>
+            <p class="title-slide">Astro</p>
+            <ul>
+              <li>File-based routing</li>
+              <li>components / layout / pages</li>
+              <li>script / layout / style</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Astro - Islands</p>
+            <figure>
+              <img src="public/astro/astro-islands.png" height="600" />
+              <figcaption>
+                Astro islands
+                <a
+                  href="https://docs.astro.build/en/concepts/islands/"
+                  target="_blank"
+                  >source</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section>
+            <p class="title-slide">Astro - scaffolding I</p>
+            <nav class="tree-nav">
               <details open>
-                <summary>components</summary>
+                <summary>public</summary>
                 <div>
-                  <div>Header.astro</div>
-                  <div>Button.vue</div>
+                  <div>assets</div>
+                  <div>folders</div>
                 </div>
               </details>
               <details open>
-                <summary>layouts</summary>
-                <div>
-                  <div>Layout.astro</div>
-                  <div>BlogLayout.astro</div>
-                </div>
-              </details>
-              <details open>
-                <summary>pages</summary>
-                <div>
-                  <div>index.astro</div>
-                  <div>about.astro</div>
-                </div>
-              </details>
-            </details>
-          </nav>
-        </section>
-        <section>
-          <p class="title-slide">Astro - scaffolding II</p>
-          <nav class="tree-nav">
-            <details open>
-              <summary>public</summary>
-              <div>
-                <div>assets</div>
-                <div>folders</div>
-              </div>
-            </details>
-            <details open>
-              <summary>src</summary>
-              <details>
-                <summary>components</summary>
-                <div>
-                  <div>Header.astro</div>
-                  <div>Button.vue</div>
-                </div>
-              </details>
-              <details>
-                <summary>layouts</summary>
-                <div>
-                  <div>Layout.astro</div>
-                  <div>BlogLayout.astro</div>
-                </div>
-              </details>
-              <details>
-                <summary>pages</summary>
-                <div>
-                  <div>index.astro</div>
-                  <div>about.astro</div>
-                </div>
-              </details>
-              <details>
-                <summary>content</summary>
-                <div>
-                  <div>config.ts</div>
-                </div>
-                <details>
-                  <summary>blog</summary>
+                <summary>src</summary>
+                <details open>
+                  <summary>components</summary>
                   <div>
-                    <div>entry-one.md</div>
-                    <div>entry-two.mdx</div>
+                    <div>Header.astro</div>
+                    <div>Button.vue</div>
+                  </div>
+                </details>
+                <details open>
+                  <summary>layouts</summary>
+                  <div>
+                    <div>Layout.astro</div>
+                    <div>BlogLayout.astro</div>
+                  </div>
+                </details>
+                <details open>
+                  <summary>pages</summary>
+                  <div>
+                    <div>index.astro</div>
+                    <div>about.astro</div>
                   </div>
                 </details>
               </details>
-            </details>
-          </nav>
-        </section>
-        <section>
-          <p class="title-slide">Astro - estructura de un fichero</p>
-          <pre>
+            </nav>
+          </section>
+          <section>
+            <p class="title-slide">Astro - scaffolding II</p>
+            <nav class="tree-nav">
+              <details open>
+                <summary>public</summary>
+                <div>
+                  <div>assets</div>
+                  <div>folders</div>
+                </div>
+              </details>
+              <details open>
+                <summary>src</summary>
+                <details>
+                  <summary>components</summary>
+                  <div>
+                    <div>Header.astro</div>
+                    <div>Button.vue</div>
+                  </div>
+                </details>
+                <details>
+                  <summary>layouts</summary>
+                  <div>
+                    <div>Layout.astro</div>
+                    <div>BlogLayout.astro</div>
+                  </div>
+                </details>
+                <details>
+                  <summary>pages</summary>
+                  <div>
+                    <div>index.astro</div>
+                    <div>about.astro</div>
+                  </div>
+                </details>
+                <details>
+                  <summary>content</summary>
+                  <div>
+                    <div>config.ts</div>
+                  </div>
+                  <details>
+                    <summary>blog</summary>
+                    <div>
+                      <div>entry-one.md</div>
+                      <div>entry-two.mdx</div>
+                    </div>
+                  </details>
+                </details>
+              </details>
+            </nav>
+          </section>
+          <section>
+            <p class="title-slide">Astro - estructura de un fichero</p>
+            <pre>
             <code data-trim data-line-numbers="1-11|13-17|19-21|23-25">
               ---
               import Layout from "../layouts/Layout.astro";
@@ -1858,24 +2718,35 @@
               </script>
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Astro Transitions - ¿Qué es?</p>
-          <p>View Transitions API</p>
-          <p>Interceptar la navegación</p>
-          <p>Animar elementos de Página Destino con Página Destino</p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank">MDN: View_Transitions_API</a>
-          <br>
-          <a href="https://developer.chrome.com/docs/web-platform/view-transitions/" target="_blank">developer.crome: view-transitions</a>
-        </section>
-        <section>
-          <p class="title-slide">Astro Transitions - old vs new</p>
-          <img src="public/astro/css-transition.png">
-        </section>
-        <section data-background-color="#fff" data-background-iframe="https://astro-view-transition.netlify.app/" data-background-interactive></section>
-        <section>
-          <p class="title-slide">Astro Transitions - inicialización</p>
-          <pre>
+          </section>
+          <section>
+            <p class="title-slide">Astro Transitions - ¿Qué es?</p>
+            <p>View Transitions API</p>
+            <p>Interceptar la navegación</p>
+            <p>Animar elementos de Página Destino con Página Destino</p>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API"
+              target="_blank"
+              >MDN: View_Transitions_API</a
+            >
+            <br />
+            <a
+              href="https://developer.chrome.com/docs/web-platform/view-transitions/"
+              target="_blank"
+              >developer.crome: view-transitions</a
+            >
+          </section>
+          <section>
+            <p class="title-slide">Astro Transitions - old vs new</p>
+            <img src="public/astro/css-transition.png" />
+          </section>
+          <section
+            data-background-color="#fff"
+            data-background-iframe="https://astro-view-transition.netlify.app/"
+            data-background-interactive></section>
+          <section>
+            <p class="title-slide">Astro Transitions - inicialización</p>
+            <pre>
             <div class="code-filename">src/pages/index.astro</div>
             <code data-trim data-line-numbers="2,7">
               ---
@@ -1892,62 +2763,73 @@
               &lt;/html&gt;
             </code>
           </pre>
-        </section>
-        <section>
-          <p class="title-slide">Astro Transitions - directivas</p>
-          <pre>
+          </section>
+          <section>
+            <p class="title-slide">Astro Transitions - directivas</p>
+            <pre>
             <code data-trim>
               <div transition:name="unique name in a page"></div>
               <div transition:animate="fade (default) | initial | slide | none"></div>
               <div transition:persist></div>
             </code>
           </pre>
+          </section>
+          <section>
+            <p class="title-slide">Astro Transitions - Ejemplos</p>
+            <p>Sin Astro</p>
+            <a href="https://http203-playlist.netlify.app/" target="_blank"
+              >Youtube videos</a
+            >
+            <p>Cons Astro</p>
+            <a href="https://astro-records.pages.dev/" target="_blank"
+              >Discos de música</a
+            >
+            <br />
+            <a
+              href="https://tympanus.net/codrops/2023/10/03/animating-multi-page-navigations-with-browser-view-transitions-and-astro"
+              target="_blank"
+              >Prendas de ropa</a
+            >
+          </section>
+          <section>
+            <p class="title-slide">Astro Integraciones - VUE</p>
+            <a
+              href="https://github.com/ivanalbizu/astro-view-transitions"
+              target="_blank"
+              >VUE</a
+            >
+            <br />
+            <p>Ejemplo en VSCode</p>
+          </section>
         </section>
-        <section>
-          <p class="title-slide">Astro Transitions - Ejemplos</p>
-          <p>Sin Astro</p>
-          <a href="https://http203-playlist.netlify.app/" target="_blank">Youtube videos</a>
-          <p>Cons Astro</p>
-          <a href="https://astro-records.pages.dev/" target="_blank">Discos de música</a>
-          <br>
-          <a href="https://tympanus.net/codrops/2023/10/03/animating-multi-page-navigations-with-browser-view-transitions-and-astro" target="_blank">Prendas de ropa</a>
-        </section>
-        <section>
-          <p class="title-slide">Astro Integraciones - VUE</p>
-          <a href="https://github.com/ivanalbizu/astro-view-transitions" target="_blank">VUE</a>
-          <br>
-          <p>Ejemplo en VSCode</p>
-        </section>
-      </section>
+      </div>
     </div>
-  </div>
 
-  <script src="dist/reveal.js"></script>
-  <script src="plugin/notes/notes.js"></script>
-  <script src="plugin/markdown/markdown.js"></script>
-  <script src="plugin/highlight/highlight.js"></script>
-  <script src="plugin/zoom/zoom.js"></script>
-  <script src="dist/script.js"></script>
-  <script>
-    // More info about initialization & config:
-    // - https://revealjs.com/initialization/
-    // - https://revealjs.com/config/
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      center: true,
-      hash: true,
-      width: 1100,
-      height: 700,
-      margin: 0.04,
-      minScale: 0.2,
-      maxScale: 1.5,
-      slideNumber: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="dist/script.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        width: 1100,
+        height: 700,
+        margin: 0.04,
+        minScale: 0.2,
+        maxScale: 1.5,
+        slideNumber: true,
 
-      // Learn about plugins: https://revealjs.com/plugins/
-      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
-    });
-  </script>
-</body>
-
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom],
+      });
+    </script>
+  </body>
 </html>
