@@ -2186,7 +2186,7 @@
           <section>
             <p class="title-slide">@layer nested</p>
             <pre>
-            <code data-trim data-trim data-line-numbers="1-7|7-14">
+            <code data-trim data-line-numbers="1-7|7-14">
               @layer outer {
                 @layer inner {
                   .button {
@@ -2661,18 +2661,32 @@
         </section>
         <section data-background-color="#2d0333">
           <section>
-            <p class="title-slide">Contrast Theme: forced-colors</p>
+            <p class="title-slide">Contrast Theme</p>
             <ul>
-              <li>Aplicar Contraste</li>
+              <li>Display Modes</li>
+              <li>Windows Contrast Theme</li>
               <li>System Colors. Nombre de colores</li>
               <li>Propiedades afectadas</li>
               <li>Propiedades con comportamiento especial</li>
-              <li>@media (forced-colors: active) {}</li>
+              <li>Detectar preferencias de contraste</li>
               <li>Y ahora... ¿qué?</li>
             </ul>
           </section>
           <section>
-            <p class="title-slide">Aplicar contraste Windows</p>
+            <p class="title-slide">Display Modes</p>
+            <ul>
+              <li>Dark Mode</li>
+              <li>Reduced Motion Mode</li>
+              <li>Invert Colors</li>
+              <li>Increase Contrast</li>
+              <li>Text Contrast</li>
+              <li>Reduce Transparency</li>
+              <li>Reader Mode</li>
+              <li><strong>Windows Contrast Themes</strong></li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Contrast Theme I</p>
             <div class="columns columns--img">
               <figure>
                 <img src="public/contrast-theme/01-contrast-theme-window.png" height="600" />
@@ -2703,7 +2717,7 @@
             </aside>
           </section>
           <section>
-            <p class="title-slide">Aplicar contraste Windows</p>
+            <p class="title-slide">Contrast Theme II</p>
             <figure>
               <img src="public/contrast-theme/03-contrast-theme-window-custom.png" height="600" />
               <figcaption>
@@ -2712,21 +2726,39 @@
             </figure>
           </section>
           <section>
-            <p class="title-slide">Nombres de colores</p>
+            <p class="title-slide">Nombres de colores I</p>
             <pre>
-              <code data-trim data-line-numbers>
-                Canvas / CanvasText (*)
-                Link (*)
-                ButtonFace / ButtonText / ButtonBorder (*)
+              <code data-trim>
+                Canvas / CanvasText (*): Background color / Regular text color
+                Link (*): Link color
+                ButtonFace / ButtonText (*): Button background color / Button text color
                 Field / FieldText
                 SelectedItem / SelectedItemText
                 AccentColor / AccentColorText
                 ActiveText / VisitedText
-                Highlight / HighlightText (*)
+                Highlight / HighlightText (*): Selected text background color / Selected text color
+                GrayText (*) (text color disabled)
                 Mark / MarkText
               </code>
               (*) Nombre de colores seguros y comunes
             </pre>
+          </section>
+          <section>
+            <p class="title-slide">Nombres de colores II</p>
+            <p
+              class="codepen"
+              data-height="550"
+              data-theme-id="dark"
+              data-default-tab="result"
+              data-slug-hash="NPPKGoX"
+              data-pen-title="CSS System colors: forced-colors: active"
+              data-editable="true"
+              data-user="ivan_albizu"
+              style="height: 550px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+              <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/NPPKGoX">
+              CSS4 System colors: forced-colors: active</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+              on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
           </section>
           <section>
             <p class="title-slide">Propiedades afectadas</p>
@@ -2758,17 +2790,83 @@
             </pre>
           </section>
           <section>
-            <p class="title-slide">Regla @media</p>
+            <p class="title-slide">Detectar preferencias de contraste - CSS @media</p>
             <pre>
-              <code data-trim data-line-numbers>
+              <code data-trim data-line-numbers="1-2,10-11,5|1-2,10-11,7-9">
                 @media (forced-colors: active) {
-                  :root {}
                   .selector {
-                    forced-color-adjust: none;
+                    // +-equivale a "none" (currentColor, inherit)
+                    // +info: https://developer.mozilla.org/en-US/docs/Web/CSS/forced-color-adjust#preserve-parent-color
+                    forced-color-adjust: preserve-parent-color;
+                    //forced-color-adjust: none; //Con firefox puede dar problemas
+                    &__hijo {
+                      forced-color-adjust: auto;
+                    }
                   }
                 }
               </code>
             </pre>
+          </section>
+          <section>
+            <p class="title-slide">Detectar preferencias de contraste - Javascript</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                const forced_colors = matchMedia('(forced-colors: active)');
+                if ( forced_colors ) {
+                  // User has constrast theme active
+                }
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p class="title-slide">Y ahora... ejemplo</p>
+            <p class="codepen" data-height="550" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="jEEyJMM" data-pen-title="Untitled" data-editable="true" data-user="ivan_albizu" style="height: 550px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+              <span>See the Pen <a href="https://codepen.io/ivan_albizu/pen/jEEyJMM">
+              Untitled</a> by Iván Albizu (<a href="https://codepen.io/ivan_albizu">@ivan_albizu</a>)
+              on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+          </section>
+          <section>
+            <p class="title-slide">Y ahora... la chapa (I)</p>
+            <ol>
+              <li>Usa HTML semántico</li>
+              <li>Usa etiquetas correctas
+                <ul>
+                  <li>Si quieres enlaces, usa <code>&lt;a&gt;Enlace&lt;/a&gt;</code></li>
+                  <li>Si quieres acciones, usa <code>&lt;button&gt;Botón&lt;/button&gt;</code></li>
+                  <li>[...]</li>
+                </ul>
+              </li>
+              <li>Evita dar semántica a elementos "inertes" con ARIA/ROLE (gracias al punto 1.)</li>
+              <li>Tómate un tiempo, y una cerveza 0.0, antes de maquetar a lo loco. Los TOKENS CSS molan</li>
+            </ol>
+          </section>
+          <section>
+            <p class="title-slide">Y ahora... la chapa (II)</p>
+            <ol start="5">
+              <li>
+                TIPS css:
+                <ul>
+                  <li>Botones con bordes, y si el diseño no los tiene, valorar si es posible <code>border-color: transparent;</code></li>
+                  <li>Valorar en enlaces <code>text-decoration-color: transparent;</code> en lugar de <code>text-decoration: none;</code></li>
+                  <li>No eliminar el focus-visible</li>
+                  <li>Sugerir uso de <code>media="(forced-colors: active)"</code> en los <code>&lt;source&gt;</code> de <code>&lt;picture&gt;</code></li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <p class="title-slide">Y ahora... ¿merece la pena?</p>
+            <ol>
+              <li>51% de personas con baja visión usan Contrast Mode</li>
+              <li>WCAG
+                <ul>
+                  <li><a href="https://www.w3.org/WAI/WCAG22/quickref/#visual-presentation" target="_blank">1.4.8: Visual Presentation (AAA)</a><br>1.- Foreground and background <strong>colors can be selected by the user</strong>.</li>
+                  <li><a href="https://www.w3.org/WAI/WCAG22/quickref/#use-of-color" target="_blank">1.4.1 Use of Color (A)</a><br><strong>Color is not used as the only visual</strong> means of conveying information (<a href="https://codepen.io/SaraSoueidan/pen/eYMzNXb/7596deef6ed96f6b81954aa29cc2f45f" target="_blank">example PEN</a>)</li>
+                </ul>
+              </li>
+              <li>Igualdad de oportunidades</li>
+            </ol>
           </section>
         </section>
         <section data-background-color="#272001">
