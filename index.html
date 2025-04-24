@@ -2659,6 +2659,118 @@
             >
           </section>
         </section>
+        <section data-background-color="#2d0333">
+          <section>
+            <p class="title-slide">Contrast Theme: forced-colors</p>
+            <ul>
+              <li>Aplicar Contraste</li>
+              <li>System Colors. Nombre de colores</li>
+              <li>Propiedades afectadas</li>
+              <li>Propiedades con comportamiento especial</li>
+              <li>@media (forced-colors: active) {}</li>
+              <li>Y ahora... ¿qué?</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Aplicar contraste Windows</p>
+            <div class="columns columns--img">
+              <figure>
+                <img src="public/contrast-theme/01-contrast-theme-window.png" height="600" />
+                <figcaption>
+                  Contrast theme Windows
+                </figcaption>
+              </figure>
+              </pre>
+              <figure>
+                <img src="public/contrast-theme/02-contrast-theme-window.png" height="600" />
+                <figcaption>
+                  Contrast theme selector Windows
+                </figcaption>
+              </figure>
+            </div>
+            <p>Windows 10: High Contrast</p>
+            <p>Windows 11: Contrast Themes</p>
+            <p>MacOS:  Accessibility > Displays > Increase contrast in MacOS</p>
+            <aside class="notes">
+              <ol>
+                <li>
+                  Mostrar Rendering en Chrome.
+                </li>
+                <li>
+                  Se trata de emulación, no es fiable.
+                </li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <p class="title-slide">Aplicar contraste Windows</p>
+            <figure>
+              <img src="public/contrast-theme/03-contrast-theme-window-custom.png" height="600" />
+              <figcaption>
+                Contrast theme Windows
+              </figcaption>
+            </figure>
+          </section>
+          <section>
+            <p class="title-slide">Nombres de colores</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                Canvas / CanvasText (*)
+                Link (*)
+                ButtonFace / ButtonText / ButtonBorder (*)
+                Field / FieldText
+                SelectedItem / SelectedItemText
+                AccentColor / AccentColorText
+                ActiveText / VisitedText
+                Highlight / HighlightText (*)
+                Mark / MarkText
+              </code>
+              (*) Nombre de colores seguros y comunes
+            </pre>
+          </section>
+          <section>
+            <p class="title-slide">Propiedades afectadas</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                color
+                background-color
+                text-decoration-color
+                text-emphasis-color
+                border-color
+                outline-color
+                column-rule-color
+                -webkit-tap-highlight-color
+                SVG fill attribute
+                SVG stroke attribute
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p class="title-slide">Propiedades con comportamiento especial</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                box-shadow: forzado a 'none'
+                text-shadow: forzado a 'none'
+                background-image: forzado a 'none' excepto url-based
+                color-scheme: forzado a 'light dark'
+                scrollbar-color: forzado a 'auto'
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p class="title-slide">Regla @media</p>
+            <pre>
+              <code data-trim data-line-numbers>
+                @media (forced-colors: active) {
+                  :root {}
+                  .selector {
+                    forced-color-adjust: none;
+                  }
+                }
+              </code>
+            </pre>
+          </section>
+        </section>
         <section data-background-color="#272001">
           <section>
             <p class="title-slide">Astro</p>

@@ -1836,6 +1836,13 @@ $notesWidthPercent: 25%;
 			max-height: 70vh;
 			width: auto;
 		}
+		&--img {
+			grid-template-columns: 1fr 1fr;
+			img {
+				width: auto;
+				height: auto;
+			}
+		}
 	}
 }
 
