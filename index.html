@@ -2879,14 +2879,83 @@
         </section>
         <section data-background-color="#2d0333">
           <section>
-            <p class="title-slide">Nombres accesibles (accName) en CTA</p>
+            <p class="title-slide">Nombres accesibles (accName)</p>
             <ul>
+              <li>Accessibility tree</li>
               <li>¿Qué es nombre accesible?</li>
               <li>Importancia de accName</li>
               <li>Formas de establecer accName</li>
               <li>Orden en que se computa accName</li>
               <li>WCAG</li>
             </ul>
+          </section>
+          <section>
+            <p class="title-slide">Accessibility tree - diagrama</p>
+            <figure>
+              <img src="https://wicg.github.io/aom/images/DOM-a11y-tree.png" height="600" />
+              <figcaption>
+                Accessibility tree diagram
+                <a
+                  href="https://wicg.github.io/aom/explainer.html"
+                  target="_blank"
+                  >source</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section>
+            <p class="title-slide">Accessibility tree - contenido</p>
+            <table>
+              <style>
+                @scope {
+                  td {
+                    font-size: 42px;
+                  }
+                }
+              </style>
+              <tbody>
+                <tr>
+                  <td>role</td>
+                  <td>
+                    <div
+                    class="fragment fade-in-then-semi-out"
+                    data-fragment-index="0">
+                    <code>&lt;button&gt; &lt;link&gt; [...]</code>
+                  </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>name</td>
+                  <td>
+                    <div
+                      class="fragment fade-in-then-semi-out"
+                      data-fragment-index="1">
+                      Contenido
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>description</td>
+                  <td>
+                    <div
+                      class="fragment fade-in-then-semi-out"
+                      data-fragment-index="2">
+                      Contenido ayuda (exigencias para contraseñas)
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>state</td>
+                  <td>
+                    <div
+                      class="fragment fade-in-then-semi-out"
+                      data-fragment-index="3">
+                      checkbox (checked/unchecked)<br>button (pressed/unpressed)
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </section>
           <section>
             <p class="title-slide">¿Qué es nombre accesible?</p>
@@ -3090,6 +3159,14 @@
             <ul>
               <li>DRY: ejemplo tag chips o pagination</li>
               <li>Button icon: SVG title</li>
+            </ul>
+          </section>
+          <section>
+            <p class="title-slide">Recursos interesantes</p>
+            <ul>
+              <li><a href="https://www.sarasoueidan.com/blog/" target="_blank">Sara Soueidan</a></li>
+              <li><a href="https://www.scottohara.me/" target="_blank">Scott O'Hara</a></li>
+              <li><a href="https://adrianroselli.com/posts" target="_blank">Adrian Roselli</a></li>
             </ul>
           </section>
         </section>
